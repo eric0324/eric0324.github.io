@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application） | Eric&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DigitalOcean 提供了一個方便的方式 One-Click Application 來獲得一個 Ubuntu 伺服器上的 Rails。裡面還包含了 Nginx、Unicorn 和 Postgres 都會幫你設定好。這個教學就是教你如何在上面利用 One-Click Application 部署 Ruby on Rails。 簡介 Ruby 2.2：這裡使用的是 RVM Rails 4：就一">
+<meta name="keywords" content="note,DigitalOcean,server,Rails,Ruby,Nginx,Unicorn,Postgres,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application）">
+<meta property="og:url" content="http://ericwu.asia/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/index.html">
+<meta property="og:site_name" content="Eric&#39;s BLOG">
+<meta property="og:description" content="DigitalOcean 提供了一個方便的方式 One-Click Application 來獲得一個 Ubuntu 伺服器上的 Rails。裡面還包含了 Nginx、Unicorn 和 Postgres 都會幫你設定好。這個教學就是教你如何在上面利用 One-Click Application 部署 Ruby on Rails。 簡介 Ruby 2.2：這裡使用的是 RVM Rails 4：就一">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://i.imgur.com/Nncz5ZN.png">
+<meta property="og:image" content="http://i.imgur.com/jEbCDuu.png">
+<meta property="og:updated_time" content="2018-10-21T22:37:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application）">
+<meta name="twitter:description" content="DigitalOcean 提供了一個方便的方式 One-Click Application 來獲得一個 Ubuntu 伺服器上的 Rails。裡面還包含了 Nginx、Unicorn 和 Postgres 都會幫你設定好。這個教學就是教你如何在上面利用 One-Click Application 部署 Ruby on Rails。 簡介 Ruby 2.2：這裡使用的是 RVM Rails 4：就一">
+<meta name="twitter:image" content="http://i.imgur.com/Nncz5ZN.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Eric&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Eric&#39;s BLOG</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Dream it. Wish it. Do it.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ericwu.asia"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/" class="article-date">
+  <time datetime="2016-05-06T16:00:00.000Z" itemprop="datePublished">2016-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DigitalOcean 提供了一個方便的方式 One-Click Application 來獲得一個 Ubuntu 伺服器上的 Rails。裡面還包含了 Nginx、Unicorn 和 Postgres 都會幫你設定好。這個教學就是教你如何在上面利用 One-Click Application 部署 Ruby on Rails。</p>
+<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><ul>
+<li>Ruby 2.2：這裡使用的是 RVM</li>
+<li>Rails 4：就一個 Rails web framework gem</li>
+<li>PostgreSQL：資料庫</li>
+<li>Unicorn：Rails 應用伺服器</li>
+<li>Nginx：反向代理伺服器</li>
+</ul>
+<h2 id="建立你的-Ruby-on-Rails-Droplet"><a href="#建立你的-Ruby-on-Rails-Droplet" class="headerlink" title="建立你的 Ruby on Rails Droplet"></a>建立你的 Ruby on Rails Droplet</h2><p>你可以這個章節學到如何在 DigitalOcean Control Panel 創建一個 on Rails on 14.04 one-click application image</p>
+<p>首先，登入 DigitalOcean Control Panel ，點選 Create Droplet 按鈕，選擇 Rails 應用。<br><img src="http://i.imgur.com/Nncz5ZN.png" alt="Imgur"></p>
+<p>在這個頁面中你可以設定 hostname 和 size， 我覺得CPU 1GB 的 Droplet 非常足夠用。這個範例我用了 2GB 的。</p>
+<p><img src="http://i.imgur.com/jEbCDuu.png" alt="Imgur"></p>
+<blockquote>
+<p>512 MB，我這裡使用後，好像會出現一些未知的問題。</p>
+</blockquote>
+<h2 id="進入你的-Ruby-on-Rails-Droplet"><a href="#進入你的-Ruby-on-Rails-Droplet" class="headerlink" title="進入你的 Ruby on Rails Droplet"></a>進入你的 Ruby on Rails Droplet</h2><p>很好！現在你已經有一個 Rails Droplet 了，再來就是進去裡面做設定。在這之前你可以先訪問看看，你的 rails 是正確被安裝的。假設我的 Droplet’s IP 是 <code>111.111.111.111</code> ，我可以打開 <code>http://111.111.111.111</code> 確認 rails 應用是有在跑的。</p>
+<p>在你的電腦上打開 terminal 利用 SSH 連結到你的 Droplet：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@droplet.ip.address</span><br></pre></td></tr></table></figure>
+<p>他會要求你輸入密碼。接著應該會出現這樣的訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">Thank you for using DigitalOcean&apos;s Rails Application.</span><br><span class="line">We have created a default Rails application that can be seen from http://111.111.11.111/</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">You can use the following SFTP credentials to upload your webpages (using FileZilla/WinSCP/Rsync):</span><br><span class="line">  * Host: 111.111.11.111</span><br><span class="line">  * User: rails</span><br><span class="line">  * Pass: ji3h961j4el4nj4su3sk6</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">You can use the following Postgres database credentials:</span><br><span class="line">  * User: rails</span><br><span class="line">  * Pass: 5k4g4au4au4i</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">Nginx listens on public IP (111.111.11.111) port 80 and forwards requests to Unicorn on port 8080</span><br><span class="line">Nginx access log is in /var/log/nginx/access.log and error log is in /var/log/nginx/error.log</span><br><span class="line">Unicorn configuration files are in /etc/unicorn.conf and /etc/default/unicorn</span><br><span class="line">Unicorn log is in /var/log/unicorn/unicorn.log</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">To get a list of available gems: gem list</span><br><span class="line">To get a list of Rubies: rvm list</span><br><span class="line">To get Gem environment: gem env</span><br><span class="line">-------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你是第一次登入，他會叫你換一組新的密碼。</p>
+</blockquote>
+<h2 id="修改設定"><a href="#修改設定" class="headerlink" title="修改設定"></a>修改設定</h2><p>接著我們要進行以下幾個動作，完成你的 rails 設置</p>
+<ul>
+<li>Git clone 下來</li>
+<li>設定資料庫連接</li>
+<li>更新你的 Gemfile ，裝入 unicorn 和 pg gems</li>
+<li>跑 rake tasks</li>
+<li>設定 Unicorn</li>
+<li>更新 Nginx</li>
+</ul>
+<h3 id="Git-clone-下來"><a href="#Git-clone-下來" class="headerlink" title="Git clone 下來"></a>Git clone 下來</h3><p>這裡假設你已經是 root 使用者. 接著會從 GitHub repository clone 下來並且部署一個 sample_tasks。</p>
+<p>這邊假設我要 clone 到家目錄底下 rails 資料夾裡面。記得 clone 網址的地方，你要 clone 你要的東西，不要跟我一樣:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~rails</span><br><span class="line">git clone https://github.com/eric0324/sample_tasks.git</span><br></pre></td></tr></table></figure>
+<h3 id="設定資料庫連接"><a href="#設定資料庫連接" class="headerlink" title="設定資料庫連接"></a>設定資料庫連接</h3><p>現在我們要設定你的應用程式可以連接到 PostgreSQL 資料庫。 這個範例我直接複製 rails_project  的設定檔案過去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~rails/rails_project/config/database.yml ~rails/sample_tasks/config/</span><br></pre></td></tr></table></figure>
+<p>接著要修改 db 名稱，你可以用你習慣的編輯器，這裡我用 vim ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~rails/sample_tasks/config/database.yml</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>vim 提示：i 可以進入編輯模式<br>esc 後 :wq 可以儲存離開</p>
+</blockquote>
+<p>之後你的 <code>database.yml</code> 應該會長這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">production:</span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">  database: sample_tasks_production</span><br><span class="line">  username: rails</span><br><span class="line">  password: &lt;%= ENV[&apos;APP_DATABASE_PASSWORD&apos;] %&gt;</span><br><span class="line">Save and exit. That&apos;s Ctrl-O, Enter, then Ctrl-X, if you&apos;re using nano.</span><br></pre></td></tr></table></figure>
+<h3 id="更新-Gemfile"><a href="#更新-Gemfile" class="headerlink" title="更新 Gemfile"></a>更新 Gemfile</h3><p>在你的應用程式將會用到 <code>PostgreSQL</code> 和 <code>Unicorn</code>, 所以我們必須將它們加到 <code>Gemfile</code>。打開 <code>Gemfile</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~rails/sample_tasks/Gemfile</span><br></pre></td></tr></table></figure>
+<p>加入 pg 和 unicorn gems 如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :production do</span><br><span class="line">  gem &apos;unicorn&apos;</span><br><span class="line">  gem &apos;pg&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><code>bundle install</code> 一下吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~rails/sample_tasks &amp;&amp; bundle install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>備註: 如果安裝過程出現問題，你可能要確定 ruby 版本，或是參考最後一章節，新增 swap，ruby 版本修改和確認可以參考以下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rvm install 2.0.0</span><br><span class="line">rvm use ruby-2.0.0-p643 --default</span><br><span class="line">Now change to the application&apos;s directory and run bundler:</span><br></pre></td></tr></table></figure>
+<h3 id="跑-Rake-Tasks"><a href="#跑-Rake-Tasks" class="headerlink" title="跑 Rake Tasks"></a>跑 Rake Tasks</h3><p>我們已經準備要跑 <code>rake tasks</code> 在這之前我們還要先設定一下 PostgreSQL 資料庫的環境下 user 的密碼。 為了這麼做，我們必須要使用 /etc/default/unicorn 檔案 ，利用以下指令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. /etc/default/unicorn</span><br></pre></td></tr></table></figure>
+<p>這次真的可以跑 <code>rake tasks</code> 了，這個範例我用 production database</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RAILS_ENV=production rake db:create</span><br><span class="line">RAILS_ENV=production rake db:migrate</span><br><span class="line">RAILS_ENV=production rake assets:precompile</span><br></pre></td></tr></table></figure>
+<p>在這個時候, 你必須變更一些權限:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R rails: /home/rails/sample_tasks</span><br></pre></td></tr></table></figure>
+<h3 id="設定-Unicorn"><a href="#設定-Unicorn" class="headerlink" title="設定 Unicorn"></a>設定 Unicorn</h3><p>接著我們必須更新 Unicorn 設定檔，讓他可以指定路徑到我們的應用程式。打開<code>/etc/unicorn.conf</code> 編輯：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/unicorn.conf</span><br></pre></td></tr></table></figure>
+<p>找到 <code>working_directory</code> 把它換成你的應用程式路徑。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">working_directory &quot;/home/rails/sample_tasks&quot;</span><br></pre></td></tr></table></figure>
+<p>儲存後離開。接著編輯 <code>/etc/default/unicorn</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/default/unicorn</span><br></pre></td></tr></table></figure>
+<p>接著找到 <figure class="highlight plain"><figcaption><span>相同的換成你的應用程式路徑</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>APP_ROOT=/home/rails/sample_tasks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">你的應用程式就準備好了，重新啟動 `Unicorn`</span><br></pre></td></tr></table></figure></p>
+<p>service unicorn restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">應用程式部署的差不多了，最後只剩設定 `Nginx`。</span><br><span class="line"></span><br><span class="line">### 更新 Nginx</span><br><span class="line"></span><br><span class="line">`Nginx` 會用反向伺服器到 `Unicorn`, 我們必須讓他知道 application&apos;s public directory. 打開 `Nginx` 設定檔:</span><br></pre></td></tr></table></figure></p>
+<p>vim /etc/nginx/sites-enabled/rails<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">找到以下，並調整</span><br></pre></td></tr></table></figure></p>
+<p>root /home/rails/sample_tasks/public;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">儲存後離開。現在重新開啟 Nginx：</span><br></pre></td></tr></table></figure></p>
+<p>service nginx reload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 附錄：如何增加 Swap 到 Ubuntu 14.04</span><br><span class="line"></span><br><span class="line">### 介紹</span><br><span class="line"></span><br><span class="line">提高伺服器的響應速度和防範在應用程式中內存不足錯誤的最簡單的方法，那就是是添加 swap space。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在本指南中，將介紹如何創建並啟用一個 Ubuntu14.04 伺服器上的 Swap。</span><br><span class="line"></span><br><span class="line">架設我們要創建 4 Gigabyte ，輸入:</span><br></pre></td></tr></table></figure></p>
+<p>sudo fallocate -l 4G /swapfile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">驗證一下是否真的有 allocate 這個空間：</span><br></pre></td></tr></table></figure></p>
+<p>ls -lh /swapfile<br>-rw-r–r– 1 root root 4.0G Apr 28 17:19 /swapfile<br><code>`</code><br>如果你能看到，代表正確建立了這個空間。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/" data-id="cjnl5j6ob000j9z9bq1kxzixj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Postgres/">Postgres</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unicorn/">Unicorn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/20/raspberry-pi-using-the-waveshare-3.5-inch-TFT-screen/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 Raspberry pi 3 上面使用 waveshare 3.5 吋 TFT 螢幕
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/03/my-love-ope-picec-lines/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">海賊王經典語錄</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2B8C/">2B8C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/66R1B3C/">66R1B3C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APscheduler/">APscheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corps/">Corps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPIO/">GPIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gandi/">Gandi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoClipse/">GoClipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Marine/">Marine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgres/">Postgres</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Semper-Fidelis/">Semper Fidelis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TFT/">TFT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unicorn/">Unicorn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuan-Ze-University/">Yuan Ze University</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/altera/">altera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/anime/">anime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bridge/">bridge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hack/">hack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackathon/">hackathon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackntu2015/">hackntu2015</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hardware/">hardware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/human–computer-interaction/">human–computer interaction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/key/">key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mandy/">mandy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/navy/">navy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/novel/">novel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/one-piece/">one piece</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/op/">op</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pi/">pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pixijs/">pixijs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberry/">raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soldier/">soldier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/waveshare/">waveshare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weebly/">weebly</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2B8C/" style="font-size: 10px;">2B8C</a> <a href="/tags/66R1B3C/" style="font-size: 10px;">66R1B3C</a> <a href="/tags/APscheduler/" style="font-size: 10px;">APscheduler</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Corps/" style="font-size: 10px;">Corps</a> <a href="/tags/DigitalOcean/" style="font-size: 10px;">DigitalOcean</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="/tags/Gandi/" style="font-size: 10px;">Gandi</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/GoClipse/" style="font-size: 10px;">GoClipse</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Marine/" style="font-size: 10px;">Marine</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Postgres/" style="font-size: 10px;">Postgres</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Rails/" style="font-size: 10px;">Rails</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 13.33px;">SQL</a> <a href="/tags/Semper-Fidelis/" style="font-size: 10px;">Semper Fidelis</a> <a href="/tags/TFT/" style="font-size: 10px;">TFT</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Unicorn/" style="font-size: 10px;">Unicorn</a> <a href="/tags/Yuan-Ze-University/" style="font-size: 10px;">Yuan Ze University</a> <a href="/tags/altera/" style="font-size: 10px;">altera</a> <a href="/tags/anime/" style="font-size: 10px;">anime</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/bridge/" style="font-size: 10px;">bridge</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/game/" style="font-size: 10px;">game</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hack/" style="font-size: 13.33px;">hack</a> <a href="/tags/hackathon/" style="font-size: 13.33px;">hackathon</a> <a href="/tags/hackntu2015/" style="font-size: 13.33px;">hackntu2015</a> <a href="/tags/hardware/" style="font-size: 10px;">hardware</a> <a href="/tags/human–computer-interaction/" style="font-size: 10px;">human–computer interaction</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/mandy/" style="font-size: 10px;">mandy</a> <a href="/tags/navy/" style="font-size: 10px;">navy</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/novel/" style="font-size: 10px;">novel</a> <a href="/tags/one-piece/" style="font-size: 10px;">one piece</a> <a href="/tags/op/" style="font-size: 10px;">op</a> <a href="/tags/pi/" style="font-size: 10px;">pi</a> <a href="/tags/pixijs/" style="font-size: 10px;">pixijs</a> <a href="/tags/project/" style="font-size: 13.33px;">project</a> <a href="/tags/rails/" style="font-size: 16.67px;">rails</a> <a href="/tags/raspberry/" style="font-size: 10px;">raspberry</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/setup/" style="font-size: 10px;">setup</a> <a href="/tags/soldier/" style="font-size: 10px;">soldier</a> <a href="/tags/waveshare/" style="font-size: 10px;">waveshare</a> <a href="/tags/weebly/" style="font-size: 10px;">weebly</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/hello/">hello_eeee</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/09/flask-use-apscheduler/">Flask 下使用 APscheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/09/mysql-change-root-password/">MySQL 修改 root 用戶密碼</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/06/marine-corps/">『海軍陸戰隊軍事常備訓練役』後記 </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Eric Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

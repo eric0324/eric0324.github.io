@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Eric&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Eric&#39;s BLOG">
+<meta property="og:url" content="http://ericwu.asia/page/2/index.html">
+<meta property="og:site_name" content="Eric&#39;s BLOG">
+<meta property="og:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Eric&#39;s BLOG">
+<meta name="twitter:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+  
+    <link rel="alternate" href="/atom.xml" title="Eric&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Eric&#39;s BLOG</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Dream it. Wish it. Do it.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ericwu.asia"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/" class="article-date">
+  <time datetime="2016-05-06T16:00:00.000Z" itemprop="datePublished">2016-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/">在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DigitalOcean 提供了一個方便的方式 One-Click Application 來獲得一個 Ubuntu 伺服器上的 Rails。裡面還包含了 Nginx、Unicorn 和 Postgres 都會幫你設定好。這個教學就是教你如何在上面利用 One-Click Application 部署 Ruby on Rails。</p>
+<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><ul>
+<li>Ruby 2.2：這裡使用的是 RVM</li>
+<li>Rails 4：就一個 Rails web framework gem</li>
+<li>PostgreSQL：資料庫</li>
+<li>Unicorn：Rails 應用伺服器</li>
+<li>Nginx：反向代理伺服器</li>
+</ul>
+<h2 id="建立你的-Ruby-on-Rails-Droplet"><a href="#建立你的-Ruby-on-Rails-Droplet" class="headerlink" title="建立你的 Ruby on Rails Droplet"></a>建立你的 Ruby on Rails Droplet</h2><p>你可以這個章節學到如何在 DigitalOcean Control Panel 創建一個 on Rails on 14.04 one-click application image</p>
+<p>首先，登入 DigitalOcean Control Panel ，點選 Create Droplet 按鈕，選擇 Rails 應用。<br><img src="http://i.imgur.com/Nncz5ZN.png" alt="Imgur"></p>
+<p>在這個頁面中你可以設定 hostname 和 size， 我覺得CPU 1GB 的 Droplet 非常足夠用。這個範例我用了 2GB 的。</p>
+<p><img src="http://i.imgur.com/jEbCDuu.png" alt="Imgur"></p>
+<blockquote>
+<p>512 MB，我這裡使用後，好像會出現一些未知的問題。</p>
+</blockquote>
+<h2 id="進入你的-Ruby-on-Rails-Droplet"><a href="#進入你的-Ruby-on-Rails-Droplet" class="headerlink" title="進入你的 Ruby on Rails Droplet"></a>進入你的 Ruby on Rails Droplet</h2><p>很好！現在你已經有一個 Rails Droplet 了，再來就是進去裡面做設定。在這之前你可以先訪問看看，你的 rails 是正確被安裝的。假設我的 Droplet’s IP 是 <code>111.111.111.111</code> ，我可以打開 <code>http://111.111.111.111</code> 確認 rails 應用是有在跑的。</p>
+<p>在你的電腦上打開 terminal 利用 SSH 連結到你的 Droplet：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@droplet.ip.address</span><br></pre></td></tr></table></figure>
+<p>他會要求你輸入密碼。接著應該會出現這樣的訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">Thank you for using DigitalOcean&apos;s Rails Application.</span><br><span class="line">We have created a default Rails application that can be seen from http://111.111.11.111/</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">You can use the following SFTP credentials to upload your webpages (using FileZilla/WinSCP/Rsync):</span><br><span class="line">  * Host: 111.111.11.111</span><br><span class="line">  * User: rails</span><br><span class="line">  * Pass: ji3h961j4el4nj4su3sk6</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">You can use the following Postgres database credentials:</span><br><span class="line">  * User: rails</span><br><span class="line">  * Pass: 5k4g4au4au4i</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">Nginx listens on public IP (111.111.11.111) port 80 and forwards requests to Unicorn on port 8080</span><br><span class="line">Nginx access log is in /var/log/nginx/access.log and error log is in /var/log/nginx/error.log</span><br><span class="line">Unicorn configuration files are in /etc/unicorn.conf and /etc/default/unicorn</span><br><span class="line">Unicorn log is in /var/log/unicorn/unicorn.log</span><br><span class="line">-------------------------------------------------------------------------------------</span><br><span class="line">To get a list of available gems: gem list</span><br><span class="line">To get a list of Rubies: rvm list</span><br><span class="line">To get Gem environment: gem env</span><br><span class="line">-------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你是第一次登入，他會叫你換一組新的密碼。</p>
+</blockquote>
+<h2 id="修改設定"><a href="#修改設定" class="headerlink" title="修改設定"></a>修改設定</h2><p>接著我們要進行以下幾個動作，完成你的 rails 設置</p>
+<ul>
+<li>Git clone 下來</li>
+<li>設定資料庫連接</li>
+<li>更新你的 Gemfile ，裝入 unicorn 和 pg gems</li>
+<li>跑 rake tasks</li>
+<li>設定 Unicorn</li>
+<li>更新 Nginx</li>
+</ul>
+<h3 id="Git-clone-下來"><a href="#Git-clone-下來" class="headerlink" title="Git clone 下來"></a>Git clone 下來</h3><p>這裡假設你已經是 root 使用者. 接著會從 GitHub repository clone 下來並且部署一個 sample_tasks。</p>
+<p>這邊假設我要 clone 到家目錄底下 rails 資料夾裡面。記得 clone 網址的地方，你要 clone 你要的東西，不要跟我一樣:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~rails</span><br><span class="line">git clone https://github.com/eric0324/sample_tasks.git</span><br></pre></td></tr></table></figure>
+<h3 id="設定資料庫連接"><a href="#設定資料庫連接" class="headerlink" title="設定資料庫連接"></a>設定資料庫連接</h3><p>現在我們要設定你的應用程式可以連接到 PostgreSQL 資料庫。 這個範例我直接複製 rails_project  的設定檔案過去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~rails/rails_project/config/database.yml ~rails/sample_tasks/config/</span><br></pre></td></tr></table></figure>
+<p>接著要修改 db 名稱，你可以用你習慣的編輯器，這裡我用 vim ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~rails/sample_tasks/config/database.yml</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>vim 提示：i 可以進入編輯模式<br>esc 後 :wq 可以儲存離開</p>
+</blockquote>
+<p>之後你的 <code>database.yml</code> 應該會長這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">production:</span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">  database: sample_tasks_production</span><br><span class="line">  username: rails</span><br><span class="line">  password: &lt;%= ENV[&apos;APP_DATABASE_PASSWORD&apos;] %&gt;</span><br><span class="line">Save and exit. That&apos;s Ctrl-O, Enter, then Ctrl-X, if you&apos;re using nano.</span><br></pre></td></tr></table></figure>
+<h3 id="更新-Gemfile"><a href="#更新-Gemfile" class="headerlink" title="更新 Gemfile"></a>更新 Gemfile</h3><p>在你的應用程式將會用到 <code>PostgreSQL</code> 和 <code>Unicorn</code>, 所以我們必須將它們加到 <code>Gemfile</code>。打開 <code>Gemfile</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~rails/sample_tasks/Gemfile</span><br></pre></td></tr></table></figure>
+<p>加入 pg 和 unicorn gems 如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :production do</span><br><span class="line">  gem &apos;unicorn&apos;</span><br><span class="line">  gem &apos;pg&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><code>bundle install</code> 一下吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~rails/sample_tasks &amp;&amp; bundle install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>備註: 如果安裝過程出現問題，你可能要確定 ruby 版本，或是參考最後一章節，新增 swap，ruby 版本修改和確認可以參考以下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rvm install 2.0.0</span><br><span class="line">rvm use ruby-2.0.0-p643 --default</span><br><span class="line">Now change to the application&apos;s directory and run bundler:</span><br></pre></td></tr></table></figure>
+<h3 id="跑-Rake-Tasks"><a href="#跑-Rake-Tasks" class="headerlink" title="跑 Rake Tasks"></a>跑 Rake Tasks</h3><p>我們已經準備要跑 <code>rake tasks</code> 在這之前我們還要先設定一下 PostgreSQL 資料庫的環境下 user 的密碼。 為了這麼做，我們必須要使用 /etc/default/unicorn 檔案 ，利用以下指令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. /etc/default/unicorn</span><br></pre></td></tr></table></figure>
+<p>這次真的可以跑 <code>rake tasks</code> 了，這個範例我用 production database</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RAILS_ENV=production rake db:create</span><br><span class="line">RAILS_ENV=production rake db:migrate</span><br><span class="line">RAILS_ENV=production rake assets:precompile</span><br></pre></td></tr></table></figure>
+<p>在這個時候, 你必須變更一些權限:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R rails: /home/rails/sample_tasks</span><br></pre></td></tr></table></figure>
+<h3 id="設定-Unicorn"><a href="#設定-Unicorn" class="headerlink" title="設定 Unicorn"></a>設定 Unicorn</h3><p>接著我們必須更新 Unicorn 設定檔，讓他可以指定路徑到我們的應用程式。打開<code>/etc/unicorn.conf</code> 編輯：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/unicorn.conf</span><br></pre></td></tr></table></figure>
+<p>找到 <code>working_directory</code> 把它換成你的應用程式路徑。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">working_directory &quot;/home/rails/sample_tasks&quot;</span><br></pre></td></tr></table></figure>
+<p>儲存後離開。接著編輯 <code>/etc/default/unicorn</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/default/unicorn</span><br></pre></td></tr></table></figure>
+<p>接著找到 <figure class="highlight plain"><figcaption><span>相同的換成你的應用程式路徑</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>APP_ROOT=/home/rails/sample_tasks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">你的應用程式就準備好了，重新啟動 `Unicorn`</span><br></pre></td></tr></table></figure></p>
+<p>service unicorn restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">應用程式部署的差不多了，最後只剩設定 `Nginx`。</span><br><span class="line"></span><br><span class="line">### 更新 Nginx</span><br><span class="line"></span><br><span class="line">`Nginx` 會用反向伺服器到 `Unicorn`, 我們必須讓他知道 application&apos;s public directory. 打開 `Nginx` 設定檔:</span><br></pre></td></tr></table></figure></p>
+<p>vim /etc/nginx/sites-enabled/rails<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">找到以下，並調整</span><br></pre></td></tr></table></figure></p>
+<p>root /home/rails/sample_tasks/public;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">儲存後離開。現在重新開啟 Nginx：</span><br></pre></td></tr></table></figure></p>
+<p>service nginx reload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 附錄：如何增加 Swap 到 Ubuntu 14.04</span><br><span class="line"></span><br><span class="line">### 介紹</span><br><span class="line"></span><br><span class="line">提高伺服器的響應速度和防範在應用程式中內存不足錯誤的最簡單的方法，那就是是添加 swap space。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在本指南中，將介紹如何創建並啟用一個 Ubuntu14.04 伺服器上的 Swap。</span><br><span class="line"></span><br><span class="line">架設我們要創建 4 Gigabyte ，輸入:</span><br></pre></td></tr></table></figure></p>
+<p>sudo fallocate -l 4G /swapfile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">驗證一下是否真的有 allocate 這個空間：</span><br></pre></td></tr></table></figure></p>
+<p>ls -lh /swapfile<br>-rw-r–r– 1 root root 4.0G Apr 28 17:19 /swapfile<br><code>`</code><br>如果你能看到，代表正確建立了這個空間。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/" data-id="cjnl5j6ob000j9z9bq1kxzixj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Postgres/">Postgres</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unicorn/">Unicorn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-my-love-ope-picec-lines" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/03/my-love-ope-picec-lines/" class="article-date">
+  <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">2016-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/03/my-love-ope-picec-lines/">海賊王經典語錄</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由於非常喜歡海賊王，所以整理了一下經典台詞。</p>
+<h1 id="片頭語"><a href="#片頭語" class="headerlink" title="片頭語"></a>片頭語</h1><p>你們知道這片海洋的盡頭，有著世界最珍貴的寶物嗎？而且得到它的人就可以成為海賊王，是不是讓人熱血沸騰？前所未有的冒險正等著我們！</p>
+<ul>
+<li>這世界，沒錯！一個追求自由任憑選擇的世界，就在每個人的眼前無限地延伸。如果我們的夢想可以引導你的方向的話，就去追尋吧，在名為信念的旗幟下！</li>
+<li>世代傳承的意志、時代的變遷、人們的夢。這些都是阻擋不住的，只要人們繼續追求自由的答案，這一切的一切都將永不停止。</li>
+<li>財富、名聲、勢力－－－擁有全世界財富的海賊王哥爾羅傑，他在臨刑前的一句話，讓人們趨之若鶩、奔向大海！</li>
+</ul>
+<p>「想要我的財寶嗎？想要的話可以全部給你，去找吧！我把所有的財寶都放在那裡了。」 於是人們為了龐大的財寶，紛紛航向「偉大的航道」。讓世界迎接「大海賊時代」！</p>
+<h1 id="草帽小子海賊團語錄"><a href="#草帽小子海賊團語錄" class="headerlink" title="草帽小子海賊團語錄"></a>草帽小子海賊團語錄</h1><h2 id="蒙奇‧D‧魯夫-莫奇‧D‧路飛"><a href="#蒙奇‧D‧魯夫-莫奇‧D‧路飛" class="headerlink" title="蒙奇‧Ｄ‧魯夫 / 莫奇‧Ｄ‧路飛"></a>蒙奇‧Ｄ‧魯夫 / 莫奇‧Ｄ‧路飛</h2><ul>
+<li>「我是要成為海賊王的男人！」</li>
+<li>我要成為「海賊王 」！</li>
+<li>這可是我的寶物啊！弄壞它的人，我是絕對不會放過它的！</li>
+<li>我是蒙奇‧Ｄ‧魯夫！我怎麼可能會輸給一個捨棄自己的名字，從海上逃走的海賊呢？當一個海賊捨棄自己的名字時，就和死掉沒啥兩樣了！你們可以用這輩子來記住我的名字！因為我是…未來的海賊王！</li>
+<li>死並不是唯一報恩方式，人家並不是要你死才救你的，讓人家救回一命，又跑去死，是懦夫才會做的事！</li>
+<li>你不用道歉了！現在不管做什麼，都換不回那隻狗最愛的寶物。所以，我要來…狠狠的…扁你一頓！</li>
+<li>我決定了要成為海賊王便要為此戰，就算死也沒關係。</li>
+<li>今後無論發生什麼事也好，這個左手上的都是同伴的記號！</li>
+<li>雖然要分開了……不過永遠永遠是朋友。</li>
+<li>看！沒折斷！我不知道這是誰的海賊旗…但這絕對是某人賭上性命，也要保護的旗子！這旗子才不是隨隨便便就插在上面，你們這種毫不尊重生命的傢夥，不可能折斷它！</li>
+<li>像這艘祇是胡亂攻擊別人的傢伙，祇能稱之為『海盜』！玩弄這些海盜，在海上冒險的人，才是真正的『海賊』！</li>
+<li>我小時候曾被海賊救了一命，那個人因此而失去左手。所以我絕對不會輕賤自己的性命。但是我有一個夢想，無論如何都要去實現。雖然很困難，不過既然是我自己下定決心的，就算因此而戰死，我也甘心。</li>
+<li>就算全身裝備著幾百種武器，也有敵不過充滿自信的一把槍的時候（對提督克力克）</li>
+<li>我的夥伴，一個也不會，死也不會給你的！</li>
+<li>我的目標是得到「One　Piece」！</li>
+<li>我向它發過誓，要找到夥伴一起當海賊。</li>
+<li>侮辱決鬥的人，不是男子漢！</li>
+<li>肚子餓了就要吃飯</li>
+<li>哈哈哈！你這個傢伙真是又笨又迷糊！哈哈哈！你這傢伙又蠢又沒種！我真討厭你！</li>
+<li>狙擊王，把那面旗子…打下來！</li>
+<li>羅賓，回到我們身邊吧！到時候如果你還想死，再死吧！</li>
+<li>我管你是國王還是神！我才不要這些東西！因為我是海賊！（在磁鼓王國）</li>
+<li>當我敗給青稚的時候，我就在想..如果未來的航程中又出現像他那麼強的對手 ..我就必須要變的更強才行！因為我身邊有一些即使實力不強，但我還是希望他們能陪在我身邊的夥伴……所以我必須變得比任何人都要更強，不然我就會失去他們！</li>
+<li>不要弄哭我的航海士！！</li>
+<li>骷髏的旗幟，是信念的象徵</li>
+<li>每個人都有夢想，去實現吧！</li>
+<li>我們是同伴啊！</li>
+<li>就是因為不要讓他死掉，所以才叫夥伴</li>
+<li>這樣不行，在這片海前方還有更強的敵人，這樣無法保護夥伴。就算他們（夥伴）並不強，我也需要他們在我身邊。若我不變得比任何人都強大，就會失去他們。為了不失去任何人、讓大家都能安全的留在身邊，你已經不是我的對手了！我能在這裡碰到你們真是太好了，這樣我就不會失去夥伴（魯夫對布魯諾）</li>
+<li>我的船上沒有手下……祇有夥伴</li>
+<li>我不想知道寶藏在哪裡，也不想知道有沒有寶藏，雖然什麼都不知道，但大家就是這樣賭上性命出海的，如果在這裡從大叔口中洩露任何事，那我就不當海賊了！我可不想去經歷……無聊的冒險！</li>
+<li>海上的王者，有一個就夠了！</li>
+<li>我們不是朋友嗎？</li>
+<li>像你這種人是沒辦法輕易折斷這面旗幟的！</li>
+</ul>
+<h2 id="羅羅亞‧索隆-羅洛亞‧卓洛"><a href="#羅羅亞‧索隆-羅洛亞‧卓洛" class="headerlink" title="羅羅亞‧索隆 / 羅洛亞‧卓洛"></a>羅羅亞‧索隆 / 羅洛亞‧卓洛</h2><ul>
+<li>「我有個野心，就是要成為世界第一的劍士！！」</li>
+<li>我要連同她的份一起變強，我要讓自己變得很強，強到讓我的名字足以響徹天堂，因為我要成為世界第一的劍豪</li>
+<li>團隊精神到底是什麼？互相幫助，互相袒護就算是嗎？也有人這麼認為吧。我是認為那根本祇是唬人！應該是每個人抱著必死決心做自己的事，「我做好自己的部分」「接下來輪到你」「做不好的話我就揍扁你」要是有這種決心才能算是團隊精神吧！</li>
+<li>魯夫，聽得到嗎？如果我輸的話你會很沒面子吧！我發誓，在我打倒那個男人以前，我絕對不會再輸給任何人了！你有什麼意見嗎？ 海賊王！</li>
+<li>背後中劍，是劍士之恥！</li>
+<li>請把那把刀給我吧！我要連她那份一起變強，名聲響到天國去！（索隆小時候邊說邊哭）</li>
+<li>我才不想因為同情你，而去幫助你……</li>
+<li>我不管這個世上的人怎麼說我，我只想依照我的信念做事，絕不後悔，不管現在將來都一樣！</li>
+<li>我當然知道，但是用不著你多管閒事，當我想成為最強的劍士時，早就把生死置之度外了。你要說我笨也沒關係，因為這是我自己選擇的路！</li>
+<li>即使會使普通人昏倒的傷，我也絕對不能倒下！即使會使普通人死掉的傷，我也不可以死…因為如果我是普通人，就絕對贏不了「鷹眼」，所以我不可以是普通人！！</li>
+<li>既然這麼險惡的環境在等著我，那我也只好變得更強了！</li>
+<li>使用三刀流和拿三把刀，是不一樣的。</li>
+<li>不管接下來，我們之中什麼人發生什麼事，你都不能停止前進！</li>
+<li>放心吧！一切靠運氣。</li>
+<li>你能下船追逐海上火車，真的非常了不起。你背負的正義很沉重吧！我們所背負的也相當沉重。</li>
+<li>只要打敗你，我就是能斬斷鋼鐵的人，對吧？</li>
+<li>受寒苦難而不厭 乃此修羅之道</li>
+<li>那你們又算什麼？是被理想鑲這個空殼理想釣上的……沒有思想的傀儡……？還是連腦袋裡頭都是空心的鐵皮玩具大兵……？</li>
+<li>這個世界上會感冒的人都是那些心中有弱點的人</li>
+<li>少在那裡哭哭啼啼的，喬巴！難看死了！你出海是你自己的責任，什麼時候死在什麼地方，那也是你自作自受，不能怪任何人，在海賊的世界裡沒有人會同情你的眼淚，是男人的話就給我咬緊牙關耐心看完這場比賽！</li>
+<li>不管長頸鹿的力量有多大，還是你把礙事的脖子收起來，還是你是什麼四刀流的高手……都不能成為戰勝我的依據</li>
+<li>平常要亂搞是你的自由，但你這個船長如果在最關鍵的時候丟失尊嚴，那下一個離開你們的人就是我。</li>
+<li>祇有這麼做才能拯救大家，如果我連船長都保護不了，那還談什麼野心呢，魯夫可是要成為海賊王的男人!</li>
+<li>我不懂這有什麼好驚訝的！難道你是想告訴我你到目前為止都不曾被別人砍過頭？</li>
+<li>如果在東海出生的我真的是廢物劍士，那被我這種貨色輕易打倒的你…又算是地上的哪根蔥呢!</li>
+<li>你這傢伙！要是做出害我不能實現願望的事情的話，到時你得對我切腹陪罪！</li>
+</ul>
+<h2 id="香吉士-山治"><a href="#香吉士-山治" class="headerlink" title="香吉士 / 山治"></a>香吉士 / 山治</h2><ul>
+<li>「總有一天……我一定會找到「All Blue」傳說之海的！」</li>
+<li>人，最重要的是「心」啊！</li>
+<li>敢在海上和廚師作對，簡直是自尋死路(一頓痛扁後)，你好好記著…別隨便糟蹋食物……</li>
+<li>你要為自尊而死也行，不過如果吃了以後活下來，不就能看到明天了嗎？</li>
+<li>既然如此，那麼開槍吧！我知道他們是壞人，根本用不著救他們！但是，我是個廚師，我能體會別人餓肚子的痛苦，至於他們吃了東西之後要怎樣……我才懶得管咧！我之前就說過，身為廚師，讓餓肚子的人吃飯，是我的本分。</li>
+<li>身為廚師就必須把滿足客人放在第一位！</li>
+<li>是男人，就要原諒女人的謊言！</li>
+<li>寧願死我也不踢女人。</li>
+<li>對在決鬥裡輸的男人…給予同情，你知道有多麼殘忍嗎？</li>
+<li>哲普老闆！長久以來多謝你的照顧了！這份恩情……我一輩子也不會忘記的！</li>
+<li>想通過的話！就必須先踩著我的屍體過去再說！</li>
+<li>菜刀不是劍，不可以用來砍人。</li>
+<li>如果說是神創造了食物，那麼就是惡魔創造了調味料。味道…似乎太辛辣了一點。(與CP9的賈布拉對戰結束)</li>
+</ul>
+<h2 id="娜美-奈美"><a href="#娜美-奈美" class="headerlink" title="娜美 / 奈美"></a>娜美 / 奈美</h2><ul>
+<li>『我要用我所學到的航海技術，到世界各地去旅行！ 再把我所看到的一切，畫成一張「世界地圖」！』</li>
+<li>只要有風和海，我就能航行！</li>
+<li>你說什麼覺悟啊…你以為殺人很簡單嗎？這就是海賊的覺悟嗎？</li>
+<li>就算祇是一點小事情…我也不想和殘酷的海賊做相同的事！</li>
+<li>我個人認為海賊的掠奪行為事錯誤的！所以，我有義務要糾正他們！</li>
+<li>一個人的力量是有限度的，不論想做什麼事，一個人的力量是不夠的，人是需要同伴的！</li>
+<li>在這個世界上，我最討厭的，就是海賊！！我喜歡錢和橘子！</li>
+<li>只要活下去，一定會有很多令你高興的事情發生（原出：貝爾梅爾）</li>
+<li>猶豫會讓人脆弱，就是為了救夥伴，他們才變的更強！</li>
+<li>如果不抵抗是可愛的話，那我寧可不要。(與CP9的卡莉法對戰時)</li>
+<li>這對我來說……根本不痛不癢……妳了解「那個人」的痛苦嗎？跟那個比起來……不管是一隻、兩隻、還是三隻腳！都是小意思！！</li>
+<li>這關係到我所有夥伴的生命！我是個「航海士」，在海上的時候，我的責任就非常重大！我必須帶船長到任何他想去的地方，既然魯夫說他要成為「海賊王」，那我就不能祇是個普通的航海士！</li>
+</ul>
+<h2 id="騙人布-烏索普"><a href="#騙人布-烏索普" class="headerlink" title="騙人布 / 烏索普"></a>騙人布 / 烏索普</h2><ul>
+<li>『不管要停留到哪一天……不管失去什麼東西，即使要在無人島上迎接死亡……我也要尊嚴地死去！我是勇敢的海上戰士騙人布！』</li>
+<li>我得了一種不騙人就會死掉的病！</li>
+<li>就算敵人恐怖得要死也好，作為一個男人，也有不能逃避的時侯！那就是同伴的夢想被取笑的時侯！</li>
+<li>村子的人都認為我在說謊，只要讓這一切都成為一個謊言就好了！為什麼大家要莫名奇妙的被海賊殺光呢！</li>
+<li>硝煙再黑再大，還是看得見天空，還是看得見大海，這裡絕非地獄！</li>
+<li>你們的夢想是什麼？你們不要讓夢想之火熄滅，在這裡發誓，要朝著自己的道路前進！</li>
+<li>如果我現在沒有全力作戰的話，就沒有資格和他們搭同一艘船！！我更不可能和他們一起開心的笑了！</li>
+<li>聽著…喬巴……男子漢，即…即使…遇…到可能會殺死自己的強敵……也不能倒下……就算對方是……死也贏不了的敵人……！男人….有時候是絕對不能逃避…戰鬥的……！尤其…尤其是當…夥伴的夢想……被人嘲笑的時候！(阿拉巴斯坦篇)</li>
+<li>人可以死掉，可是營火晚會的營火絕對不能熄掉！這！才是人道！</li>
+<li>同伴都不能相信那還有誰可以相信！</li>
+<li>我以我父親是海賊為榮！我以他是勇敢的海上戰士為榮！你說的沒錯！我喜歡吹牛……但是，我誇耀我擁有的海賊血統！我不需要偽裝！我是海賊的兒子！</li>
+<li>我堂堂男子漢騙人布……如果連個女人都救不了，那我還有什麼臉活著！</li>
+<li>感謝妳讓我大飽眼福(鬼魂島解救完在浴室受騷擾的娜美說的)</li>
+<li>因為他們每天都拚命的活，所以他們能笑的那麼開心啊！</li>
+</ul>
+<h2 id="多尼多尼‧喬巴"><a href="#多尼多尼‧喬巴" class="headerlink" title="多尼多尼‧喬巴"></a>多尼多尼‧喬巴</h2><ul>
+<li>「我要成為萬能藥，我要證明這世界上沒有什麼病是無法醫治的！」</li>
+<li>醫生！醫生！醫生在哪裡！？對了我就是醫生！</li>
+<li>對！我是馴鹿！！可是……我也是個男子漢啊！！</li>
+<li>閉嘴！即使夥伴不在了，但只要有醫生的旗子……我就可以繼續奮鬥！！！</li>
+<li>你再怎麼稱讚我，我也不會高興的啦！你這個混蛋</li>
+<li>我老是動不動就逃跑，因為每次都有大家保護我，所以我才會這麼靠不住！我要在這裡揚起海賊旗！</li>
+<li>心靈和身體無法合為一體的根本不能稱做人類，你用無法說話的屍體做出來的……根本就祇是怪物！製造越多的殭屍只會給人帶來不幸，我就是明白這一點才會無法原諒妳！</li>
+<li>人類應該過著更自由的生活！你難道不想成為一個完整的人？</li>
+<li>魯夫一定比我們還要痛苦，因為讓我成為了你的夥伴，現在不管別人怎麼說我都不會在意了！如果能為你出一份力，要我變成真正的怪物也在所不惜</li>
+</ul>
+<h2 id="妮可羅賓-妮歌魯賓"><a href="#妮可羅賓-妮歌魯賓" class="headerlink" title="妮可羅賓 / 妮歌魯賓"></a>妮可羅賓 / 妮歌魯賓</h2><ul>
+<li>『歷史雖然會一再重演，但人類卻無法回到過去。』</li>
+<li>理想和現實，根本是兩種截然不同的東西，我的夢想，有太多太多的敵人，阻擋在我前面。</li>
+<li>曾經，心靈的躍動，生命的渴望，靈魂的憧憬，都早已塵封，是他們讓我重新拾起了這一切，他們是如此信任我、愛護我的夥伴</li>
+<li>地圖上你們看的到人嗎？就是因為你們用這種角度來觀察世界，才做的出這麼慘絕人寰的事！</li>
+<li>我以為……自己沒有權力抱著這樣的希望(活下去)，因為從來就沒有人允許我活下去！如果現在真的能讓我許下一個願望的話……我想要……我想要活下去！！請你們帶我一起出海好不好？！！</li>
+<li>除了我之外的草帽一行人總共六人，安然地從水之諸島出發！</li>
+<li>我要讓你知道，被你破壞的歷史遺跡的份量</li>
+<li>海賊旗對妳來說或許是塊破布也說不定！但對我們海賊來說……卻是比性命還重要的東西！絕對不能失去它！</li>
+<li>身為一個人，這實在是太丟臉了(X2)</li>
+<li>魯夫，若在你父親手下投身於世界的洪流中，是不是能讓我有大幅的成長呢？為了別人而變強這件事，是我從來沒想過的</li>
+</ul>
+<h2 id="佛朗基"><a href="#佛朗基" class="headerlink" title="佛朗基"></a>佛朗基</h2><ul>
+<li>『出航後越過好幾個大海，歷經許多困難和戰鬥，當這艘船到達「大海盡頭」時，就會被稱作「夢幻之船」，總有一天當我完成能引以為傲的船，我要以船匠的身分搭上這艘船，然後見證那命運之日的來臨！！』</li>
+<li>存在本身並不是一種罪惡！一個人光是站在那，是無罪的！</li>
+<li>如果妳總是在逃避！他們是救不了妳的！</li>
+<li>我以前曾經死過一次，但如果可以讓草帽小子他們活著離開，賠上這條命我也在所不惜！</li>
+<li>那就是奧羅·傑克森號的船員啊……讓湯姆先生賭上性命，而且感到驕傲的海賊，能見到他真是太好了！</li>
+<li>圍腰？別開玩笑了！不用你們操心啦！圍這種東西…有損變態之名！</li>
+<li>這不算什麼！男子漢本來就該是…隻身面對海浪的獅子！</li>
+<li>男兒雖裸志不屈，勇如雄獅勢不虛(當草帽一夥「強逼」他上船當他們的夥伴時說的)</li>
+</ul>
+<h2 id="布魯克"><a href="#布魯克" class="headerlink" title="布魯克"></a>布魯克</h2><ul>
+<li>「隨隨便便就下約定，然後對著無法傳達聲音的天空說『對不起我們死了』！這樣說得過去嗎？既然身為男子漢……已經約定好的事情就一定要做到！」</li>
+<li>可以讓我欣賞妳的內褲嗎？</li>
+<li>啊！嚇得我心臟都停了，雖然我沒有心臟(骷髏笑話)</li>
+<li>夥伴們…大家都已經死了！我現在不光是夥伴，連臉孔和身體都已經失去了！下次再見面的時候，也許* 你已經認不出化為白骨的我！雖然我已經什麼都沒有了！至少我還得留下…這個被大家嘲笑像拉布一樣的髮型！我要守護過去的特徵！</li>
+<li>沒有任何一件事情比回報恩情更痛苦！粉身碎骨也在所不惜！</li>
+<li>拉布，你竟然等了我們50年之久，但是可不可以再忍個一兩年？我也有身為海賊的固執！想與面對著山壁等待著的你……實現約定，在「正面」等著你！</li>
+<li>我會不惜犧牲性命保護你們的！啊！我已經死了！</li>
+</ul>
+<h1 id="海賊王、四皇、王下七武海語錄"><a href="#海賊王、四皇、王下七武海語錄" class="headerlink" title="海賊王、四皇、王下七武海語錄"></a>海賊王、四皇、王下七武海語錄</h1><h2 id="哥爾‧D‧羅傑"><a href="#哥爾‧D‧羅傑" class="headerlink" title="哥爾‧Ｄ‧羅傑"></a>哥爾‧Ｄ‧羅傑</h2><ul>
+<li>把真意放在心裡，保持沉默，我們是推動歷史的人，石版記載著我們的過去，無論是好是壞，向前進，不畏懼，追隨自己的夢想，是延續歷史的動力</li>
+<li>我對「支配」沒有任何興趣，如果不能為所欲為，那作海賊還有什麼樂趣可言？不管有什麼樣的壓力都是一樣！</li>
+</ul>
+<h2 id="紅髮傑克"><a href="#紅髮傑克" class="headerlink" title="紅髮傑克"></a>紅髮傑克</h2><ul>
+<li>不管你們有什麼理由，凡是欺負我朋友的人，我絕對不會放過他！</li>
+<li>等你成為偉大的海賊後，再把帽子還給我吧</li>
+<li>用槍抵住我的頭，可是要賭命的喔！我是說，這傢伙還不足以威脅到我……</li>
+</ul>
+<h2 id="白鬍子（艾德華·紐蓋特）"><a href="#白鬍子（艾德華·紐蓋特）" class="headerlink" title="白鬍子（艾德華·紐蓋特）"></a>白鬍子（艾德華·紐蓋特）</h2><ul>
+<li>我可是白鬍子！</li>
+<li>無論是什麼樣的傢伙，只要上了我的船，就是我的兒子！</li>
+<li>少了仁義……就無法在這世上活下去！把這件事告訴汀奇那個笨蛋…是我的責任啊！</li>
+<li>我深刻了解你有多痛恨羅傑，但是史庫亞德，父債子還是何等的滑稽…艾斯有對你做過什麼嗎？和睦相處吧！並非祇有艾斯是最特別的…你們全都是…我的家人！</li>
+<li>畢竟我也和你一樣是祇有一顆心臟的人類！儘管被說成是怪物和惡魔，我也永遠無法維持在「最強」啊！</li>
+<li>笨兒子，即使如此我也愛你啊！(抱著巨刀襲擊自己的史庫亞多)</li>
+<li>身為海賊，該相信什麼，要靠你們自己來決定！</li>
+<li>欲隨我者，就拋棄性命跟隨我吧！</li>
+</ul>
+<h2 id="黑鬍子（馬歇爾‧汀奇）"><a href="#黑鬍子（馬歇爾‧汀奇）" class="headerlink" title="黑鬍子（馬歇爾‧汀奇）"></a>黑鬍子（馬歇爾‧汀奇）</h2><ul>
+<li>人類的夢想是永遠不會結束的！</li>
+<li>只要是想成為頂尖級的人，都會遇上找不到理由出拳的時候。</li>
+<li>只管把目標訂在高峰，人家要笑就讓他笑吧！罵人可以不帶髒字，幹架也不見的非得要拳頭</li>
+</ul>
+<h2 id="鷹眼（喬拉可爾‧密佛格）"><a href="#鷹眼（喬拉可爾‧密佛格）" class="headerlink" title="鷹眼（喬拉可爾‧密佛格）"></a>鷹眼（喬拉可爾‧密佛格）</h2><ul>
+<li>現在還不是你死的時候，我是喬拉可爾‧密佛格！不管花多少年的時間，我都會在這最強的位置上等你。認識世界、認識自己，你要變強啊！羅羅亞！試著來超越插入你胸口的勇猛的小刀，試著來超越我吧！羅羅亞‧索隆！</li>
+</ul>
+<h2 id="吉貝爾"><a href="#吉貝爾" class="headerlink" title="吉貝爾"></a>吉貝爾</h2><ul>
+<li>不要總是著眼於失去的東西，失去的東西是不會回來的。問問自己你現在還剩下什麼！</li>
+</ul>
+<h1 id="海軍語錄"><a href="#海軍語錄" class="headerlink" title="海軍語錄"></a>海軍語錄</h1><h2 id="斯摩格"><a href="#斯摩格" class="headerlink" title="斯摩格"></a>斯摩格</h2><ul>
+<li>既然你這麼不甘心，就變得更強給我看啊！</li>
+</ul>
+<h2 id="克比"><a href="#克比" class="headerlink" title="克比"></a>克比</h2><ul>
+<li>我可是要…成為海軍將領的男人啊！</li>
+<li>怪別人捉弄自己的命運是解決不了什麼的！</li>
+<li>到此為止吧！停手吧！不要再戰鬥了！人命關天啊！每個士兵都有在等待他回家的家人啊！我們的目的明明已經達成了，卻仍對喪失戰意的海賊窮追不捨，慾壑難填地繼續著這場本能夠停止的戰鬥。此刻又眼睜睜地拋棄那些如果治療就能夠得救的士兵，甚至還在不斷地加大著犧牲。此時此刻倒下去的士兵們，簡直……不就跟白痴沒什麼兩樣嗎！</li>
+</ul>
+<h1 id="其他人物語錄"><a href="#其他人物語錄" class="headerlink" title="其他人物語錄"></a>其他人物語錄</h1><h2 id="薇薇公主"><a href="#薇薇公主" class="headerlink" title="薇薇公主"></a>薇薇公主</h2><ul>
+<li>下次見面的時候……你們……還願意叫我一聲夥伴嗎？</li>
+<li>那樣做（炸毀城堡）又如何呢？這個國家會結束嗎？不會吧！因為這裏不是阿拉巴斯坦嗎？組成阿拉巴斯坦王國的……是現在正在流血受傷的國民啊！因為有國民才會有國家啊！！如果可以停止這場戰爭的話就已經足夠了！！</li>
+</ul>
+<h2 id="索隆的老師"><a href="#索隆的老師" class="headerlink" title="索隆的老師"></a>索隆的老師</h2><ul>
+<li>對我而言，傷害所有看到的東西的劍，並不是真正的劍</li>
+</ul>
+<h2 id="艾涅爾"><a href="#艾涅爾" class="headerlink" title="艾涅爾"></a>艾涅爾</h2><ul>
+<li>神的存在本身就是恐懼</li>
+</ul>
+<h2 id="歐爾比雅（奧爾維亞）"><a href="#歐爾比雅（奧爾維亞）" class="headerlink" title="歐爾比雅（奧爾維亞）"></a>歐爾比雅（奧爾維亞）</h2><ul>
+<li>只要是歐哈拉的學者都該知道，歷史是人類的財產，若不向後代傳播的話將會逐漸消亡，歐哈拉並不是要揭露歷史的什麼，而是希望尋求到過去的聲音，我們的研究到這就算到頭了，但是即便歐哈拉都滅亡，並不代表我們對你們的未來，就放棄了希望！！</li>
+<li>要活下去，羅賓！！</li>
+<li>將過去的聲音，留托到未來！</li>
+</ul>
+<h2 id="薩烏羅"><a href="#薩烏羅" class="headerlink" title="薩烏羅"></a>薩烏羅</h2><ul>
+<li>人因為快樂而笑，因為笑而快樂，所以悲傷的時候就笑吧！！跌雷嘻嘻嘻嘻嘻！</li>
+<li>活著卻獨自一人，這種事是絕對不會有的！一定會有願意守護你的夥伴出現的！</li>
+<li>任何人……出生在這世界上，都絕對，不會是孤單的</li>
+</ul>
+<h2 id="貝爾梅爾"><a href="#貝爾梅爾" class="headerlink" title="貝爾梅爾"></a>貝爾梅爾</h2><ul>
+<li>我實在沒有辦法說，我沒有家人</li>
+<li>這錢是為我兩個孩子交的，我自己沒有</li>
+<li>不要輸給任何人，女孩子也一定要堅強才行，就算沒人稱讚你也沒關係，不要憎恨你出生的時代，永遠不要忘了讓你保持笑容的堅強。</li>
+</ul>
+<h2 id="西爾爾克"><a href="#西爾爾克" class="headerlink" title="西爾爾克"></a>西爾爾克</h2><ul>
+<li>旗幟上的骷髏記號，代表信念.希望的象徵</li>
+<li>即使我消失，我的夢想還是會實現，那個東西一定可以拯救國名生病的心，我的人生實在是太美好啦！！</li>
+<li>我問你，人究竟什麼時候會死？ 是心臟被槍打中的時候？不對！ 得了不治之症時嗎？也不對！ 喝了劇毒蘑菇湯之後嗎？當然不對！ …………..是被世人遺忘的時候。 就算我消失了，我的夢想還是會實現的！ 那個夢想一定能拯救這個國家人們的心病！</li>
+</ul>
+<h2 id="庫力凱"><a href="#庫力凱" class="headerlink" title="庫力凱"></a>庫力凱</h2><ul>
+<li>懷抱夢想的人，這就是男人的浪漫</li>
+</ul>
+<h2 id="梅利號"><a href="#梅利號" class="headerlink" title="梅利號"></a>梅利號</h2><ul>
+<li>你以後一定要堅強才行，為了報答他過去為你所做的一切</li>
+<li>我真的很想要，繼續跟你們一起航行……</li>
+</ul>
+<h2 id="可可亞西村的男孩"><a href="#可可亞西村的男孩" class="headerlink" title="可可亞西村的男孩"></a>可可亞西村的男孩</h2><ul>
+<li>我們因為草帽哥哥而獲救，可是明天開始，就必需靠自己重新開始了。</li>
+<li>以前的事不可能忘得掉，也沒必要忘掉，可是更重要的，應該是未來的事才對啊！</li>
+</ul>
+<h2 id="紅腳哲普"><a href="#紅腳哲普" class="headerlink" title="紅腳哲普"></a>紅腳哲普</h2><ul>
+<li>活或是死，在海賊的戰場上，只要有一瞬間怕死的念頭出現就輸定了</li>
+<li>在那個小子身上，有著許多武器！為了活下去的目標……還有不怕死的（信念）</li>
+</ul>
+<h2 id="龍-多拉格"><a href="#龍-多拉格" class="headerlink" title="龍/多拉格"></a>龍/多拉格</h2><ul>
+<li>照你的意思活下去吧！魯夫！對時代而言……是偶然和志氣的承擔者！不斷的向世界挑戰吧！我們總有一天會相見的……</li>
+</ul>
+<h2 id="席爾巴斯·雷利"><a href="#席爾巴斯·雷利" class="headerlink" title="席爾巴斯·雷利"></a>席爾巴斯·雷利</h2><ul>
+<li>別急著摘掉新芽！他們的時代才正要開始呢！</li>
+<li>毫不懷疑，就是「強悍」!!</li>
+<li>繼續成長直到你達到頂峰</li>
+<li>不要猶豫 才能變得更強壯</li>
+</ul>
+<h2 id="寇布拉國王"><a href="#寇布拉國王" class="headerlink" title="寇布拉國王"></a>寇布拉國王</h2><ul>
+<li>悔恨當初是一定的，難過沮喪也是必然的，我們失去了那麼多，卻沒有得到半點東西。但是，我們還是要往前走，戰爭的起因是誰無所謂，重要的是認清戰爭結束了。誰都無法將過去一筆勾銷，任何人都無法辦到，所以我們更要在戰爭中站起來！<h2 id="基德"><a href="#基德" class="headerlink" title="基德"></a>基德</h2></li>
+<li>在我們經過的航路上，只要說要得到one piece這種話就會被人大聲嘲笑，當然我每次都會把嘲笑我們的人殺個精光。但是在前方的海域，如果沒有膽量說這句話，就無法生存下去。讓我們在新世界再會吧。</li>
+</ul>
+<h2 id="艾斯（波特卡斯·D·艾斯）"><a href="#艾斯（波特卡斯·D·艾斯）" class="headerlink" title="艾斯（波特卡斯·D·艾斯）"></a>艾斯（波特卡斯·D·艾斯）</h2><ul>
+<li>魯夫你記著！我們兩個一定要活的沒有遺憾喔！總有一天要出海，隨心所欲的的活著，活的比誰都要自由！</li>
+<li>跟你說好了！我絕對不會死的！只要你這個膽小鬼弟弟還留在世上！我哪能隨便就死掉呢！</li>
+<li>有個不成材的弟弟，真的會讓哥哥非常擔心呢，雖然他會給你們添很多麻煩，但仍請你們要多多照顧他喔</li>
+<li>下次見面，就是我們站上海賊高峰的時候！到「高峰」來吧，魯夫！</li>
+<li>我真是差勁透了！混帳！我竟然動搖了！在這種時候…老爹…弟弟和我的夥伴們！一個個流血倒地！我卻高興的…眼淚停不下來！事到如今才知道…生命的可貴！</li>
+<li>我真正想要的…不是所謂的「名聲」，而是希望能覺得「被生下來其實是件好事」</li>
+<li>老爹…！大家…！還有魯夫…面對一直以來對任意妄為的我，繼承魔鬼血統的我，謝謝你們…對我的厚愛！</li>
+<li>如果屈服在力量之下，就沒有一個身為男人的義務了。我絕對不會讓我的人生感到後悔，笨蛋！</li>
+</ul>
+<h2 id="提督克利克"><a href="#提督克利克" class="headerlink" title="提督克利克"></a>提督克利克</h2><ul>
+<li>只要被人說是弱者就氣得渾身發抖的，那他就是真正的弱者！</li>
+</ul>
+<h2 id="艾波利歐·伊娃柯夫-人妖王"><a href="#艾波利歐·伊娃柯夫-人妖王" class="headerlink" title="艾波利歐·伊娃柯夫(人妖王)"></a>艾波利歐·伊娃柯夫(人妖王)</h2><ul>
+<li>奇蹟只會降臨在不言放棄的傢伙頭上，絕不可小看奇蹟！<br>不明來源<br>只要堅持自己的想法，持續努力到最後，心願一定會達成！<br>不管是多麼卑微的人，只要有決心，都可以向世界第一的英雄挑戰！我一直想展現這種決心給你們看！讓你們看看偉大的夢想是什麼。男人心中不能沒有燃燒的夢想，就算每天都要忍耐也不能放棄站起來挑戰，每天都要笑著活下去！只要有勇氣向不可能挑戰，不管什麼樣的人生都是天堂！<br>我不管這個世上的人怎麼說我…我只想依照我的信念做事，絕不後悔，不管現在將來都一樣!</li>
+</ul>
+<h1 id="對話語錄"><a href="#對話語錄" class="headerlink" title="對話語錄"></a>對話語錄</h1><p>魯夫：總有一天我會找到不輸給這些人的夥伴，並找到世界第一的大財寶，我要成為海賊王！！！！</p>
+<p>傑克：哦，你想要超越我們啊！那麼我就把這頂帽子寄放在你這裡，這是我最重要的帽子，總有一天我會來拿回去的，當你成為最出色的海賊！</p>
+<hr>
+<p>鷹眼：為什麼你不後退？也不閃躲？</p>
+<p>索隆：我不知道……我只知道，如果我後退的話，我曾重視的誓言和約定，就會全部消失 ，然後，再也不會回來這個地方了……</p>
+<p>鷹眼：沒錯！那就是失敗！</p>
+<p>索隆：是嗎？那麼我就更不能後退了!</p>
+<p>鷹眼的男子：就算死也不後退嗎？</p>
+<p>索隆：我寧願光榮戰死，也不苟且偷生！</p>
+<hr>
+<p>娜美：為什麼還不走？我的事不用你管，快走！</p>
+<p>魯夫：雖然…我不知道妳發生什麼事……</p>
+<p>娜美：不關你的事，你走就對了！快點離開這個島…我拜託你……</p>
+<p>魯夫：但是，我相信妳一定需要人幫忙…</p>
+<p>娜美：（哭）魯夫……幫幫我……</p>
+<p>魯夫：那是當然的呀！</p>
+<hr>
+<p>魯夫：白癡！我根本就不會劍術！而且我也不會航海！更不會做菜！也不會說謊！如果沒有他們的幫助，我根本活不下去！</p>
+<p>惡龍：很少會這樣全面否定自己的……有你這樣無能的船長，做你的夥伴一定很累吧？ 那為什麼你的夥伴會拚命想救你呢？ 什麼都不會的你，憑什麼當一船的船長？你到底能做什麼？</p>
+<p>魯夫：我可以打贏你！</p>
+<hr>
+<p>西爾爾克：我問你，人究竟什麼時候會死？ 是心臟被槍打中的時候？不對！得了不治之症時嗎？也不對！喝了劇毒蘑菇湯之後嗎？當然不對！　　</p>
+<p>　　　<br>西爾爾克：是被世人遺忘的時候！</p>
+<p>西爾爾克：就算我消失了，我的夢想還是會實現的！那個夢想一定能拯救這個國家人們的心病！ 你為什麼要哭？多爾頓？</p>
+<p>多爾頓：這個國家也能救嗎？</p>
+<p>西爾爾克：當然能，只要有人繼承我的夢想。</p>
+<p>多爾頓：我要繼承你的夢想！</p>
+<hr>
+<p>魯夫：現在的我的確贏不了你，但如果這樣呢？</p>
+<p>三秒後</p>
+<p>克洛克達爾（驚訝狀）：你……你是認真的嗎？</p>
+<p>魯夫：水魯夫！啊……漏水了……說真的水果然不能喝太多。</p>
+<p>克洛克達爾：你以為我是什麼人阿！</p>
+<p>魯夫：我管你是什麼人……我說要超越你，就是要超越你！</p>
+<hr>
+<p>薇薇：我不希望有人死掉，有什麼不對？</p>
+<p>魯夫：人本來就會死！</p>
+<hr>
+<p>魯夫：就憑你一個人的命，根本不夠賭！</p>
+<p>薇薇：那你要我拿什麼來賭啊？……叫我賭什麼……我已經沒有任何能拿來當賭注的東西了……</p>
+<p>魯夫：那就把我們的命也一起賭下去！因為我們是夥伴！！</p>
+<hr>
+<p>達絲琪：對不起，我不僅幫助了海賊，還放了他們走……</p>
+<p>斯摩格：為什麼道歉，這不是你的正義嗎？</p>
+<p>達絲琪：不是的，是因為屬下就那麼點本事，即使知道敵人的藏身之所，我也祇能盡到告知的義務； 即使得知炮擊的時間，我也只敢在背後掩護他們……這根本不是我正義的真理！</p>
+<p>斯摩格：有些能力跟我差不多的人名聲很差，官職卻都比我高。在這片海洋中若無法向上攀遊，就祇有往下沉淪。 是要前進亦或是溺死，就得看自己當初下海得抉擇！</p>
+<p>達絲琪：對不起，我想休息了……</p>
+<p>斯摩格：與其在這不甘心的流淚 不如變得更強給我看啊！</p>
+<p>達絲琪（痛哭）：我一定會的！！！！</p>
+<hr>
+<p>魯夫：你身為船長，就算有好幾百個部下，還是輸給騙人布！</p>
+<p>洛克：你倒是說說看，我哪裡輸了？</p>
+<p>魯夫：那就是器量！</p>
+<hr>
+<p>寇布拉國王：國王祇是一個稱謂，如果他脫下外衣就跟一般人沒什麼兩樣（下跪）</p>
+<p>索隆＆伊卡萊姆：不好吧！</p>
+<p>寇布拉國王：我不是以一個一國之主的身份，而是以一個國家國民的身份謝謝你們！謝謝你們救了這個國家！</p>
+<hr>
+<p>魯夫：未來海賊王的夥伴，不要露出那種喪氣的表情（然後把草帽丟給娜美）</p>
+<p>艾涅爾：海賊王？是藍海的國王嗎？</p>
+<p>魯夫：海賊王，是最偉大的大海之王！</p>
+<hr>
+<p>斯帕達姆：你們瘋了嗎？別以為和全世界為敵之後，還能活下去！</p>
+<p>魯夫：誰怕誰阿！</p>
+<hr>
+<p>香吉士：你很強嗎？</p>
+<p>佛朗基：當然啦！你這個混蛋！這個禮拜的我強到不行！</p>
+<hr>
+<p>魯夫：笨蛋！</p>
+<p>騙人布：綠藻頭！！</p>
+<p>香吉士：笨蛋綠藻頭！！！</p>
+<p>喬巴：綠藻頭笨蛋！！！！</p>
+<p>索隆（怒）：你們幾個竟然愈罵愈順口阿！！！！！</p>
+<hr>
+<p>波雅·漢考克：哀家……無論做什麼事都會被原諒！要問原因，對！因為哀家……實在太美了！</p>
+<p>女兒國子民：呀－！蛇姬大人！（一陣歡呼）</p>
+<p>波雅·漢考克：你（魯夫）也是這麼想的吧！</p>
+<p>魯夫：妳這傢伙真是噁心！</p>
+<p>波雅·漢考克：嚇！（大受打擊狀）</p>
+<hr>
+<p>雷利：你能做到嗎？在偉大航道上還有很多遠遠超出你們想像的事物喔！敵人也很厲害，你們能夠支配這片堅固的海嗎？</p>
+<p>魯夫：要支配什麼與我無關！在這片大海上最自由的人……才是海賊王！</p>
+<hr>
+<p>香吉士：我想要找到「ＡＬＬ　ＢＬＵＥ」！！</p>
+<p>魯夫：我要當海賊王！！</p>
+<p>索隆：我要成為一個最偉大的劍客！！</p>
+<p>娜美：我要畫完全世界的地圖！！</p>
+<p>騙人布：我…我…我要成為一個勇敢的海上戰士！！’</p>
+<p>大家：出發吧！進入「偉大的航道」！！</p>
+<hr>
+<p>艾斯：別過來，魯夫！你應該很明白，你和我都是海賊，應該都在大海上隨心所欲地馳騁過。我有我的冒險、我的夥伴，你沒理由干涉我的事情。像你這樣的膽小鬼還要來救我，你覺得我會允許嗎！沒有比這更恥辱的了。快回去！魯夫！你來這裡做什麼！</p>
+<p>魯夫：因為我是……你的弟弟啊！</p>
+<hr>
+<p>艾斯：爺爺，我被生下來真的是好的嗎？</p>
+<p>卡普：這，要等你活過才會知道。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/05/03/my-love-ope-picec-lines/" data-id="cjnl5j6o7000g9z9b8h2abfbn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/anime/">anime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/one-piece/">one piece</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/op/">op</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-github-repo" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/28/github-repo/" class="article-date">
+  <time datetime="2016-04-27T16:00:00.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/28/github-repo/">在 github 滾回到某個特定的 commit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>和朋友在協作的時候，朋友不小心 push 錯東西，導致需要滾回到先前正確的版本，感覺以後會常常用到，所以記錄下來。</p>
+<p>首先有先滾回你要的那個 commit id<br><code>git reset --hard &lt;old-commit-id&gt;</code></p>
+<p>這時候你會發現你已經退回到你要的那個版本了，再來再把它 push 上去你 GitHub 的 repository 就完成了。</p>
+<p><code>git push -f &lt;remote-name&gt; &lt;branch-name&gt;</code></p>
+<blockquote>
+<p>筆記: 這個操作，會複寫 commit id 之後的歷史，所以要謹慎使用。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/04/28/github-repo/" data-id="cjnl5j6o5000f9z9bzbc6rsmb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-github-pages-jekyll-cloudflare" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/27/github-pages-jekyll-cloudflare/" class="article-date">
+  <time datetime="2016-04-26T16:00:00.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/27/github-pages-jekyll-cloudflare/">利用 GitHub 建立一個 Blog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我一直很想架設一個個人網站很久了，想把之前的文章、筆記、Hackpad 、心得做個整理。不過事情太多，一直拖到現在才用，現在有這麼多的免費服務和工具，沒有理由再拖延下去了。</p>
+<p>這一切的設置都只要 30 分鐘就可以搞定，完成一個乾淨看起來有質感的個人網頁，我非常滿意，所以記錄下來，希望可以幫助更多的人創建自己的個人網站。</p>
+<p>首先 jekyll 是基於 ruby 的，所以要先安裝 ruby（可以參考我之前的教學）。</p>
+<p>接著使用 Command Line 安裝 Jekyll</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install jekyll</span><br></pre></td></tr></table></figure>
+<p>新增一個 Jekyll 專案並使用 <code>jekyll new</code>來初始化。完成之後使用 <code>jekyll build</code>和 <code>jekyll serve</code>來建置一個位於本地端的部落格。</p>
+<p>詳細的流程可以參考 <a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="noopener">Jekyll Quick-start</a> 頁面。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>首先你必須要先有個 Github 帳號，建立一個 repository ，如此一來你就會有個 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a> 。</p>
+<p>特別注意的是，在命名 repository 時有兩種選擇：</p>
+<ul>
+<li>自訂專案名稱</li>
+<li>命名為 <code>你的帳號.github.io</code></li>
+</ul>
+<p>使用自訂專案名稱的話，你的 base URL 會是 你的帳號.github.io/你的專案名稱，同時必須將專案內容放到 <code>gh-pages</code> 的分支下，才能夠正常建置。每一個 Github 帳號能夠擁有多個專案網站。</p>
+<p>另一方面，專案使用特定名稱 你的帳號.github.io 的話，此儲存庫的 Github Page 會成為使用者網站。部落格的 base URL 則是 你的帳號.github.io/。</p>
+<p>確定加入所有內容並 Push 後就算完成第一步。</p>
+<h2 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h2><p>接著讓我們來看看一些基本架構（我只挑我想講的講）：</p>
+<p><code>_posts</code> 資料夾是用來存放文章<br>新增文章的方法很簡單，只需要丟一份 markdown 檔案到該資料夾內，Jekyll 就會自動生成新頁面了。檔案命名規則是 <code>年-月-日-文章標題.md</code>。</p>
+<p><code>_config.yml</code> 是很重要的檔案，負責部落格的設定管理，可設定的內容包含網址路徑，網站描述，markdown 的寫法，你想得到的都可以設定。</p>
+<p>還有一個 <code>about.md</code> 則是自我介紹頁面，你可以在裡面透過 markdown 撰寫自我介紹。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/04/27/github-pages-jekyll-cloudflare/" data-id="cjnl5j6o1000c9z9bo5ohjfab" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-newbie-question-fragment-using-a-button-setonclicklistener" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/26/newbie-question-fragment-using-a-button-setonclicklistener/" class="article-date">
+  <time datetime="2016-04-25T16:00:00.000Z" itemprop="datePublished">2016-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/26/newbie-question-fragment-using-a-button-setonclicklistener/">新手問題：Fragment 中使用 button setonclicklistener</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自己本身沒有系統的去學習 android，就是想到什麼做什麼的，今天在自學的過程中發現了一些問題。</p>
+<p>就是說用 fragment 按鈕點擊的時候碰到了問題。在寫完之後，AS 沒有任何報錯，但是啟動的時候就會 crash 掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cal = (Button) findViewById(R.id.submit);  </span><br><span class="line">        cal.setOnClickListener(new View.OnClickListener() &#123;  </span><br><span class="line">            @Override  </span><br><span class="line">            public void onClick(View v) &#123;  </span><br><span class="line">                // do something ...</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>此時我們的程式碼是正常的，但是運行後就會 crash，我們必須要在讓他 implements view.oncilcklisrener。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class BMIFragment extends Fragment &#123;</span><br><span class="line"></span><br><span class="line">    public Button cal;</span><br><span class="line">    public View myFragmentView;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) &#123;</span><br><span class="line">        myFragmentView = inflater.inflate(R.layout.bmi_layout, container, false);</span><br><span class="line">        cal = (Button) myFragmentView.findViewById(R.id.submit);</span><br><span class="line">        cal.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                // TODO Auto-generated method stub</span><br><span class="line">                DecimalFormat nf = new DecimalFormat(&quot;0.00&quot;);</span><br><span class="line">                EditText fieldHeight = (EditText)myFragmentView.findViewById(R.id.height);</span><br><span class="line">                EditText fieldWeight = (EditText)myFragmentView.findViewById(R.id.weight);</span><br><span class="line"></span><br><span class="line">                double height = Double.parseDouble(fieldHeight.getText().toString())/100;</span><br><span class="line">                double weight = Double.parseDouble(fieldWeight.getText().toString());</span><br><span class="line"></span><br><span class="line">                double BMI = weight / (height * height);</span><br><span class="line"></span><br><span class="line">                TextView result = (TextView)myFragmentView.findViewById(R.id.result);</span><br><span class="line"></span><br><span class="line">                result.setText(&quot;Your BMI is &quot; + nf.format(BMI));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        return myFragmentView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/04/26/newbie-question-fragment-using-a-button-setonclicklistener/" data-id="cjnl5j6nw00079z9bdcjppme8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-railsinstaller-frequently-asked-questions" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/26/railsinstaller-frequently-asked-questions/" class="article-date">
+  <time datetime="2016-04-25T16:00:00.000Z" itemprop="datePublished">2016-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/26/railsinstaller-frequently-asked-questions/">Railsinstaller 使用常見問題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在學校社團擔任 Rails 講師的關係，才會改在 windows 上面使用 rails ，由於環境是在 windows 上，所以使用 Railsinstaller 去跑，經常會踢到一些問題，所以做了些整理，方便以後可以處理。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/26/railsinstaller-frequently-asked-questions/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/04/26/railsinstaller-frequently-asked-questions/" data-id="cjnl5j6np00039z9bhte2awra" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-altera-usb-blaster " class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/26/altera-usb-blaster /" class="article-date">
+  <time datetime="2016-04-25T16:00:00.000Z" itemprop="datePublished">2016-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/26/altera-usb-blaster /">Altera USB Blaster 驅動程式簽章問題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近修了『微處理機設計』課程，使用到了 Altera 的 DE0 板。安裝了 DE0 的 USB 驅動程式遇到一個問題，就是我的數位簽章雜湊出現什麼問題的。我查了一些資料，覺得有點複雜，所以把它記錄下來：</p>
+<p>主要問題是在用 Windows 8 中 Altera 提供拒絕正確安裝驅動程式，因為他要強制驅動程式簽章。因此，我搜索了一圈，發現在Altera論壇的解決方案：</p>
+<p><a href="http://alteraforums.net/forum/showthread.php?p=157605" target="_blank" rel="noopener">http://alteraforums.net/forum/showthread.php?p=157605</a></p>
+<p>按照以下步驟就能解決這問題了：</p>
+<ol>
+<li>點 <code>WinKey</code> + <code>R</code>.</li>
+<li>輸入 <code>shutdown.exe /r /o /f /t 00</code></li>
+<li>按 <code>OK</code></li>
+<li>電腦會重開機並且進入 “Choose an option” 選單</li>
+<li>選擇 <code>Troubleshoot</code></li>
+<li>選擇 <code>Advanced options</code></li>
+<li>選擇 <code>Windows Startup Settings</code></li>
+<li>選擇 <code>Restart</code> 按鈕</li>
+<li>系統將會再次進入 <code>Advanced Boot Options</code> 選單</li>
+<li>選擇 <code>Disable Driver Signature Enforcement</code> （第七個，所以按數字鍵 7 或者 F7）</li>
+<li>電腦將會再次重新啟動，就可以繞過數位簽章檢查，直接安裝 Altera 的 DE0 板的驅動程式</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/04/26/altera-usb-blaster /" data-id="cjnl5j6o0000a9z9bepnjh4yh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/altera/">altera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-heyyzu" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/01/heyyzu/" class="article-date">
+  <time datetime="2016-01-31T16:00:00.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/heyyzu/">嘿！元智</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://res.cloudinary.com/bitahtech/image/upload/v1449225067/himelight/nvqlalwum9zpeyrqgbnu.png" alt="圖片"></p>
+<p>為改善校務系統的便利性，而開發此 APP 。畢業後，開源給學弟妹繼續維護。</p>
+<p>原始碼：<a href="https://github.com/eric0324/HeyYZU_Android" target="_blank" rel="noopener">GitHub</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2016/02/01/heyyzu/" data-id="cjnl5j6nx00089z9bw0dalvhm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yuan-Ze-University/">Yuan Ze University</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/human–computer-interaction/">human–computer interaction</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-swar" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/15/swar/" class="article-date">
+  <time datetime="2015-10-14T16:00:00.000Z" itemprop="datePublished">2015-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/15/swar/">Swars</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://res.cloudinary.com/bitahtech/image/upload/v1449225264/himelight/ehvdlynrva3jbplw1cfz.png" alt="圖片"></p>
+<p>看到馬習會，和朋友突發奇想而創作的小品遊戲。</p>
+<p>網站：<a href="http://swars.herokuapp.com/" target="_blank" rel="noopener">連結</a></p>
+<p>原始碼：<a href="https://github.com/eric0324/Swars" target="_blank" rel="noopener">GitHub</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2015/10/15/swar/" data-id="cjnl5j6nr00049z9boqvpf4xv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/game/">game</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pixijs/">pixijs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-the-railsbridge-study-on-rails-learning-notes" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/12/the-railsbridge-study-on-rails-learning-notes/" class="article-date">
+  <time datetime="2015-09-11T16:00:00.000Z" itemprop="datePublished">2015-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/12/the-railsbridge-study-on-rails-learning-notes/">《RailsBridge 初探 Rails》學習筆記 - 加分題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>初探rails 加分題第一題: 加一個「扣分」按鈕，做的事跟加分按鈕相反。</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/09/12/the-railsbridge-study-on-rails-learning-notes/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ericwu.asia/2015/09/12/the-railsbridge-study-on-rails-learning-notes/" data-id="cjnl5j6nt00059z9bncmlxj7n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2B8C/">2B8C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/66R1B3C/">66R1B3C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APscheduler/">APscheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corps/">Corps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPIO/">GPIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gandi/">Gandi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoClipse/">GoClipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Marine/">Marine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgres/">Postgres</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Semper-Fidelis/">Semper Fidelis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TFT/">TFT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unicorn/">Unicorn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yuan-Ze-University/">Yuan Ze University</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/altera/">altera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/anime/">anime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bridge/">bridge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hack/">hack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackathon/">hackathon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackntu2015/">hackntu2015</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hardware/">hardware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/human–computer-interaction/">human–computer interaction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/key/">key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mandy/">mandy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/navy/">navy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/novel/">novel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/one-piece/">one piece</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/op/">op</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pi/">pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pixijs/">pixijs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/raspberry/">raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soldier/">soldier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/waveshare/">waveshare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weebly/">weebly</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2B8C/" style="font-size: 10px;">2B8C</a> <a href="/tags/66R1B3C/" style="font-size: 10px;">66R1B3C</a> <a href="/tags/APscheduler/" style="font-size: 10px;">APscheduler</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Corps/" style="font-size: 10px;">Corps</a> <a href="/tags/DigitalOcean/" style="font-size: 10px;">DigitalOcean</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="/tags/Gandi/" style="font-size: 10px;">Gandi</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/GoClipse/" style="font-size: 10px;">GoClipse</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Marine/" style="font-size: 10px;">Marine</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Postgres/" style="font-size: 10px;">Postgres</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Rails/" style="font-size: 10px;">Rails</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 13.33px;">SQL</a> <a href="/tags/Semper-Fidelis/" style="font-size: 10px;">Semper Fidelis</a> <a href="/tags/TFT/" style="font-size: 10px;">TFT</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Unicorn/" style="font-size: 10px;">Unicorn</a> <a href="/tags/Yuan-Ze-University/" style="font-size: 10px;">Yuan Ze University</a> <a href="/tags/altera/" style="font-size: 10px;">altera</a> <a href="/tags/anime/" style="font-size: 10px;">anime</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/bridge/" style="font-size: 10px;">bridge</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/game/" style="font-size: 10px;">game</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hack/" style="font-size: 13.33px;">hack</a> <a href="/tags/hackathon/" style="font-size: 13.33px;">hackathon</a> <a href="/tags/hackntu2015/" style="font-size: 13.33px;">hackntu2015</a> <a href="/tags/hardware/" style="font-size: 10px;">hardware</a> <a href="/tags/human–computer-interaction/" style="font-size: 10px;">human–computer interaction</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/mandy/" style="font-size: 10px;">mandy</a> <a href="/tags/navy/" style="font-size: 10px;">navy</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/novel/" style="font-size: 10px;">novel</a> <a href="/tags/one-piece/" style="font-size: 10px;">one piece</a> <a href="/tags/op/" style="font-size: 10px;">op</a> <a href="/tags/pi/" style="font-size: 10px;">pi</a> <a href="/tags/pixijs/" style="font-size: 10px;">pixijs</a> <a href="/tags/project/" style="font-size: 13.33px;">project</a> <a href="/tags/rails/" style="font-size: 16.67px;">rails</a> <a href="/tags/raspberry/" style="font-size: 10px;">raspberry</a> <a href="/tags/server/" style="font-size: 10px;">server</a> <a href="/tags/setup/" style="font-size: 10px;">setup</a> <a href="/tags/soldier/" style="font-size: 10px;">soldier</a> <a href="/tags/waveshare/" style="font-size: 10px;">waveshare</a> <a href="/tags/weebly/" style="font-size: 10px;">weebly</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/hello/">hello_eeee</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/09/flask-use-apscheduler/">Flask 下使用 APscheduler</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/09/mysql-change-root-password/">MySQL 修改 root 用戶密碼</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/06/marine-corps/">『海軍陸戰隊軍事常備訓練役』後記 </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Eric Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
