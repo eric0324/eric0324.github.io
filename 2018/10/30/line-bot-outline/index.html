@@ -112,25 +112,24 @@
 
 
 
-  <meta name="description" content="因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。 在 flask 下，如果要使用 APscheduler 可以考慮使用 flask 延伸模組 flask-apsheduler 基本使用方法12345678910111213141516171819202122232425262728293031from flask import Fla">
-<meta name="keywords" content="Flask,Python,APscheduler">
+  <meta name="description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 Python  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 聊天機器人是未來趨勢嗎？ 我需要會人工智慧、機器學">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask 下使用 APscheduler">
-<meta property="og:url" content="ericwu.asia/2018/01/09/flask-use-apscheduler/index.html">
+<meta property="og:title" content="Eric&#39;s BLOG">
+<meta property="og:url" content="ericwu.asia/2018/10/30/line-bot-outline/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。 在 flask 下，如果要使用 APscheduler 可以考慮使用 flask 延伸模組 flask-apsheduler 基本使用方法12345678910111213141516171819202122232425262728293031from flask import Fla">
+<meta property="og:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 Python  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 聊天機器人是未來趨勢嗎？ 我需要會人工智慧、機器學">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-10-21T22:37:46.000Z">
+<meta property="og:updated_time" content="2018-10-30T04:23:38.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flask 下使用 APscheduler">
-<meta name="twitter:description" content="因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。 在 flask 下，如果要使用 APscheduler 可以考慮使用 flask 延伸模組 flask-apsheduler 基本使用方法12345678910111213141516171819202122232425262728293031from flask import Fla">
+<meta name="twitter:title" content="Eric&#39;s BLOG">
+<meta name="twitter:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 Python  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 聊天機器人是未來趨勢嗎？ 我需要會人工智慧、機器學">
 
 
 
 
 
 
-  <link rel="canonical" href="ericwu.asia/2018/01/09/flask-use-apscheduler/">
+  <link rel="canonical" href="ericwu.asia/2018/10/30/line-bot-outline/">
 
 
 
@@ -140,7 +139,7 @@
   };
 </script>
 
-  <title>Flask 下使用 APscheduler | Eric's BLOG</title>
+  <title> | Eric's BLOG</title>
   
 
 
@@ -305,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="ericwu.asia/2018/01/09/flask-use-apscheduler/">
+    <link itemprop="mainEntityOfPage" href="ericwu.asia/2018/10/30/line-bot-outline/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -322,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Flask 下使用 APscheduler
+          <h1 class="post-title" itemprop="name headline">
               
             
           </h1>
@@ -347,24 +346,12 @@
                 
               
 
-              <time title="Created: 2018-01-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-09T00:00:00+08:00">2018-01-09</time>
+              <time title="Created: 2018-10-30 00:00:00 / Modified: 12:23:38" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">2018-10-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-22 06:37:46" itemprop="dateModified" datetime="2018-10-22T06:37:46+08:00">2018-10-22</time>
               
             
           </span>
@@ -378,9 +365,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/09/flask-use-apscheduler/#comments" itemprop="discussionUrl">
+                <a href="/2018/10/30/line-bot-outline/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/09/flask-use-apscheduler/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/30/line-bot-outline/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,12 +395,78 @@
       
 
       
-        <p>因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。</p>
-<p>在 flask 下，如果要使用 APscheduler 可以考慮使用 flask 延伸模組 <a href="https://github.com/viniciuschiele/flask-apscheduler" target="_blank" rel="noopener">flask-apsheduler</a></p>
-<h2 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_apscheduler <span class="keyword">import</span> APScheduler</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    JOBS = [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">'id'</span>: <span class="string">'job1'</span>,</span><br><span class="line">            <span class="string">'func'</span>: <span class="string">'jobs:job1'</span>,</span><br><span class="line">            <span class="string">'args'</span>: (<span class="number">1</span>, <span class="number">2</span>),</span><br><span class="line">            <span class="string">'trigger'</span>: <span class="string">'interval'</span>,</span><br><span class="line">            <span class="string">'seconds'</span>: <span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    SCHEDULER_API_ENABLED = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job1</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    print(str(a) + <span class="string">' '</span> + str(b))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(Config())</span><br><span class="line"></span><br><span class="line">    scheduler = APScheduler()</span><br><span class="line">    <span class="comment"># it is also possible to enable the API directly</span></span><br><span class="line">    <span class="comment"># scheduler.api_enabled = True</span></span><br><span class="line">    scheduler.init_app(app)</span><br><span class="line">    scheduler.start()</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<h2 id="一些心得"><a href="#一些心得" class="headerlink" title="一些心得"></a>一些心得</h2><p>這個專案是跑在 ubuntu 加上 gunicorn，在使用 gunicorn 的時候，定時任務會重複啟動很多次，找了一下網路上的資源，問題在使用 gunicorn 對 flask 應用進行控制的時候如果設置了 gunicorn 的 <code>--worker</code> 參數大於 <code>1</code> 時，會出現一個定時任務執行多次的問題，此時要給 gunicorn 提供一個額外的 <code>--preload</code> 參數，這樣 flask 的 app 在 run 定時任務就只會執行一次。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env/bin/gunicorn module_containing_app:app -b 0.0.0.0:8080 --workers 3 --preload</span><br></pre></td></tr></table></figure>
-<p>還有，當 flask 在 debug 模式下使用 flask-apscheduler 定時任務時也會執行多次，問題與上面的問題類似，只要在 debug 模式下給 <code>app.run()</code> 添加一個參數 <code>use_reloader</code> 即可。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.run(debug=True, use_reloader=False)</span><br></pre></td></tr></table></figure></p>
+        <p>想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得</p>
+<p>基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！</p>
+<p>讀者需求</p>
+<ul>
+<li>想擁有屬於自己的LINE聊天機器人</li>
+<li>略懂 Python</li>
+</ul>
+<h1 id="第-1-章：入門階段"><a href="#第-1-章：入門階段" class="headerlink" title="第 1 章：入門階段"></a>第 1 章：入門階段</h1><h2 id="1-1-認識聊天機器人"><a href="#1-1-認識聊天機器人" class="headerlink" title="1.1 認識聊天機器人"></a>1.1 認識聊天機器人</h2><ul>
+<li>什麼是聊天機器人</li>
+<li>聊天機器人是未來趨勢嗎？</li>
+<li>我需要會人工智慧、機器學習才能做嗎？</li>
+</ul>
+<h2 id="1-2-認識快速買早餐"><a href="#1-2-認識快速買早餐" class="headerlink" title="1.2 認識快速買早餐"></a>1.2 認識快速買早餐</h2><ul>
+<li>快速買早餐的誕生</li>
+<li>快速買早餐的各種功能</li>
+</ul>
+<h2 id="1-3-從-0-到-1"><a href="#1-3-從-0-到-1" class="headerlink" title="1.3 從 0 到 1"></a>1.3 從 0 到 1</h2><ul>
+<li>先有一個 Line Messaging API account</li>
+<li>加入聊天機器人為好友</li>
+<li>傳訊息給這個聊天機器人</li>
+<li>登入後台修改歡迎訊息</li>
+<li>修改自動回應</li>
+<li>新增關鍵字回應</li>
+</ul>
+<h2 id="1-4-變得更聰明"><a href="#1-4-變得更聰明" class="headerlink" title="1.4 變得更聰明"></a>1.4 變得更聰明</h2><ul>
+<li>製作 LINE 聊天機器人</li>
+</ul>
+<h1 id="第-2-章：實作功能"><a href="#第-2-章：實作功能" class="headerlink" title="第 2 章：實作功能"></a>第 2 章：實作功能</h1><h2 id="2-1-LINE-Messaging-API"><a href="#2-1-LINE-Messaging-API" class="headerlink" title="2.1 LINE Messaging API"></a>2.1 LINE Messaging API</h2><ul>
+<li>串接Line Messaging API Webhook</li>
+<li>接收訊息</li>
+<li>回覆訊息</li>
+</ul>
+<h2 id="2-2-Line-Messaging-API-的各種通知"><a href="#2-2-Line-Messaging-API-的各種通知" class="headerlink" title="2.2 Line Messaging API 的各種通知"></a>2.2 Line Messaging API 的各種通知</h2><ul>
+<li>Webhook 資料格式</li>
+<li>當接收到文字時</li>
+<li>當接收到圖片時</li>
+<li>當接收到影音時</li>
+<li>當接收到位置時</li>
+<li>當接收到貼圖時</li>
+<li>當你被加好友時</li>
+<li>當你被封鎖時</li>
+<li>當有人按下 Template 的 Postback 按鈕</li>
+</ul>
+<h2 id="2-3-實作關鍵字回覆"><a href="#2-3-實作關鍵字回覆" class="headerlink" title="2.3 實作關鍵字回覆"></a>2.3 實作關鍵字回覆</h2><ul>
+<li>關鍵字回覆</li>
+<li>傳送貼圖</li>
+<li>傳送圖片</li>
+<li>傳送影片</li>
+<li>傳送聲音</li>
+<li>傳送位置</li>
+<li>傳送影像地圖（Imagemap）</li>
+<li>傳送樣板（Template）</li>
+<li>樣板行為（Template Action）</li>
+</ul>
+<h2 id="2-4-懂的更多"><a href="#2-4-懂的更多" class="headerlink" title="2.4 懂的更多"></a>2.4 懂的更多</h2><ul>
+<li>經驗法則：例外訊息</li>
+<li>常常聽不懂該，該如何做？</li>
+<li>Jieba - 做最好的 Python 中文分詞</li>
+<li>分詞後的處理</li>
+</ul>
+<h1 id="附錄A：如何架設一個網站"><a href="#附錄A：如何架設一個網站" class="headerlink" title="附錄A：如何架設一個網站"></a>附錄A：如何架設一個網站</h1><h2 id="A-1-網站架設"><a href="#A-1-網站架設" class="headerlink" title="A.1 網站架設"></a>A.1 網站架設</h2><h2 id="A-2-建立一個-Flask-網站"><a href="#A-2-建立一個-Flask-網站" class="headerlink" title="A.2 建立一個 Flask 網站"></a>A.2 建立一個 Flask 網站</h2><ul>
+<li>執行網頁伺服器</li>
+<li>用瀏覽器連網頁伺服器</li>
+</ul>
+<h2 id="A-3-發布網站到-Heroku"><a href="#A-3-發布網站到-Heroku" class="headerlink" title="A.3 發布網站到 Heroku"></a>A.3 發布網站到 Heroku</h2><ul>
+<li>註冊 Heroku 帳號</li>
+<li>Heroku CLI 初始設定</li>
+<li>git 初始設定</li>
+<li>專案的 git 初始設定</li>
+<li>專案的 Heroku 初始設定</li>
+<li>上傳程式碼到 Heroku</li>
+</ul>
 
       
     </div>
@@ -432,16 +485,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Flask/" rel="tag"># Flask</a>
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/APscheduler/" rel="tag"># APscheduler</a>
-          
-        </div>
-      
 
       
       
@@ -451,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/09/mysql-change-root-password/" rel="next" title="MySQL 修改 root 用戶密碼">
-                <i class="fa fa-chevron-left"></i> MySQL 修改 root 用戶密碼
+              <a href="/2018/01/09/flask-use-apscheduler/" rel="next" title="Flask 下使用 APscheduler">
+                <i class="fa fa-chevron-left"></i> Flask 下使用 APscheduler
               </a>
             
           </div>
@@ -460,10 +503,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/line-bot-outline/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -732,9 +771,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'ericwu.asia/2018/01/09/flask-use-apscheduler/';
-        this.page.identifier = '2018/01/09/flask-use-apscheduler/';
-        this.page.title = 'Flask 下使用 APscheduler';
+        this.page.url = 'ericwu.asia/2018/10/30/line-bot-outline/';
+        this.page.identifier = '2018/10/30/line-bot-outline/';
+        this.page.title = '';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
