@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="Eric&#39;s BLOG">
 <meta property="og:description" content="初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯 123&amp;apos;Did you install mysqlclient or MySQL-python?&amp;apos; % edjango.core.exceptions.ImproperlyConfigured: Error loading MySQLdb modu">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-03-19T01:04:05.832Z">
+<meta property="og:updated_time" content="2019-03-19T01:06:47.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 從 SQLite 切換到 MySQL 時總是提示 No module named &#39;MySQLdb&#39;">
 <meta name="twitter:description" content="初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯 123&amp;apos;Did you install mysqlclient or MySQL-python?&amp;apos; % edjango.core.exceptions.ImproperlyConfigured: Error loading MySQLdb modu">
@@ -364,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-19 09:04:05" itemprop="dateModified" datetime="2019-03-19T09:04:05+08:00">2019-03-19</time>
+                <time title="Modified: 2019-03-19 09:06:47" itemprop="dateModified" datetime="2019-03-19T09:06:47+08:00">2019-03-19</time>
               
             
           </span>
@@ -412,7 +412,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;Did you install mysqlclient or MySQL-python?&apos; % e</span><br><span class="line">django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named &apos;MySQLdb&apos;.</span><br><span class="line">Did you install mysqlclient or MySQL-python?</span><br></pre></td></tr></table></figure>
 <p>後來查資料，看來是 python3 之後，原本的 python2 的 mysqldb 已經不能連接 mysql 了，要改成使用pymysql，來連接 mysql 。</p>
 <p>於是我嘗試使用 pip 安裝了 PyMySQL，還是報錯，所以我再查了一下，原來還要在網站設定的 <code>__init__.py</code> 文件中再添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
 <p>這樣就可以正常連接 <code>MySQL</code> 了，供大家參考</p>
 
       
