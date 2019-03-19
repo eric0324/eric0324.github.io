@@ -112,23 +112,25 @@
 
 
 
-  <meta name="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Eric&#39;s BLOG">
-<meta property="og:url" content="ericwu.asia/archives/page/2/index.html">
+  <meta name="description" content="Django 的 project 寫久了，app 會越來越多，然後就零散在整個專案下，很雜亂，所以研究了一下，能不能將 app 集中放在同個資料夾下面做管理 看了一下網路上的文章後，方法很簡單 首先在專案資料夾底下新建一個資料夾 apps 接著，將設計的好的 app，拖放到 apps 中 記得最後要修改 settings.py 運行時的的搜尋路徑 12BASE_DIR = os.path.dirn">
+<meta name="keywords" content="Python,Django,python3.7,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 將所有的 app 放到統一的目錄下進行管理">
+<meta property="og:url" content="ericwu.asia/2019/03/09/Place-all-apps-in-a-unified-directory-for-management/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta property="og:description" content="Django 的 project 寫久了，app 會越來越多，然後就零散在整個專案下，很雜亂，所以研究了一下，能不能將 app 集中放在同個資料夾下面做管理 看了一下網路上的文章後，方法很簡單 首先在專案資料夾底下新建一個資料夾 apps 接著，將設計的好的 app，拖放到 apps 中 記得最後要修改 settings.py 運行時的的搜尋路徑 12BASE_DIR = os.path.dirn">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-03-19T01:19:44.384Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eric&#39;s BLOG">
-<meta name="twitter:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta name="twitter:title" content="Django 將所有的 app 放到統一的目錄下進行管理">
+<meta name="twitter:description" content="Django 的 project 寫久了，app 會越來越多，然後就零散在整個專案下，很雜亂，所以研究了一下，能不能將 app 集中放在同個資料夾下面做管理 看了一下網路上的文章後，方法很簡單 首先在專案資料夾底下新建一個資料夾 apps 接著，將設計的好的 app，拖放到 apps 中 記得最後要修改 settings.py 運行時的的搜尋路徑 12BASE_DIR = os.path.dirn">
 
 
 
 
 
 
-  <link rel="canonical" href="ericwu.asia/archives/page/2/">
+  <link rel="canonical" href="ericwu.asia/2019/03/09/Place-all-apps-in-a-unified-directory-for-management/">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>Archive | Eric's BLOG</title>
+  <title>Django 將所有的 app 放到統一的目錄下進行管理 | Eric's BLOG</title>
   
 
 
@@ -185,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -250,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
   </li>
@@ -283,425 +285,219 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="ericwu.asia/2019/03/09/Place-all-apps-in-a-unified-directory-for-management/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eric Wu">
+      <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+      <meta itemprop="image" content="/images/avaster.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eric's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Django 將所有的 app 放到統一的目錄下進行管理
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-09T00:00:00+08:00">2019-03-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-19 09:19:44" itemprop="dateModified" datetime="2019-03-19T09:19:44+08:00">2019-03-19</time>
+              
+            
+          </span>
+
           
-        
-        Um..! 21 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2016">2016</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/20/raspberry-pi-using-the-waveshare-3.5-inch-TFT-screen/" itemprop="url">
-              
-                <span itemprop="name">在 Raspberry pi 3 上面使用 waveshare 3.5 吋 TFT 螢幕</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-08-20T00:00:00+08:00" content="2016-08-20">
-          08-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/05/07/how-to-use-the-ruby-on-rails-one-click-application-on-digitalocean/" itemprop="url">
-              
-                <span itemprop="name">在 DigitalOcean 上部署 Ruby on Rails （利用 One-Click Application）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-05-07T00:00:00+08:00" content="2016-05-07">
-          05-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/05/03/my-love-ope-picec-lines/" itemprop="url">
-              
-                <span itemprop="name">海賊王經典語錄</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-05-03T00:00:00+08:00" content="2016-05-03">
-          05-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/28/github-repo/" itemprop="url">
-              
-                <span itemprop="name">在 github 滾回到某個特定的 commit</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-28T00:00:00+08:00" content="2016-04-28">
-          04-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/27/github-pages-jekyll-cloudflare/" itemprop="url">
-              
-                <span itemprop="name">利用 GitHub 建立一個 Blog</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-27T00:00:00+08:00" content="2016-04-27">
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/26/railsinstaller-frequently-asked-questions/" itemprop="url">
-              
-                <span itemprop="name">Railsinstaller 使用常見問題</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-26T00:00:00+08:00" content="2016-04-26">
-          04-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/26/altera-usb-blaster /" itemprop="url">
-              
-                <span itemprop="name">Altera USB Blaster 驅動程式簽章問題</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-26T00:00:00+08:00" content="2016-04-26">
-          04-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/26/newbie-question-fragment-using-a-button-setonclicklistener/" itemprop="url">
-              
-                <span itemprop="name">新手問題：Fragment 中使用 button setonclicklistener</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-26T00:00:00+08:00" content="2016-04-26">
-          04-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/09/Place-all-apps-in-a-unified-directory-for-management/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/Place-all-apps-in-a-unified-directory-for-management/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2015">2015</h1>
-          </div>
-        
-        
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/15/swar/" itemprop="url">
-              
-                <span itemprop="name">Swars</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-10-15T00:00:00+08:00" content="2015-10-15">
-          10-15
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/09/12/the-railsbridge-study-on-rails-learning-notes/" itemprop="url">
-              
-                <span itemprop="name">《RailsBridge 初探 Rails》學習筆記 - 加分題</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-12T00:00:00+08:00" content="2015-09-12">
-          09-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>Django 的 project 寫久了，app 會越來越多，然後就零散在整個專案下，很雜亂，所以研究了一下，能不能將 app 集中放在同個資料夾下面做管理</p>
+<p>看了一下網路上的文章後，方法很簡單</p>
+<p>首先在專案資料夾底下新建一個資料夾 <code>apps</code></p>
+<p>接著，將設計的好的 app，拖放到 <code>apps</code> 中</p>
+<p>記得最後要修改 <code>settings.py</code> 運行時的的搜尋路徑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) <span class="comment"># 在這行底下添加</span></span><br><span class="line">sys.path.insert(<span class="number">0</span>, os.path.join(BASE_DIR, <span class="string">'apps'</span>))</span><br></pre></td></tr></table></figure>
+<p>另外，不要忘記 <code>import sys</code></p>
+<p>最後，啟動伺服器 <code>runserver</code>，測試看看有沒有設置成功</p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+            <a href="/tags/python3-7/" rel="tag"># python3.7</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/" rel="next" title="Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'">
+                <i class="fa fa-chevron-left"></i> Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -915,6 +711,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -929,6 +729,41 @@
     <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'ericwu.asia/2019/03/09/Place-all-apps-in-a-unified-directory-for-management/';
+        this.page.identifier = '2019/03/09/Place-all-apps-in-a-unified-directory-for-management/';
+        this.page.title = 'Django 將所有的 app 放到統一的目錄下進行管理';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              // offsetTop may changes because of manually resizing browser window or lazy loading images.
+              var offsetTop = $('#comments').offset().top - $(window).height();
+              var scrollTop = $(window).scrollTop();
+
+              // pre-load comments a bit? (margin or anything else)
+              if (offsetTop - scrollTop < 60) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
   
 
 
