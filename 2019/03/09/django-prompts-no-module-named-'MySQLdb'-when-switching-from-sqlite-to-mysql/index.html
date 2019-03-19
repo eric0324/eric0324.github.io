@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="聊天機器人（ChatBot）是經由對話或文字進行交談的一種電腦程式。 其實聊天機器人也不是最近的幾年才開始流行的，早在 1988 年 MIT 人工智慧實驗室就推出了 Eliza 。搭著近幾年，人工智慧和語意分析不斷演進，再加上網路社群平台積極的推廣，Chatbot 聊天機器人也就因此興盛起來。 聊天機器人 Chatbot 主要是利用電腦程式來跟使用者對話，現在的網路社群平台，會透過提供的 webh">
-<meta name="keywords" content="Flask,Python,LINE,chatbot">
+  <meta name="description" content="初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯 123&amp;apos;Did you install mysqlclient or MySQL-python?&amp;apos; % edjango.core.exceptions.ImproperlyConfigured: Error loading MySQLdb modu">
+<meta name="keywords" content="MySQL,Python,Django,python3.7,web,SQLite,database,pymysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什麼是聊天機器人">
-<meta property="og:url" content="ericwu.asia/2019/02/17/line-bot-what-is-chatbot/index.html">
+<meta property="og:title" content="Django 從 SQLite 切換到 MySQL 時總是提示 No module named &#39;MySQLdb&#39;">
+<meta property="og:url" content="ericwu.asia/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="聊天機器人（ChatBot）是經由對話或文字進行交談的一種電腦程式。 其實聊天機器人也不是最近的幾年才開始流行的，早在 1988 年 MIT 人工智慧實驗室就推出了 Eliza 。搭著近幾年，人工智慧和語意分析不斷演進，再加上網路社群平台積極的推廣，Chatbot 聊天機器人也就因此興盛起來。 聊天機器人 Chatbot 主要是利用電腦程式來跟使用者對話，現在的網路社群平台，會透過提供的 webh">
+<meta property="og:description" content="初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯 123&amp;apos;Did you install mysqlclient or MySQL-python?&amp;apos; % edjango.core.exceptions.ImproperlyConfigured: Error loading MySQLdb modu">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-02-17T05:09:49.558Z">
+<meta property="og:updated_time" content="2019-03-19T01:04:05.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什麼是聊天機器人">
-<meta name="twitter:description" content="聊天機器人（ChatBot）是經由對話或文字進行交談的一種電腦程式。 其實聊天機器人也不是最近的幾年才開始流行的，早在 1988 年 MIT 人工智慧實驗室就推出了 Eliza 。搭著近幾年，人工智慧和語意分析不斷演進，再加上網路社群平台積極的推廣，Chatbot 聊天機器人也就因此興盛起來。 聊天機器人 Chatbot 主要是利用電腦程式來跟使用者對話，現在的網路社群平台，會透過提供的 webh">
+<meta name="twitter:title" content="Django 從 SQLite 切換到 MySQL 時總是提示 No module named &#39;MySQLdb&#39;">
+<meta name="twitter:description" content="初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯 123&amp;apos;Did you install mysqlclient or MySQL-python?&amp;apos; % edjango.core.exceptions.ImproperlyConfigured: Error loading MySQLdb modu">
 
 
 
 
 
 
-  <link rel="canonical" href="ericwu.asia/2019/02/17/line-bot-what-is-chatbot/">
+  <link rel="canonical" href="ericwu.asia/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>什麼是聊天機器人 | Eric's BLOG</title>
+  <title>Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb' | Eric's BLOG</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="ericwu.asia/2019/02/17/line-bot-what-is-chatbot/">
+    <link itemprop="mainEntityOfPage" href="ericwu.asia/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -322,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">什麼是聊天機器人
+          <h1 class="post-title" itemprop="name headline">Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'
               
             
           </h1>
@@ -347,12 +347,24 @@
                 
               
 
-              <time title="Created: 2019-02-17 00:00:00 / Modified: 13:09:49" itemprop="dateCreated datePublished" datetime="2019-02-17T00:00:00+08:00">2019-02-17</time>
+              <time title="Created: 2019-03-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-09T00:00:00+08:00">2019-03-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-19 09:04:05" itemprop="dateModified" datetime="2019-03-19T09:04:05+08:00">2019-03-19</time>
               
             
           </span>
@@ -366,9 +378,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/17/line-bot-what-is-chatbot/#comments" itemprop="discussionUrl">
+                <a href="/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/17/line-bot-what-is-chatbot/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -396,10 +408,12 @@
       
 
       
-        <p>聊天機器人（ChatBot）是經由對話或文字進行交談的一種電腦程式。</p>
-<p>其實聊天機器人也不是最近的幾年才開始流行的，早在 1988 年 MIT 人工智慧實驗室就推出了 Eliza 。搭著近幾年，人工智慧和語意分析不斷演進，再加上網路社群平台積極的推廣，Chatbot 聊天機器人也就因此興盛起來。</p>
-<p>聊天機器人 Chatbot 主要是利用電腦程式來跟使用者對話，現在的網路社群平台，會透過提供的 webhook 來接收使用者的訊息，如此一來就可以利用 chatbot 產生一個制式化的回應來回覆使用者。</p>
-<p>現在的聊天機器人主要分為兩大類，一種比較偏向娛樂性質，像是卡米狗。另一種比較是任務性質，像是快速買早餐或是 TaxiGO 。有些聊天機器人會配上自然語言處理，但大多數的聊天機器人都只會擷取輸入的關鍵字，再從資料庫中找尋最合適的應答句。</p>
+        <p>初次使用 Django ，預設的資料庫是 <code>SQLite</code> ，想切換使用 <code>MySQL</code>，配置了資料庫之後，runserver 總是會出錯</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;Did you install mysqlclient or MySQL-python?&apos; % e</span><br><span class="line">django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named &apos;MySQLdb&apos;.</span><br><span class="line">Did you install mysqlclient or MySQL-python?</span><br></pre></td></tr></table></figure>
+<p>後來查資料，看來是 python3 之後，原本的 python2 的 mysqldb 已經不能連接 mysql 了，要改成使用pymysql，來連接 mysql 。</p>
+<p>於是我嘗試使用 pip 安裝了 PyMySQL，還是報錯，所以我再查了一下，原來還要在網站設定的 <code>__init__.py</code> 文件中再添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+<p>這樣就可以正常連接 <code>MySQL</code> 了，供大家參考</p>
 
       
     </div>
@@ -420,13 +434,21 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Flask/" rel="tag"># Flask</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
             <a href="/tags/Python/" rel="tag"># Python</a>
           
-            <a href="/tags/LINE/" rel="tag"># LINE</a>
+            <a href="/tags/Django/" rel="tag"># Django</a>
           
-            <a href="/tags/chatbot/" rel="tag"># chatbot</a>
+            <a href="/tags/python3-7/" rel="tag"># python3.7</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/SQLite/" rel="tag"># SQLite</a>
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+            <a href="/tags/pymysql/" rel="tag"># pymysql</a>
           
         </div>
       
@@ -439,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/30/line-bot-outline/" rel="next" title="做一個自己的 LINE chatbot">
-                <i class="fa fa-chevron-left"></i> 做一個自己的 LINE chatbot
+              <a href="/2019/02/17/line-bot-what-is-chatbot/" rel="next" title="什麼是聊天機器人">
+                <i class="fa fa-chevron-left"></i> 什麼是聊天機器人
               </a>
             
           </div>
@@ -448,10 +470,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/" rel="prev" title="Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'">
-                Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb' <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -720,9 +738,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'ericwu.asia/2019/02/17/line-bot-what-is-chatbot/';
-        this.page.identifier = '2019/02/17/line-bot-what-is-chatbot/';
-        this.page.title = '什麼是聊天機器人';
+        this.page.url = 'ericwu.asia/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/';
+        this.page.identifier = '2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/';
+        this.page.title = 'Django 從 SQLite 切換到 MySQL 時總是提示 No module named \'MySQLdb\'';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
