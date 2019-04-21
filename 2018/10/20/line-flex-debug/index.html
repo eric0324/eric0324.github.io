@@ -113,16 +113,17 @@
 
 
   <meta name="description" content="LIFFLINE Front-end Framework（LIFF）是在 LINE 中運行的Web應用程序的平台。 啟動 LIFF時，LIFF 應用程式可以從 LINE app 中獲取數據，例如: LINE 用戶 ID。 LIFF 應用程式也可以來為用戶發送消息的功能。 我自己的 LIFF 應用像是在我的 MiKA 這隻 chatbot 中，活動和名片的創建，或者是 MiKA STORE就是用 L">
+<meta name="keywords" content="LINE,Chatbot,Liff">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eric&#39;s BLOG">
-<meta property="og:url" content="http://ericwu.asia/2019/03/10/line-flex-debug/index.html">
+<meta property="og:title" content="在 LINE LIFF 應用上 debug - vConsole">
+<meta property="og:url" content="http://ericwu.asia/2018/10/20/line-flex-debug/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
 <meta property="og:description" content="LIFFLINE Front-end Framework（LIFF）是在 LINE 中運行的Web應用程序的平台。 啟動 LIFF時，LIFF 應用程式可以從 LINE app 中獲取數據，例如: LINE 用戶 ID。 LIFF 應用程式也可以來為用戶發送消息的功能。 我自己的 LIFF 應用像是在我的 MiKA 這隻 chatbot 中，活動和名片的創建，或者是 MiKA STORE就是用 L">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.imgur.com/Jco6SXf.png">
-<meta property="og:updated_time" content="2019-04-21T08:20:28.436Z">
+<meta property="og:updated_time" content="2019-04-21T08:24:44.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eric&#39;s BLOG">
+<meta name="twitter:title" content="在 LINE LIFF 應用上 debug - vConsole">
 <meta name="twitter:description" content="LIFFLINE Front-end Framework（LIFF）是在 LINE 中運行的Web應用程序的平台。 啟動 LIFF時，LIFF 應用程式可以從 LINE app 中獲取數據，例如: LINE 用戶 ID。 LIFF 應用程式也可以來為用戶發送消息的功能。 我自己的 LIFF 應用像是在我的 MiKA 這隻 chatbot 中，活動和名片的創建，或者是 MiKA STORE就是用 L">
 <meta name="twitter:image" content="https://i.imgur.com/Jco6SXf.png">
 
@@ -131,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://ericwu.asia/2019/03/10/line-flex-debug/">
+  <link rel="canonical" href="http://ericwu.asia/2018/10/20/line-flex-debug/">
 
 
 
@@ -141,7 +142,7 @@
   };
 </script>
 
-  <title> | Eric's BLOG</title>
+  <title>在 LINE LIFF 應用上 debug - vConsole | Eric's BLOG</title>
   
 
 
@@ -306,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/03/10/line-flex-debug/">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2018/10/20/line-flex-debug/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -323,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">在 LINE LIFF 應用上 debug - vConsole
               
             
           </h1>
@@ -348,7 +349,7 @@
                 
               
 
-              <time title="Created: 2019-03-10 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">2019-03-10</time>
+              <time title="Created: 2018-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-20T00:00:00+08:00">2018-10-20</time>
             
 
             
@@ -365,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-21 16:20:28" itemprop="dateModified" datetime="2019-04-21T16:20:28+08:00">2019-04-21</time>
+                <time title="Modified: 2019-04-21 16:24:44" itemprop="dateModified" datetime="2019-04-21T16:24:44+08:00">2019-04-21</time>
               
             
           </span>
@@ -379,9 +380,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/10/line-flex-debug/#comments" itemprop="discussionUrl">
+                <a href="/2018/10/20/line-flex-debug/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/10/line-flex-debug/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/20/line-flex-debug/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -435,6 +436,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/LINE/" rel="tag"># LINE</a>
+          
+            <a href="/tags/Chatbot/" rel="tag"># Chatbot</a>
+          
+            <a href="/tags/Liff/" rel="tag"># Liff</a>
+          
+        </div>
+      
 
       
       
@@ -444,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/09/django-prompts-no-module-named-'MySQLdb'-when-switching-from-sqlite-to-mysql/" rel="next" title="Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'">
-                <i class="fa fa-chevron-left"></i> Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQLdb'
+              <a href="/2018/01/09/flask-use-apscheduler/" rel="next" title="Flask 下使用 APscheduler">
+                <i class="fa fa-chevron-left"></i> Flask 下使用 APscheduler
               </a>
             
           </div>
@@ -453,6 +464,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/line-bot-outline/" rel="prev" title="做一個自己的 LINE chatbot">
+                做一個自己的 LINE chatbot <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -721,9 +736,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ericwu.asia/2019/03/10/line-flex-debug/';
-        this.page.identifier = '2019/03/10/line-flex-debug/';
-        this.page.title = '';
+        this.page.url = 'http://ericwu.asia/2018/10/20/line-flex-debug/';
+        this.page.identifier = '2018/10/20/line-flex-debug/';
+        this.page.title = '在 LINE LIFF 應用上 debug - vConsole';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
