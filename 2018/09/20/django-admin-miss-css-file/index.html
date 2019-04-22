@@ -112,24 +112,25 @@
 
 
 
-  <meta name="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lassie">
-<meta property="og:url" content="http://ericwu.asia/projects/2019-02-01-lassie.html">
+  <meta name="description" content="Django 嘗試使用 Nginx + uwsgi 去部署後，出現 admin 的 CSS, Javascript……等，都噴 404 分析在我的 Django 專案中，setting.py中配置是這樣 1234STATIC_URL =&apos;/static/&apos;STATICFILES_DIRS =（    os.path.join（BASE_DIR，“static”），） 解決方案決之路在 settin">
+<meta name="keywords" content="Python,Django,python3.7,web,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django admin CSS 遺失的問題">
+<meta property="og:url" content="http://ericwu.asia/2018/09/20/django-admin-miss-css-file/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta property="og:description" content="Django 嘗試使用 Nginx + uwsgi 去部署後，出現 admin 的 CSS, Javascript……等，都噴 404 分析在我的 Django 專案中，setting.py中配置是這樣 1234STATIC_URL =&apos;/static/&apos;STATICFILES_DIRS =（    os.path.join（BASE_DIR，“static”），） 解決方案決之路在 settin">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-04-22T01:33:53.054Z">
+<meta property="og:updated_time" content="2019-04-22T01:33:23.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lassie">
-<meta name="twitter:description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+<meta name="twitter:title" content="Django admin CSS 遺失的問題">
+<meta name="twitter:description" content="Django 嘗試使用 Nginx + uwsgi 去部署後，出現 admin 的 CSS, Javascript……等，都噴 404 分析在我的 Django 專案中，setting.py中配置是這樣 1234STATIC_URL =&apos;/static/&apos;STATICFILES_DIRS =（    os.path.join（BASE_DIR，“static”），） 解決方案決之路在 settin">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ericwu.asia/projects/2019-02-01-lassie.html">
+  <link rel="canonical" href="http://ericwu.asia/2018/09/20/django-admin-miss-css-file/">
 
 
 
@@ -139,7 +140,7 @@
   };
 </script>
 
-  <title>Lassie | Eric's BLOG</title>
+  <title>Django admin CSS 遺失的問題 | Eric's BLOG</title>
   
 
 
@@ -243,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-projects menu-item-active">
+          <li class="menu-item menu-item-projects">
     <a href="/projects/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-flask"></i> <br>projects</a>
   </li>
@@ -284,25 +285,6 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
@@ -323,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/projects/2019-02-01-lassie.html">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2018/09/20/django-admin-miss-css-file/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -340,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lassie
+          <h1 class="post-title" itemprop="name headline">Django admin CSS 遺失的問題
               
             
           </h1>
@@ -365,7 +347,7 @@
                 
               
 
-              <time title="Created: 2019-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-01T00:00:00+08:00">2019-02-01</time>
+              <time title="Created: 2018-09-20 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-20T00:00:00+08:00">2018-09-20</time>
             
 
             
@@ -382,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-22 09:33:53" itemprop="dateModified" datetime="2019-04-22T09:33:53+08:00">2019-04-22</time>
+                <time title="Modified: 2019-04-22 09:33:23" itemprop="dateModified" datetime="2019-04-22T09:33:23+08:00">2019-04-22</time>
               
             
           </span>
@@ -396,9 +378,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/projects/2019-02-01-lassie.html#comments" itemprop="discussionUrl">
+                <a href="/2018/09/20/django-admin-miss-css-file/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="projects/2019-02-01-lassie.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/20/django-admin-miss-css-file/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -426,7 +408,17 @@
       
 
       
-        
+        <p>Django 嘗試使用 Nginx + uwsgi 去部署後，出現 admin 的 CSS, Javascript……等，都噴 404</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在我的 Django 專案中，setting.py中配置是這樣</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">STATIC_URL =<span class="string">'/static/'</span></span><br><span class="line">STATICFILES_DIRS =（</span><br><span class="line">    os.path.join（BASE_DIR，“static”），</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
+<h2 id="解決方案決之路"><a href="#解決方案決之路" class="headerlink" title="解決方案決之路"></a>解決方案決之路</h2><p>在 <code>setting.py</code> 中新增配置 <code>STATIC_ROOT</code> ，然後執行 <code>python manage.py collectstatic</code></p>
+<p>此時關於 <code>static</code> 的配置如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">STATIC_ROOT =<span class="string">'/opt/nginx/static/'</span></span><br><span class="line">STATIC_URL =<span class="string">'/static/'</span></span><br><span class="line">STATICFILES_DIRS =（</span><br><span class="line">    os.path.join（BASE_DIR，“static”），</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
+<p>可以看出 <code>python manage.py collectstatic</code> 會收集 Django 中所有的靜態資源，並且放到 STATIC_ROOT 管理訪問</p>
+<p>此時，修改 Nginx 中關於 Django 項目的 static 配置為：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /static &#123;</span><br><span class="line">    # alias /project/django/simpleblog/static;</span><br><span class="line">    alias /opt/nginx/static;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後 admin 就可以正常用 css 了！</p>
+
       
     </div>
 
@@ -444,11 +436,45 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+            <a href="/tags/python3-7/" rel="tag"># python3.7</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
 
       
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/09/flask-use-apscheduler/" rel="next" title="Flask 下使用 APscheduler">
+                <i class="fa fa-chevron-left"></i> Flask 下使用 APscheduler
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/20/line-flex-debug/" rel="prev" title="在 LINE LIFF 應用上 debug - vConsole">
+                在 LINE LIFF 應用上 debug - vConsole <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -714,9 +740,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ericwu.asia/projects/2019-02-01-lassie.html';
-        this.page.identifier = 'projects/2019-02-01-lassie.html';
-        this.page.title = 'Lassie';
+        this.page.url = 'http://ericwu.asia/2018/09/20/django-admin-miss-css-file/';
+        this.page.identifier = '2018/09/20/django-admin-miss-css-file/';
+        this.page.title = 'Django admin CSS 遺失的問題';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

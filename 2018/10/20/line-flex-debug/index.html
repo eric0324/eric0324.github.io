@@ -121,7 +121,7 @@
 <meta property="og:description" content="LIFFLINE Front-end Framework（LIFF）是在 LINE 中運行的Web應用程序的平台。 啟動 LIFF時，LIFF 應用程式可以從 LINE app 中獲取數據，例如: LINE 用戶 ID。 LIFF 應用程式也可以來為用戶發送消息的功能。 我自己的 LIFF 應用像是在我的 MiKA 這隻 chatbot 中，活動和名片的創建，或者是 MiKA STORE就是用 L">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.imgur.com/Jco6SXf.png">
-<meta property="og:updated_time" content="2019-04-21T08:24:44.532Z">
+<meta property="og:updated_time" content="2019-04-22T01:35:07.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 LINE LIFF 應用上 debug - vConsole">
 <meta name="twitter:description" content="LIFFLINE Front-end Framework（LIFF）是在 LINE 中運行的Web應用程序的平台。 啟動 LIFF時，LIFF 應用程式可以從 LINE app 中獲取數據，例如: LINE 用戶 ID。 LIFF 應用程式也可以來為用戶發送消息的功能。 我自己的 LIFF 應用像是在我的 MiKA 這隻 chatbot 中，活動和名片的創建，或者是 MiKA STORE就是用 L">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-21 16:24:44" itemprop="dateModified" datetime="2019-04-21T16:24:44+08:00">2019-04-21</time>
+                <time title="Modified: 2019-04-22 09:35:07" itemprop="dateModified" datetime="2019-04-22T09:35:07+08:00">2019-04-22</time>
               
             
           </span>
@@ -416,7 +416,7 @@
 <p><img src="https://i.imgur.com/Jco6SXf.png" alt="Imgur"></p>
 <p>LIFF 本身的架構相當簡單，其實就是引入一個 JavaScript 文件，然後呼叫對應的函示就可以完成很多包裝好的功能，官方的文件跟範例程式碼都很詳細，可以自己參考看看：<a href="https://developers.line.biz/en/docs/liff/overview/" target="_blank" rel="noopener">官方文件</a></p>
 <h1 id="開發的困難點"><a href="#開發的困難點" class="headerlink" title="開發的困難點"></a>開發的困難點</h1><p>不過開發的過程很多時候需要在 LINE APP 上頭做操作，在電腦上開瀏覽器的開發人員工具是不會有效果的，例如說要取得 LINE user id ，在瀏覽器上就會取得空值。不過有些時候要 debug 又非得要這些開發人員工具的協助</p>
-<h1 id="使用-vConsole"><a href="#使用-vConsole" class="headerlink" title="使用 vConsole"></a>使用 vConsole</h1><p>vConsole 是騰訊所推出的一個開源專案，可以解決 LIFF 測試的問題，此一工具簡單來說就是將瀏覽器的開發者工具，透過前端的方式呈現出來，而且安裝非常之容易，只要將下方的程式碼嵌入 LIFF 的頁面即可</p>
+<h1 id="使用-vConsole"><a href="#使用-vConsole" class="headerlink" title="使用 vConsole"></a>使用 vConsole</h1><p><a href="https://github.com/Tencent/vConsole" target="_blank" rel="noopener">vConsole</a> 是騰訊所推出的一個開源專案，可以解決 LIFF 測試的問題，此一工具簡單來說就是將瀏覽器的開發者工具，透過前端的方式呈現出來，而且安裝非常之容易，只要將<a href="https://github.com/Tencent/vConsole/releases/latest" target="_blank" rel="noopener">程式碼</a>下載下來後，嵌入 LIFF 的頁面即可</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"path/to/vconsole.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// init vConsole</span></span><br><span class="line">  <span class="keyword">var</span> vConsole = <span class="keyword">new</span> VConsole();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello world'</span>);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
       
@@ -455,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/09/flask-use-apscheduler/" rel="next" title="Flask 下使用 APscheduler">
-                <i class="fa fa-chevron-left"></i> Flask 下使用 APscheduler
+              <a href="/2018/09/20/django-admin-miss-css-file/" rel="next" title="Django admin CSS 遺失的問題">
+                <i class="fa fa-chevron-left"></i> Django admin CSS 遺失的問題
               </a>
             
           </div>
