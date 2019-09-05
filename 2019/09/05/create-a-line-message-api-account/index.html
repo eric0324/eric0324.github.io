@@ -112,25 +112,30 @@
 
 
 
-  <meta name="description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+  <meta name="description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
 <meta name="keywords" content="LINE,chatbot,Laravel,PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="做一個自己的 LINE chatbot">
-<meta property="og:url" content="http://ericwu.asia/2019/06/30/line-bot-outline/index.html">
+<meta property="og:title" content="先有一個 Line Messaging API account">
+<meta property="og:url" content="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+<meta property="og:description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-09-05T07:23:31.442Z">
+<meta property="og:image" content="https://i.imgur.com/YrEku9H.png">
+<meta property="og:image" content="https://i.imgur.com/rzbO3V3.png">
+<meta property="og:image" content="https://i.imgur.com/6IC7PpO.png">
+<meta property="og:image" content="https://i.imgur.com/kaU3exW.png">
+<meta property="og:updated_time" content="2019-09-05T07:22:10.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="做一個自己的 LINE chatbot">
-<meta name="twitter:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+<meta name="twitter:title" content="先有一個 Line Messaging API account">
+<meta name="twitter:description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
+<meta name="twitter:image" content="https://i.imgur.com/YrEku9H.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ericwu.asia/2019/06/30/line-bot-outline/">
+  <link rel="canonical" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">
 
 
 
@@ -140,7 +145,7 @@
   };
 </script>
 
-  <title>做一個自己的 LINE chatbot | Eric's BLOG</title>
+  <title>先有一個 Line Messaging API account | Eric's BLOG</title>
   
 
 
@@ -305,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/06/30/line-bot-outline/">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -322,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">做一個自己的 LINE chatbot
+          <h1 class="post-title" itemprop="name headline">先有一個 Line Messaging API account
               
             
           </h1>
@@ -347,24 +352,12 @@
                 
               
 
-              <time title="Created: 2019-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00+08:00">2019-06-30</time>
+              <time title="Created: 2019-09-05 00:00:00 / Modified: 15:22:10" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-05 15:23:31" itemprop="dateModified" datetime="2019-09-05T15:23:31+08:00">2019-09-05</time>
               
             
           </span>
@@ -378,9 +371,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/line-bot-outline/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/05/create-a-line-message-api-account/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/30/line-bot-outline/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/create-a-line-message-api-account/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,77 +401,39 @@
       
 
       
-        <p>想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得</p>
-<p>基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！</p>
-<p>讀者需求</p>
+        <p>首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 <a href="https://developers.line.biz/en/" target="_blank" rel="noopener">LINE Developers</a> 的後台，點選 <code>Log in</code> 即可以進入後台</p>
+<p><img src="https://i.imgur.com/YrEku9H.png" alt="img"></p>
+<p>首先，我們要先建立一個 <code>privoder</code> ，點擊 右上或是中下的<code>Create New Provider</code> ，都可以建立</p>
+<p><img src="https://i.imgur.com/rzbO3V3.png" alt="img"></p>
+<p>進去後，只要填寫 <code>Provider name</code> 就可以了，至於 <code>Provider name</code> 就是 chatbot 供應商的名稱，這應該很好理解的</p>
+<p>接著進入剛剛建立的 <code>privoder</code> 點選 <code>Create new channel</code> ，會看到三種 <code>channel</code> ，我們要開發的是 <code>Messaging API</code> ，所以就直接選取中間吧</p>
+<p><img src="https://i.imgur.com/6IC7PpO.png" alt="img"></p>
+<p>接著就是填寫 chatbot 的基本資訊囉，填寫的資訊依序如下：</p>
 <ul>
-<li>想擁有屬於自己的LINE聊天機器人</li>
-<li>略懂 PHP （我會以 Laravel 為例）</li>
+<li>App icon: 就是機器人的大頭貼</li>
+<li>App name: 機器人的名稱</li>
+<li>App description: 簡單敘述一下這隻機器人是在做什麼的</li>
+<li>Category: 機器人的分類</li>
+<li>Subcategory: 機器人的子分類</li>
+<li>Email address: 你的聯繫信箱</li>
+<li>Privacy Policy URL: 選填項目，如果你有隱私條款的話</li>
+<li>Terms Of Use URL: 選填項目，如果你有使用條款的話</li>
 </ul>
-<h1 id="第-1-章：入門階段"><a href="#第-1-章：入門階段" class="headerlink" title="第 1 章：入門階段"></a>第 1 章：入門階段</h1><h2 id="1-1-認識聊天機器人"><a href="#1-1-認識聊天機器人" class="headerlink" title="1.1 認識聊天機器人"></a>1.1 認識聊天機器人</h2><ul>
-<li><a href="http://ericwu.asia/2019/02/17/line-bot-what-is-chatbot/#more">什麼是聊天機器人</a></li>
-<li><a href="http://ericwu.asia/2019/09/04/do-I-need-ai-and-ml-to-do-it/">我需要會人工智慧、機器學習才能做嗎？</a></li>
-</ul>
-<h2 id="1-2-認識快速買早餐"><a href="#1-2-認識快速買早餐" class="headerlink" title="1.2 認識快速買早餐"></a>1.2 認識快速買早餐</h2><ul>
-<li>快速買早餐的誕生</li>
-<li>快速買早餐的各種功能</li>
-</ul>
-<h2 id="1-3-從-0-到-1"><a href="#1-3-從-0-到-1" class="headerlink" title="1.3 從 0 到 1"></a>1.3 從 0 到 1</h2><ul>
-<li><a href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">先有一個 Line Messaging API account</a></li>
-<li>LINE 聊天機器人: Hello world!</li>
-</ul>
-<h1 id="第-2-章：實作功能"><a href="#第-2-章：實作功能" class="headerlink" title="第 2 章：實作功能"></a>第 2 章：實作功能</h1><h2 id="2-1-LINE-Messaging-API"><a href="#2-1-LINE-Messaging-API" class="headerlink" title="2.1 LINE Messaging API"></a>2.1 LINE Messaging API</h2><ul>
-<li>串接Line Messaging API Webhook</li>
-<li>接收訊息</li>
-<li>回覆訊息</li>
-</ul>
-<h2 id="2-2-Line-Messaging-API-的各種通知"><a href="#2-2-Line-Messaging-API-的各種通知" class="headerlink" title="2.2 Line Messaging API 的各種通知"></a>2.2 Line Messaging API 的各種通知</h2><ul>
-<li>Webhook 資料格式</li>
-<li>當接收到文字時</li>
-<li>當接收到圖片時</li>
-<li>當接收到影音時</li>
-<li>當接收到位置時</li>
-<li>當接收到貼圖時</li>
-<li>當你被加好友時</li>
-<li>當你被封鎖時</li>
-<li>當有人按下 Template 的 Postback 按鈕</li>
-</ul>
-<h2 id="2-3-實作關鍵字回覆"><a href="#2-3-實作關鍵字回覆" class="headerlink" title="2.3 實作關鍵字回覆"></a>2.3 實作關鍵字回覆</h2><ul>
-<li>關鍵字回覆</li>
-<li>傳送貼圖</li>
-<li>傳送圖片</li>
-<li>傳送影片</li>
-<li>傳送聲音</li>
-<li>傳送位置</li>
-<li>傳送影像地圖（Imagemap）</li>
-<li>傳送樣板（Template）</li>
-<li>樣板行為（Template Action）</li>
-</ul>
-<h2 id="2-4-懂的更多"><a href="#2-4-懂的更多" class="headerlink" title="2.4 懂的更多"></a>2.4 懂的更多</h2><ul>
-<li>經驗法則：例外訊息</li>
-<li>常常聽不懂該，該如何做？</li>
-<li>Jieba - 做最好的 Python 中文分詞</li>
-<li>分詞後的處理</li>
-</ul>
-<h2 id="2-5-讓機器人聆聽"><a href="#2-5-讓機器人聆聽" class="headerlink" title="2.5 讓機器人聆聽"></a>2.5 讓機器人聆聽</h2><ul>
-<li>簡易的狀態流程</li>
-<li>創建狀態</li>
-<li>更新狀態</li>
-<li>銷毀狀態</li>
-</ul>
-<h1 id="附錄A：如何架設一個網站"><a href="#附錄A：如何架設一個網站" class="headerlink" title="附錄A：如何架設一個網站"></a>附錄A：如何架設一個網站</h1><h2 id="A-1-發布網站到-Heroku"><a href="#A-1-發布網站到-Heroku" class="headerlink" title="A.1 發布網站到 Heroku"></a>A.1 發布網站到 Heroku</h2><ul>
-<li>註冊 Heroku 帳號</li>
-<li>Heroku CLI 初始設定</li>
-<li>git 初始設定</li>
-<li>專案的 git 初始設定</li>
-<li>專案的 Heroku 初始設定</li>
-<li>上傳程式碼到 Heroku</li>
-</ul>
-<h1 id="附錄B-LINE-Protostar"><a href="#附錄B-LINE-Protostar" class="headerlink" title="附錄B: LINE Protostar"></a>附錄B: LINE Protostar</h1><h2 id="B-1-這是一個什麼樣的計畫"><a href="#B-1-這是一個什麼樣的計畫" class="headerlink" title="B.1 這是一個什麼樣的計畫"></a>B.1 這是一個什麼樣的計畫</h2><h2 id="B-2-加入-LINE-Protostar"><a href="#B-2-加入-LINE-Protostar" class="headerlink" title="B.2 加入 LINE Protostar"></a>B.2 加入 LINE Protostar</h2><ul>
-<li>我可以加入嗎？</li>
-<li>我該如何加入？</li>
-<li>從0到1，加入血淚史</li>
-</ul>
+<p>填寫完成並且確認後，就創立了一隻全新的機器人囉！</p>
+<p>接著來看看機器人裡面有什麼資訊</p>
+<p><img src="https://i.imgur.com/kaU3exW.png" alt="img"></p>
+<h3 id="Channel-ID"><a href="#Channel-ID" class="headerlink" title="Channel ID"></a>Channel ID</h3><p>這是你這個機器人的 ID ，先記著，等等會用到</p>
+<h3 id="Channel-secret"><a href="#Channel-secret" class="headerlink" title="Channel secret"></a>Channel secret</h3><p>這是你這個機器人的 secret，有點像是密碼，也是先記著，等等會用到</p>
+<h3 id="Channel-access-token"><a href="#Channel-access-token" class="headerlink" title="Channel access token"></a>Channel access token</h3><p>也是專屬你的機器人的 token ，也是先記著，等等會用到</p>
+<h3 id="Use-webhooks"><a href="#Use-webhooks" class="headerlink" title="Use webhooks"></a>Use webhooks</h3><p>每當用戶傳訊息給你的機器人的時候，其實都是發送一個請求到你的 <code>webhooks</code> ，所以這個地方一定要選取 <code>Enabled</code> ，機器人才知道要使用webhooks 喔</p>
+<h3 id="Webhook-URL"><a href="#Webhook-URL" class="headerlink" title="Webhook URL"></a>Webhook URL</h3><p>如同剛剛說的，每當用戶傳訊息給你的機器人的時候，其實都是發送一個請求到你的 <code>webhooks</code>，所以要提供一個網址讓 LINE 知道這隻機器人的請求要發送到哪裡。還有這個 Webhook URL 一定要有 SSL ，也就是走 https 喔</p>
+<h3 id="Allow-bot-to-join-group-chats"><a href="#Allow-bot-to-join-group-chats" class="headerlink" title="Allow bot to join group chats"></a>Allow bot to join group chats</h3><p>是否讓你的機器人可以被加入群組，如果關掉的話，使用者就不能隨意把你的機器人丟進群組囉</p>
+<h3 id="Auto-reply-messages"><a href="#Auto-reply-messages" class="headerlink" title="Auto-reply messages"></a>Auto-reply messages</h3><p>是否要自動回應訊息，這個是 LINE@ 後台可以設定的自動回應訊息，我通常是把它關掉的</p>
+<h3 id="Greeting-messages"><a href="#Greeting-messages" class="headerlink" title="Greeting messages"></a>Greeting messages</h3><p>當使用者加機器人好友後的問候訊息，也是可以在 LINE@ 後台做設定，我通常也是把它關掉的</p>
+<h3 id="QR-code-of-your-bot"><a href="#QR-code-of-your-bot" class="headerlink" title="QR code of your bot"></a>QR code of your bot</h3><p>就是你的機器人的 QR Code ，掃了可以加她好友</p>
+<h3 id="Basic-ID"><a href="#Basic-ID" class="headerlink" title="Basic ID"></a>Basic ID</h3><p>就是你的機器人的 ID ，可以透過這 ID 在 LINE 上面搜尋到你的機器人</p>
+<h3 id="Your-user-ID"><a href="#Your-user-ID" class="headerlink" title="Your user ID"></a>Your user ID</h3><p>對於聊天機器人而言，每個使用者都是獨一無二的，你也不例外，所以這邊會有一組你的 user ID</p>
+<p>大概就是這樣，</p>
 
       
     </div>
@@ -518,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/06/mock-http-responses-to-test-rest-api/" rel="next" title="產生任何 Mock HTTP 回應的好工具 - Mocky.io">
-                <i class="fa fa-chevron-left"></i> 產生任何 Mock HTTP 回應的好工具 - Mocky.io
+              <a href="/2019/09/04/do-I-need-ai-and-ml-to-do-it/" rel="next" title="我需要會人工智慧、機器學習才能做嗎？">
+                <i class="fa fa-chevron-left"></i> 我需要會人工智慧、機器學習才能做嗎？
               </a>
             
           </div>
@@ -527,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/17/line-bot-what-is-chatbot/" rel="prev" title="什麼是聊天機器人">
-                什麼是聊天機器人 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -799,9 +750,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ericwu.asia/2019/06/30/line-bot-outline/';
-        this.page.identifier = '2019/06/30/line-bot-outline/';
-        this.page.title = '做一個自己的 LINE chatbot';
+        this.page.url = 'http://ericwu.asia/2019/09/05/create-a-line-message-api-account/';
+        this.page.identifier = '2019/09/05/create-a-line-message-api-account/';
+        this.page.title = '先有一個 Line Messaging API account';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
