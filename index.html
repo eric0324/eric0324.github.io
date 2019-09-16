@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/let-line-server-connect-to-localhost/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -323,7 +323,177 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/05/create-a-line-message-api-account/" itemprop="url">
+                <a class="post-title-link" href="/2019/09/05/let-line-server-connect-to-localhost/" itemprop="url">
+                  讓 LINE 可以連到你的本地端：ngrok
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 13:27:33" itemprop="dateModified" datetime="2019-09-16T13:27:33+08:00">2019-09-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/05/let-line-server-connect-to-localhost/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/let-line-server-connect-to-localhost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。
+在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/05/let-line-server-connect-to-localhost/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account copy/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eric Wu">
+      <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+      <meta itemprop="image" content="/images/avaster.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eric's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/05/create-a-line-message-api-account copy/" itemprop="url">
                   先有一個 Line Messaging API account
                 </a>
               
@@ -350,12 +520,24 @@
                 
               
 
-              <time title="Created: 2019-09-05 00:00:00 / Modified: 15:22:10" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
+              <time title="Created: 2019-09-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 13:06:14" itemprop="dateModified" datetime="2019-09-16T13:06:14+08:00">2019-09-16</time>
               
             
           </span>
@@ -369,9 +551,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/05/create-a-line-message-api-account/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/05/create-a-line-message-api-account copy/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/create-a-line-message-api-account/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/create-a-line-message-api-account copy/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,7 +591,7 @@
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/05/create-a-line-message-api-account/#more" rel="contents">
+            <a class="btn" href="/2019/09/05/create-a-line-message-api-account copy/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -864,7 +1046,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-05 15:23:31" itemprop="dateModified" datetime="2019-09-05T15:23:31+08:00">2019-09-05</time>
+                <time title="Modified: 2019-09-16 13:07:24" itemprop="dateModified" datetime="2019-09-16T13:07:24+08:00">2019-09-16</time>
               
             
           </span>
@@ -1763,177 +1945,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/20/django-admin-miss-css-file/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2018/01/09/flask-use-apscheduler/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eric Wu">
-      <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
-      <meta itemprop="image" content="/images/avaster.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eric's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/09/flask-use-apscheduler/" itemprop="url">
-                  Flask 下使用 APscheduler
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-01-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-09T00:00:00+08:00">2018-01-09</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-22 06:37:46" itemprop="dateModified" datetime="2018-10-22T06:37:46+08:00">2018-10-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/09/flask-use-apscheduler/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/09/flask-use-apscheduler/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。
-在 flask 下，如果要使用 APscheduler 可以考慮使用 flask 延伸模組 flask-apsheduler
-基本使用方法123456789101112131415161
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/09/flask-use-apscheduler/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>

@@ -112,30 +112,28 @@
 
 
 
-  <meta name="description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
-<meta name="keywords" content="LINE,chatbot,Laravel,PHP">
+  <meta name="description" content="上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。 在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一個很多人在使用的服務： ngrok 為什麼選擇用 ngrok 呢？就如同官網所說的 1Spend m">
+<meta name="keywords" content="LINE,chatbot,Laravel,PHP,ngrok">
 <meta property="og:type" content="article">
-<meta property="og:title" content="先有一個 Line Messaging API account">
-<meta property="og:url" content="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/index.html">
+<meta property="og:title" content="讓 LINE 可以連到你的本地端：ngrok">
+<meta property="og:url" content="http://ericwu.asia/2019/09/05/let-line-server-connect-to-localhost/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
+<meta property="og:description" content="上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。 在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一個很多人在使用的服務： ngrok 為什麼選擇用 ngrok 呢？就如同官網所說的 1Spend m">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="https://i.imgur.com/YrEku9H.png">
-<meta property="og:image" content="https://i.imgur.com/rzbO3V3.png">
-<meta property="og:image" content="https://i.imgur.com/6IC7PpO.png">
-<meta property="og:image" content="https://i.imgur.com/kaU3exW.png">
-<meta property="og:updated_time" content="2019-09-05T07:22:10.557Z">
+<meta property="og:image" content="https://i.imgur.com/kmW3NZw.png">
+<meta property="og:image" content="https://i.imgur.com/Vhw0H3P.png">
+<meta property="og:updated_time" content="2019-09-16T05:27:33.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="先有一個 Line Messaging API account">
-<meta name="twitter:description" content="首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 LINE Developers 的後台，點選 Log in 即可以進入後台  首先，我們要先建立一個 privoder ，點擊 右上或是中下的Create New Provider ，都可以建立  進去後，只要填寫 Provider name 就可以了，至於 Provider name 就是 chatbot 供應商的名稱，這應該很好理">
-<meta name="twitter:image" content="https://i.imgur.com/YrEku9H.png">
+<meta name="twitter:title" content="讓 LINE 可以連到你的本地端：ngrok">
+<meta name="twitter:description" content="上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。 在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一個很多人在使用的服務： ngrok 為什麼選擇用 ngrok 呢？就如同官網所說的 1Spend m">
+<meta name="twitter:image" content="https://i.imgur.com/kmW3NZw.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">
+  <link rel="canonical" href="http://ericwu.asia/2019/09/05/let-line-server-connect-to-localhost/">
 
 
 
@@ -145,7 +143,7 @@
   };
 </script>
 
-  <title>先有一個 Line Messaging API account | Eric's BLOG</title>
+  <title>讓 LINE 可以連到你的本地端：ngrok | Eric's BLOG</title>
   
 
 
@@ -310,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">
+    <link itemprop="mainEntityOfPage" href="http://ericwu.asia/2019/09/05/let-line-server-connect-to-localhost/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -327,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">先有一個 Line Messaging API account
+          <h1 class="post-title" itemprop="name headline">讓 LINE 可以連到你的本地端：ngrok
               
             
           </h1>
@@ -352,12 +350,24 @@
                 
               
 
-              <time title="Created: 2019-09-05 00:00:00 / Modified: 15:22:10" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
+              <time title="Created: 2019-09-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-05T00:00:00+08:00">2019-09-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 13:27:33" itemprop="dateModified" datetime="2019-09-16T13:27:33+08:00">2019-09-16</time>
               
             
           </span>
@@ -371,9 +381,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/05/create-a-line-message-api-account/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/05/let-line-server-connect-to-localhost/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/create-a-line-message-api-account/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/05/let-line-server-connect-to-localhost/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,39 +411,33 @@
       
 
       
-        <p>首先我們必須要有一個 LINE 開發人員的帳號，因此我們先進去 <a href="https://developers.line.biz/en/" target="_blank" rel="noopener">LINE Developers</a> 的後台，點選 <code>Log in</code> 即可以進入後台</p>
-<p><img src="https://i.imgur.com/YrEku9H.png" alt="img"></p>
-<p>首先，我們要先建立一個 <code>privoder</code> ，點擊 右上或是中下的<code>Create New Provider</code> ，都可以建立</p>
-<p><img src="https://i.imgur.com/rzbO3V3.png" alt="img"></p>
-<p>進去後，只要填寫 <code>Provider name</code> 就可以了，至於 <code>Provider name</code> 就是 chatbot 供應商的名稱，這應該很好理解的</p>
-<p>接著進入剛剛建立的 <code>privoder</code> 點選 <code>Create new channel</code> ，會看到三種 <code>channel</code> ，我們要開發的是 <code>Messaging API</code> ，所以就直接選取中間吧</p>
-<p><img src="https://i.imgur.com/6IC7PpO.png" alt="img"></p>
-<p>接著就是填寫 chatbot 的基本資訊囉，填寫的資訊依序如下：</p>
-<ul>
-<li>App icon: 就是機器人的大頭貼</li>
-<li>App name: 機器人的名稱</li>
-<li>App description: 簡單敘述一下這隻機器人是在做什麼的</li>
-<li>Category: 機器人的分類</li>
-<li>Subcategory: 機器人的子分類</li>
-<li>Email address: 你的聯繫信箱</li>
-<li>Privacy Policy URL: 選填項目，如果你有隱私條款的話</li>
-<li>Terms Of Use URL: 選填項目，如果你有使用條款的話</li>
-</ul>
-<p>填寫完成並且確認後，就創立了一隻全新的機器人囉！</p>
-<p>接著來看看機器人裡面有什麼資訊</p>
-<p><img src="https://i.imgur.com/kaU3exW.png" alt="img"></p>
-<h3 id="Channel-ID"><a href="#Channel-ID" class="headerlink" title="Channel ID"></a>Channel ID</h3><p>這是你這個機器人的 ID ，先記著，等等會用到</p>
-<h3 id="Channel-secret"><a href="#Channel-secret" class="headerlink" title="Channel secret"></a>Channel secret</h3><p>這是你這個機器人的 secret，有點像是密碼，也是先記著，等等會用到</p>
-<h3 id="Channel-access-token"><a href="#Channel-access-token" class="headerlink" title="Channel access token"></a>Channel access token</h3><p>也是專屬你的機器人的 token ，也是先記著，等等會用到</p>
-<h3 id="Use-webhooks"><a href="#Use-webhooks" class="headerlink" title="Use webhooks"></a>Use webhooks</h3><p>每當用戶傳訊息給你的機器人的時候，其實都是發送一個請求到你的 <code>webhooks</code> ，所以這個地方一定要選取 <code>Enabled</code> ，機器人才知道要使用webhooks 喔</p>
-<h3 id="Webhook-URL"><a href="#Webhook-URL" class="headerlink" title="Webhook URL"></a>Webhook URL</h3><p>如同剛剛說的，每當用戶傳訊息給你的機器人的時候，其實都是發送一個請求到你的 <code>webhooks</code>，所以要提供一個網址讓 LINE 知道這隻機器人的請求要發送到哪裡。還有這個 Webhook URL 一定要有 SSL ，也就是走 https 喔</p>
-<h3 id="Allow-bot-to-join-group-chats"><a href="#Allow-bot-to-join-group-chats" class="headerlink" title="Allow bot to join group chats"></a>Allow bot to join group chats</h3><p>是否讓你的機器人可以被加入群組，如果關掉的話，使用者就不能隨意把你的機器人丟進群組囉</p>
-<h3 id="Auto-reply-messages"><a href="#Auto-reply-messages" class="headerlink" title="Auto-reply messages"></a>Auto-reply messages</h3><p>是否要自動回應訊息，這個是 LINE@ 後台可以設定的自動回應訊息，我通常是把它關掉的</p>
-<h3 id="Greeting-messages"><a href="#Greeting-messages" class="headerlink" title="Greeting messages"></a>Greeting messages</h3><p>當使用者加機器人好友後的問候訊息，也是可以在 LINE@ 後台做設定，我通常也是把它關掉的</p>
-<h3 id="QR-code-of-your-bot"><a href="#QR-code-of-your-bot" class="headerlink" title="QR code of your bot"></a>QR code of your bot</h3><p>就是你的機器人的 QR Code ，掃了可以加她好友</p>
-<h3 id="Basic-ID"><a href="#Basic-ID" class="headerlink" title="Basic ID"></a>Basic ID</h3><p>就是你的機器人的 ID ，可以透過這 ID 在 LINE 上面搜尋到你的機器人</p>
-<h3 id="Your-user-ID"><a href="#Your-user-ID" class="headerlink" title="Your user ID"></a>Your user ID</h3><p>對於聊天機器人而言，每個使用者都是獨一無二的，你也不例外，所以這邊會有一組你的 user ID</p>
-<p>大概就是這樣，</p>
+        <p>上一章，我有提到一個表單欄位 <code>Webhook URL</code> ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。</p>
+<p>在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 <code>Webhook URL</code> 就好了，這邊提供一個很多人在使用的服務： <a href="https://ngrok.com/" target="_blank" rel="noopener">ngrok</a></p>
+<p>為什麼選擇用 <a href="https://ngrok.com/" target="_blank" rel="noopener">ngrok</a> 呢？就如同官網所說的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Spend more time programming. One command for an instant, secure URL to your localhost server through any NAT or firewall.</span><br></pre></td></tr></table></figure>
+<p>簡言之就是讓你花更多時間專注在寫程式。ngrok 會為你的本地主機服務器提供一個即時，安全的 URL。</p>
+<p>再換句話說，就是把你的 localhost 對應到 <a href="https://xxxxx.ngrok.com。" target="_blank" rel="noopener">https://xxxxx.ngrok.com。</a>(這邊的 <code>xxxxx</code> 會隨著每次打開 ngrok ，隨機配一組給你)，這樣子做之後的好處顯而易見，也就是你只要把 <code>webhook URL</code> 填好，就可以在 localhost 上面測試了！</p>
+<p>除此之外，使用上也非常的簡單。</p>
+<ol>
+<li><p>首先先去 <a href="https://ngrok.com/" target="_blank" rel="noopener">ngrok</a> 官網 <a href="https://dashboard.ngrok.com/signup" target="_blank" rel="noopener">註冊帳號</a></p>
+</li>
+<li><p>註冊成功，應該會看到這樣的引導說明：</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/kmW3NZw.png" alt="ngrok引導說明"></p>
+<ol start="3">
+<li><p>根據你的作業系統環境下載 ngrok 到根目錄，或是你知道的地方</p>
+</li>
+<li><p>打開終端機，輸入 <code>./ngrok authtoken </code>， <code></code> 的部分，每個人都不一樣，所以造著 ngrok 的說明複製貼上就可以設定好 auth token</p>
+</li>
+<li><p>輸入 <code>./ngrok http 8000</code> ，因為 Laravel 預設的 port 是 <code>8000</code> ，所以我這也就輸入 <code>8000</code> ，如果你因為其他原因使用了其他的 port 的話，這邊也要記得改成其他的 port 喔</p>
+</li>
+<li><p>出現這樣的畫面，就是差不多快成功了<br><img src="https://i.imgur.com/Vhw0H3P.png" alt="ngrok引導說明"></p>
+</li>
+<li><p>將 Forwarding 的網址複製（要複製到有 <code>https</code> 的喔，不然 LINE 會不給過），貼到 LINE Developer 後台的 <code>webhook URL</code> 這個欄位，即可完成！</p>
+</li>
+</ol>
+<p>接著下一章，會來教大家如何做第一個簡單的回覆！</p>
 
       
     </div>
@@ -462,6 +466,8 @@
           
             <a href="/tags/PHP/" rel="tag"># PHP</a>
           
+            <a href="/tags/ngrok/" rel="tag"># ngrok</a>
+          
         </div>
       
 
@@ -473,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/04/do-I-need-ai-and-ml-to-do-it/" rel="next" title="我需要會人工智慧、機器學習才能做嗎？">
-                <i class="fa fa-chevron-left"></i> 我需要會人工智慧、機器學習才能做嗎？
+              <a href="/2019/09/05/create-a-line-message-api-account copy/" rel="next" title="先有一個 Line Messaging API account">
+                <i class="fa fa-chevron-left"></i> 先有一個 Line Messaging API account
               </a>
             
           </div>
@@ -750,9 +756,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://ericwu.asia/2019/09/05/create-a-line-message-api-account/';
-        this.page.identifier = '2019/09/05/create-a-line-message-api-account/';
-        this.page.title = '先有一個 Line Messaging API account';
+        this.page.url = 'http://ericwu.asia/2019/09/05/let-line-server-connect-to-localhost/';
+        this.page.identifier = '2019/09/05/let-line-server-connect-to-localhost/';
+        this.page.title = '讓 LINE 可以連到你的本地端：ngrok';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
