@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/16/let-line-server-connect-to-localhost/">
+    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/16/let-line-chatbot-say-hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -323,8 +323,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/let-line-server-connect-to-localhost/" itemprop="url">
-                  讓 LINE 可以連到你的本地端：ngrok
+                <a class="post-title-link" href="/2019/09/16/let-line-chatbot-say-hello-world/" itemprop="url">
+                  LINE 聊天機器人: Hello world!
                 </a>
               
             
@@ -350,7 +350,7 @@
                 
               
 
-              <time title="Created: 2019-09-16 00:00:00 / Modified: 16:12:59" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
+              <time title="Created: 2019-09-16 00:00:00 / Modified: 17:27:54" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
             
 
             
@@ -369,9 +369,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/16/let-line-server-connect-to-localhost/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/16/let-line-chatbot-say-hello-world/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/16/let-line-server-connect-to-localhost/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/16/let-line-chatbot-say-hello-world/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,12 +401,13 @@
       
         
           
-          上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。
-在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一
+          前面講了這麼多，終於要進入重點了。現在來寫一個會回應的 LINE 聊天機器人吧！
+無論你是透過 Laravel 安裝工具 的 laravel new blog 或是 Composer Create-Project 的方式 都可以，反正就是新安裝一份 Laravel 專案吧！
+在你安裝完 Larave
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/16/let-line-server-connect-to-localhost/#more" rel="contents">
+            <a class="btn" href="/2019/09/16/let-line-chatbot-say-hello-world/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -462,7 +463,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/15/let-line-chatbot-say-hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/15/let-line-server-connect-to-localhost/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -481,8 +482,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/15/let-line-chatbot-say-hello-world/" itemprop="url">
-                  LINE 聊天機器人: Hello world!
+                <a class="post-title-link" href="/2019/09/15/let-line-server-connect-to-localhost/" itemprop="url">
+                  讓 LINE 可以連到你的本地端：ngrok
                 </a>
               
             
@@ -525,7 +526,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-16 17:26:19" itemprop="dateModified" datetime="2019-09-16T17:26:19+08:00">2019-09-16</time>
+                <time title="Modified: 2019-09-16 17:27:57" itemprop="dateModified" datetime="2019-09-16T17:27:57+08:00">2019-09-16</time>
               
             
           </span>
@@ -539,9 +540,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/15/let-line-chatbot-say-hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/15/let-line-server-connect-to-localhost/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/15/let-line-chatbot-say-hello-world/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/15/let-line-server-connect-to-localhost/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -571,13 +572,12 @@
       
         
           
-          前面講了這麼多，終於要進入重點了。現在來寫一個會回應的 LINE 聊天機器人吧！
-無論你是透過 Laravel 安裝工具 的 laravel new blog 或是 Composer Create-Project 的方式 都可以，反正就是新安裝一份 Laravel 專案吧！
-在你安裝完 Larave
+          上一章，我有提到一個表單欄位 Webhook URL ，當我們還在開發的階段時候，還沒有一台主機去放我們的應用程式，也或許你會有，不過這不用擔心，最後的時候，我會提到怎麼部署。
+在這，我們只要先可以在本地端開發，並且讓 LINE server 可以打到你的 Webhook URL 就好了，這邊提供一
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/15/let-line-chatbot-say-hello-world/#more" rel="contents">
+            <a class="btn" href="/2019/09/15/let-line-server-connect-to-localhost/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
