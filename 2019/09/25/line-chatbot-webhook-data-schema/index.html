@@ -112,25 +112,25 @@
 
 
 
-  <meta name="description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+  <meta name="description" content="看到這邊，應該會好奇，當使用者每次和機器人聊天的時候，LINE 也會打到我們提供的 webhook URL ，那 LINE 究竟給了我們什麼呢？ 我們先試著在上一篇建立的 app\Http\Controller\LineController 中修改一些東西，印出來看看 123456try &amp;#123;    $events = $bot-&amp;gt;parseEventRequest($body, $">
 <meta name="keywords" content="LINE,chatbot,Laravel,PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="做一個自己的 LINE chatbot">
-<meta property="og:url" content="https://ericwu.asia/2019/06/30/line-bot-outline/index.html">
+<meta property="og:title" content="LINE 聊天機器人: Hello world!">
+<meta property="og:url" content="https://ericwu.asia/2019/09/25/line-chatbot-webhook-data-schema/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
-<meta property="og:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+<meta property="og:description" content="看到這邊，應該會好奇，當使用者每次和機器人聊天的時候，LINE 也會打到我們提供的 webhook URL ，那 LINE 究竟給了我們什麼呢？ 我們先試著在上一篇建立的 app\Http\Controller\LineController 中修改一些東西，印出來看看 123456try &amp;#123;    $events = $bot-&amp;gt;parseEventRequest($body, $">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-09-25T09:23:52.837Z">
+<meta property="og:updated_time" content="2019-10-01T08:17:46.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="做一個自己的 LINE chatbot">
-<meta name="twitter:description" content="想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得 基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！ 讀者需求  想擁有屬於自己的LINE聊天機器人 略懂 PHP （我會以 Laravel 為例）  第 1 章：入門階段1.1 認識聊天機器人 什麼是聊天機器人 我需要會人工智慧、機器">
+<meta name="twitter:title" content="LINE 聊天機器人: Hello world!">
+<meta name="twitter:description" content="看到這邊，應該會好奇，當使用者每次和機器人聊天的時候，LINE 也會打到我們提供的 webhook URL ，那 LINE 究竟給了我們什麼呢？ 我們先試著在上一篇建立的 app\Http\Controller\LineController 中修改一些東西，印出來看看 123456try &amp;#123;    $events = $bot-&amp;gt;parseEventRequest($body, $">
 
 
 
 
 
 
-  <link rel="canonical" href="https://ericwu.asia/2019/06/30/line-bot-outline/">
+  <link rel="canonical" href="https://ericwu.asia/2019/09/25/line-chatbot-webhook-data-schema/">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>做一個自己的 LINE chatbot | Eric's BLOG</title>
+  <title>LINE 聊天機器人: Hello world! | Eric's BLOG</title>
   
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/06/30/line-bot-outline/">
+    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/25/line-chatbot-webhook-data-schema/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">做一個自己的 LINE chatbot
+          <h1 class="post-title" itemprop="name headline">LINE 聊天機器人: Hello world!
               
             
           </h1>
@@ -356,7 +356,7 @@
                 
               
 
-              <time title="Created: 2019-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00+08:00">2019-06-30</time>
+              <time title="Created: 2019-09-25 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-25T00:00:00+08:00">2019-09-25</time>
             
 
             
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-25 17:23:52" itemprop="dateModified" datetime="2019-09-25T17:23:52+08:00">2019-09-25</time>
+                <time title="Modified: 2019-10-01 16:17:46" itemprop="dateModified" datetime="2019-10-01T16:17:46+08:00">2019-10-01</time>
               
             
           </span>
@@ -387,9 +387,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/line-bot-outline/#comments" itemprop="discussionUrl">
+                <a href="/2019/09/25/line-chatbot-webhook-data-schema/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/30/line-bot-outline/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/25/line-chatbot-webhook-data-schema/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,73 +417,21 @@
       
 
       
-        <p>想說自己也開發 LINE chatbot 快一年多了，所以整理一下整一年多來的心得</p>
-<p>基本上，我把這份教學寫得非常入門這是一本入門書，我會先從一些聊天機器人的基礎觀念開始，帶大家從無到有來打造一個屬於自己的聊天機器人！</p>
-<p>讀者需求</p>
-<ul>
-<li>想擁有屬於自己的LINE聊天機器人</li>
-<li>略懂 PHP （我會以 Laravel 為例）</li>
-</ul>
-<h1 id="第-1-章：入門階段"><a href="#第-1-章：入門階段" class="headerlink" title="第 1 章：入門階段"></a>第 1 章：入門階段</h1><h2 id="1-1-認識聊天機器人"><a href="#1-1-認識聊天機器人" class="headerlink" title="1.1 認識聊天機器人"></a>1.1 認識聊天機器人</h2><ul>
-<li><a href="http://ericwu.asia/2019/02/17/line-bot-what-is-chatbot/#more">什麼是聊天機器人</a></li>
-<li><a href="http://ericwu.asia/2019/09/04/do-I-need-ai-and-ml-to-do-it/">我需要會人工智慧、機器學習才能做嗎？</a></li>
-</ul>
-<h2 id="1-2-認識快速買早餐"><a href="#1-2-認識快速買早餐" class="headerlink" title="1.2 認識快速買早餐"></a>1.2 認識快速買早餐</h2><ul>
-<li>快速買早餐的誕生</li>
-<li>快速買早餐的各種功能</li>
-</ul>
-<h1 id="第-2-章：實作功能"><a href="#第-2-章：實作功能" class="headerlink" title="第 2 章：實作功能"></a>第 2 章：實作功能</h1><h2 id="2-1-從-0-到-1"><a href="#2-1-從-0-到-1" class="headerlink" title="2.1 從 0 到 1"></a>2.1 從 0 到 1</h2><ul>
-<li><a href="http://ericwu.asia/2019/09/05/create-a-line-message-api-account/">先有一個 Line Messaging API account</a></li>
-<li><a href="http://ericwu.asia/2019/09/15/let-line-server-connect-to-localhost/">讓 LINE 可以連到你的本地端：ngrok</a></li>
-<li><a href="http://ericwu.asia/2019/09/16/let-line-chatbot-say-hello-world">LINE 聊天機器人: Hello world!</a></li>
-</ul>
-<h2 id="2-2-Line-Messaging-API-的各種通知"><a href="#2-2-Line-Messaging-API-的各種通知" class="headerlink" title="2.2 Line Messaging API 的各種通知"></a>2.2 Line Messaging API 的各種通知</h2><ul>
-<li><a href="http://ericwu.asia/2019/09/25/line-chatbot-webhook-data-schema">Webhook 資料格式</a></li>
-<li>當接收到文字時</li>
-<li>當接收到圖片時</li>
-<li>當接收到影音時</li>
-<li>當接收到位置時</li>
-<li>當接收到貼圖時</li>
-<li>當你被加好友時</li>
-<li>當你被封鎖時</li>
-<li>當有人按下 Template 的 Postback 按鈕</li>
-</ul>
-<h2 id="2-3-實作關鍵字回覆"><a href="#2-3-實作關鍵字回覆" class="headerlink" title="2.3 實作關鍵字回覆"></a>2.3 實作關鍵字回覆</h2><ul>
-<li>關鍵字回覆</li>
-<li>傳送貼圖</li>
-<li>傳送圖片</li>
-<li>傳送影片</li>
-<li>傳送聲音</li>
-<li>傳送位置</li>
-<li>傳送影像地圖（Imagemap）</li>
-<li>傳送樣板（Template）</li>
-<li>樣板行為（Template Action）</li>
-</ul>
-<h2 id="2-4-懂的更多"><a href="#2-4-懂的更多" class="headerlink" title="2.4 懂的更多"></a>2.4 懂的更多</h2><ul>
-<li>經驗法則：例外訊息</li>
-<li>常常聽不懂該，該如何做？</li>
-<li>Jieba - 做最好的 Python 中文分詞</li>
-<li>分詞後的處理</li>
-</ul>
-<h2 id="2-5-讓機器人聆聽"><a href="#2-5-讓機器人聆聽" class="headerlink" title="2.5 讓機器人聆聽"></a>2.5 讓機器人聆聽</h2><ul>
-<li>簡易的狀態流程</li>
-<li>創建狀態</li>
-<li>更新狀態</li>
-<li>銷毀狀態</li>
-</ul>
-<h1 id="附錄A：如何架設一個網站"><a href="#附錄A：如何架設一個網站" class="headerlink" title="附錄A：如何架設一個網站"></a>附錄A：如何架設一個網站</h1><h2 id="A-1-發布網站到-Heroku"><a href="#A-1-發布網站到-Heroku" class="headerlink" title="A.1 發布網站到 Heroku"></a>A.1 發布網站到 Heroku</h2><ul>
-<li>註冊 Heroku 帳號</li>
-<li>Heroku CLI 初始設定</li>
-<li>git 初始設定</li>
-<li>專案的 git 初始設定</li>
-<li>專案的 Heroku 初始設定</li>
-<li>上傳程式碼到 Heroku</li>
-</ul>
-<h1 id="附錄B-LINE-Protostar"><a href="#附錄B-LINE-Protostar" class="headerlink" title="附錄B: LINE Protostar"></a>附錄B: LINE Protostar</h1><h2 id="B-1-這是一個什麼樣的計畫"><a href="#B-1-這是一個什麼樣的計畫" class="headerlink" title="B.1 這是一個什麼樣的計畫"></a>B.1 這是一個什麼樣的計畫</h2><h2 id="B-2-加入-LINE-Protostar"><a href="#B-2-加入-LINE-Protostar" class="headerlink" title="B.2 加入 LINE Protostar"></a>B.2 加入 LINE Protostar</h2><ul>
-<li>我可以加入嗎？</li>
-<li>我該如何加入？</li>
-<li>從0到1，加入血淚史</li>
-</ul>
+        <p>看到這邊，應該會好奇，當使用者每次和機器人聊天的時候，LINE 也會打到我們提供的 webhook URL ，那 LINE 究竟給了我們什麼呢？</p>
+<p>我們先試著在上一篇建立的 <code>app\Http\Controller\LineController</code> 中修改一些東西，印出來看看</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $events = $bot-&gt;parseEventRequest($body, $signature);</span><br><span class="line">    Log::info($events); <span class="comment">// 增加這個 Log，將收到的訊息印出來</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (\<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">    Log::error($e-&gt;getMessage());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然後對著聊天機器人傳送一則訊息看看，就可以看到這個 <code>$events</code> 裡面到底放了什麼？</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span> (</span><br><span class="line">  <span class="number">0</span> =&gt; </span><br><span class="line">  LINE\LINEBot\Event\MessageEvent\TextMessage::__set_state(</span><br><span class="line">      <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'message'</span> =&gt; </span><br><span class="line">                <span class="keyword">array</span> (</span><br><span class="line">                    <span class="string">'type'</span> =&gt; <span class="string">'text'</span>,</span><br><span class="line">                    <span class="string">'id'</span> =&gt; <span class="string">'10629983864837'</span>,</span><br><span class="line">                    <span class="string">'text'</span> =&gt; <span class="string">'這是一段文字'</span>,</span><br><span class="line">                ),</span><br><span class="line">            <span class="string">'event'</span> =&gt; </span><br><span class="line">                <span class="keyword">array</span> (</span><br><span class="line">                    <span class="string">'type'</span> =&gt; <span class="string">'message'</span>,</span><br><span class="line">                    <span class="string">'replyToken'</span> =&gt; <span class="string">'773xxxxxx10044c9b52ac0b185145023'</span>,</span><br><span class="line">                    <span class="string">'source'</span> =&gt; </span><br><span class="line">                        <span class="keyword">array</span> (</span><br><span class="line">                            <span class="string">'userId'</span> =&gt; <span class="string">'Ubefxxxxxxbdc59b024344f4ce81e7911'</span>,</span><br><span class="line">                            <span class="string">'type'</span> =&gt; <span class="string">'user'</span>,</span><br><span class="line">                        )</span><br><span class="line">                )</span><br><span class="line">            <span class="string">'timestamp'</span> =&gt; <span class="number">1569403340191</span></span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>此時 LINE 收到使用者的文字訊息後，會把這則文字訊息傳到我們剛剛給的 webhook 位址。我們把它印出來後，可以看到這個 JSON 是一個 webhook event object，此物件(events)包含 1 ~ n 個 event。先拿一個 event 來說明，從第一個先看：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'message'</span> =&gt; </span><br><span class="line">    <span class="keyword">array</span> (</span><br><span class="line">        <span class="string">'type'</span> =&gt; <span class="string">'text'</span>,</span><br><span class="line">        <span class="string">'id'</span> =&gt; <span class="string">'10629983864837'</span>,</span><br><span class="line">        <span class="string">'text'</span> =&gt; <span class="string">'這是一段文字'</span>,</span><br><span class="line">    ),</span><br></pre></td></tr></table></figure>
+<p><code>message</code> 這個區塊主要是描述使用者傳來的訊息，我們可以從 <code>type</code> 看出這段訊息的類型； <code>id</code> 可以看出這則訊息的唯一識別碼； <code>text</code> 會有使用者傳過來的訊息。</p>
+<p>接著是第二個區塊：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'event'</span> =&gt; </span><br><span class="line">    <span class="keyword">array</span> (</span><br><span class="line">        <span class="string">'type'</span> =&gt; <span class="string">'message'</span>,</span><br><span class="line">        <span class="string">'replyToken'</span> =&gt; <span class="string">'773xxxxxx10044c9b52ac0b185145023'</span>,</span><br><span class="line">        <span class="string">'source'</span> =&gt; </span><br><span class="line">            <span class="keyword">array</span> (</span><br><span class="line">                <span class="string">'userId'</span> =&gt; <span class="string">'Ubefxxxxxxbdc59b024344f4ce81e7911'</span>,</span><br><span class="line">                <span class="string">'type'</span> =&gt; <span class="string">'user'</span>,</span><br><span class="line">            ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>這裡描述著使用者傳過來的事件資訊。 <code>type</code> 是這則訊息的類型。 <code>replyToken</code> 則是在回應此訊息使用，當程式要回應此訊息時須使用此 token，這個 token 的有效時間不一定，但是相當的短，所以要回覆的話要儘快。</p>
+<p>再來是， <code>source</code> 的這個部分。這裡會描述 <code>哪種人？</code> 和 <code>誰？</code> 傳過來的訊息。 <code>type</code> 可以得知是群組傳的訊息？還是使用者傳的訊息？所以可能是 <code>user</code> 或者是 <code>group</code> ； <code>userId</code> 則是傳過來的使用者的 <code>id</code> ，假設是群組傳過來的話，將會是 <code>groupId</code> （若使用者有同意 official accounts terms of use ，則會再多一個屬性 <code>userId</code>）。</p>
+<p>最後一個 ：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'timestamp'</span> =&gt; <span class="number">1569403340191</span></span><br></pre></td></tr></table></figure>
+<p>這個很單純就是這則訊息的時間戳，採用 UNIX 時間，也就是從 UTC 1970 年 1 月 1 日 0 時 0 分 0 秒起到現在不考慮閏秒的總秒數。</p>
 
       
     </div>
@@ -523,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/06/mock-http-responses-to-test-rest-api/" rel="next" title="產生任何 Mock HTTP 回應的好工具 - Mocky.io">
-                <i class="fa fa-chevron-left"></i> 產生任何 Mock HTTP 回應的好工具 - Mocky.io
+              <a href="/2019/09/16/let-line-chatbot-say-hello-world/" rel="next" title="LINE 聊天機器人: Hello world!">
+                <i class="fa fa-chevron-left"></i> LINE 聊天機器人: Hello world!
               </a>
             
           </div>
@@ -532,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/17/line-bot-what-is-chatbot/" rel="prev" title="什麼是聊天機器人">
-                什麼是聊天機器人 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -804,9 +748,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://ericwu.asia/2019/06/30/line-bot-outline/';
-        this.page.identifier = '2019/06/30/line-bot-outline/';
-        this.page.title = '做一個自己的 LINE chatbot';
+        this.page.url = 'https://ericwu.asia/2019/09/25/line-chatbot-webhook-data-schema/';
+        this.page.identifier = '2019/09/25/line-chatbot-webhook-data-schema/';
+        this.page.title = 'LINE 聊天機器人: Hello world!';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
