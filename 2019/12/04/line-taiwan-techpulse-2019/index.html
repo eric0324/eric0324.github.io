@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="今年也是第三次參加 LINE TAIWAN TECHPULSE 了，這次很感謝 NiJia 和 Evan 的邀請，讓小弟我可以坐在前排搖滾區，更近距離的看到各項精彩的議程。今年的內容可以看到 LINE 在任何地方都有提到 ML ，看的出 LINE 的野心和佈局，看得我也想學習 ML 了（誤 活動資訊LINE 台灣舉辦第四屆開發者大會「LINE TAIWAN TECHPULSE 2019」，藉此科技">
+<meta name="keywords" content="LINE,techpulse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LINE TAIWAN TECHPULSE 2019 參加心得">
+<meta property="og:url" content="https://ericwu.asia/2019/12/04/line-taiwan-techpulse-2019/index.html">
+<meta property="og:site_name" content="Eric&#39;s BLOG">
+<meta property="og:description" content="今年也是第三次參加 LINE TAIWAN TECHPULSE 了，這次很感謝 NiJia 和 Evan 的邀請，讓小弟我可以坐在前排搖滾區，更近距離的看到各項精彩的議程。今年的內容可以看到 LINE 在任何地方都有提到 ML ，看的出 LINE 的野心和佈局，看得我也想學習 ML 了（誤 活動資訊LINE 台灣舉辦第四屆開發者大會「LINE TAIWAN TECHPULSE 2019」，藉此科技">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://i.imgur.com/YnK79VM.jpg">
+<meta property="og:image" content="https://i.imgur.com/xxuzf34.jpg">
+<meta property="og:image" content="https://i.imgur.com/XRosWns.jpg">
+<meta property="og:image" content="https://i.imgur.com/cSQZLJE.jpg">
+<meta property="og:image" content="https://i.imgur.com/5YW445X.jpg">
+<meta property="og:image" content="https://i.imgur.com/pFi4Rwk.jpg">
+<meta property="og:image" content="https://i.imgur.com/0rXIVbz.jpg">
+<meta property="og:image" content="https://i.imgur.com/sTHBQ3t.jpg">
+<meta property="og:image" content="https://i.imgur.com/qs8vcF6.jpg">
+<meta property="og:updated_time" content="2019-12-05T02:39:02.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LINE TAIWAN TECHPULSE 2019 參加心得">
+<meta name="twitter:description" content="今年也是第三次參加 LINE TAIWAN TECHPULSE 了，這次很感謝 NiJia 和 Evan 的邀請，讓小弟我可以坐在前排搖滾區，更近距離的看到各項精彩的議程。今年的內容可以看到 LINE 在任何地方都有提到 ML ，看的出 LINE 的野心和佈局，看得我也想學習 ML 了（誤 活動資訊LINE 台灣舉辦第四屆開發者大會「LINE TAIWAN TECHPULSE 2019」，藉此科技">
+<meta name="twitter:image" content="https://i.imgur.com/YnK79VM.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://ericwu.asia/2019/12/04/line-taiwan-techpulse-2019/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LINE TAIWAN TECHPULSE 2019 參加心得 | Eric's BLOG</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148044637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148044637-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eric's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Dream it. Wish it. Do it.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-projects">
+    <a href="/projects/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-flask"></i> <br>projects</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/12/04/line-taiwan-techpulse-2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eric Wu">
+      <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
+      <meta itemprop="image" content="/images/avaster.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eric's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LINE TAIWAN TECHPULSE 2019 參加心得
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-04 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-04T00:00:00+08:00">2019-12-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-05 10:39:02" itemprop="dateModified" datetime="2019-12-05T10:39:02+08:00">2019-12-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/04/line-taiwan-techpulse-2019/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/04/line-taiwan-techpulse-2019/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今年也是第三次參加 LINE TAIWAN TECHPULSE 了，這次很感謝 NiJia 和 Evan 的邀請，讓小弟我可以坐在前排搖滾區，更近距離的看到各項精彩的議程。今年的內容可以看到 LINE 在任何地方都有提到 ML ，看的出 LINE 的野心和佈局，看得我也想學習 ML 了（誤</p>
+<h2 id="活動資訊"><a href="#活動資訊" class="headerlink" title="活動資訊"></a>活動資訊</h2><p>LINE 台灣舉辦第四屆開發者大會「LINE TAIWAN TECHPULSE 2019」，藉此科技產業的年度盛事，為台灣開發者提供來自日本 DevDay 2019 的第一手訊息，實現「開發工程（Engineering）」、「產品開發（Production）」的願景，並為開發者介紹 AI 人工智慧、資訊安全、測試自動化、敏捷開發、新創團隊分享等眾多領域的最新趨勢。</p>
+<p>演講嘉賓包含國際知名資安專家李丞鎮 (Beist)、NAVER Clova AI Chatbot AutoML  專家李在元 (Jaewon Lee)、 LINE Timeline Post  推薦系統負責人李知洪 (Jihong Lee)，以及眾多各領域專家，於現場傳授專業知識，回歸開發者本質，以實務觀點探究產品開發，並介紹 LINE 開放平台資源與創新應用，敬邀您蒞臨參加!</p>
+<h2 id="活動議程"><a href="#活動議程" class="headerlink" title="活動議程"></a>活動議程</h2><table>
+<thead>
+<tr>
+<th>TIME</th>
+<th>TOPIC</th>
+<th>SPEAKER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:30 - 09:35</td>
+<td>Opening</td>
+<td>Roger Chen</td>
+</tr>
+<tr>
+<td>09:35 - 10:00</td>
+<td>Keynote</td>
+<td>Marco Chen</td>
+</tr>
+<tr>
+<td>10:00 - 10:30</td>
+<td>LINE Platform API Update</td>
+<td>Evan Lin</td>
+</tr>
+<tr>
+<td>10:30 - 10:40</td>
+<td>Break</td>
+<td></td>
+</tr>
+<tr>
+<td>10:40 - 11:20</td>
+<td>AutoML in Clova Chatbot Builder Framework (English)</td>
+<td>Jaewon Lee / Penny Sun</td>
+</tr>
+<tr>
+<td>11:20 - 12:00</td>
+<td>How LINE Does Enterprise Security (English)</td>
+<td>Beist</td>
+</tr>
+<tr>
+<td>12:00 - 12:30</td>
+<td>Timeline Post Recommender System (English)</td>
+<td>Jihong Lee</td>
+</tr>
+<tr>
+<td>12:30 - 13:30</td>
+<td>Lunch Break</td>
+</tr>
+<tr>
+<td>13:30 - 15:10</td>
+<td>Protostar Program Introduction &amp; Startup Demo</td>
+<td>Kevin Chen</td>
+</tr>
+<tr>
+<td>15:10 - 15:40</td>
+<td>LINE Pay - New Features of LINE Pay</td>
+<td>Webber Su / Sabrina Lee</td>
+</tr>
+<tr>
+<td>15:40 - 15:50</td>
+<td>Break</td>
+<td></td>
+</tr>
+<tr>
+<td>15:50 - 16:20</td>
+<td>LINE SPOT and How We Build It</td>
+<td>Julian Shen</td>
+</tr>
+<tr>
+<td>16:20 - 16:50</td>
+<td>Lightning Talk - Data Pipeline and Data Processing</td>
+<td>Yumei Chen / Jim Horng / Denny Tsai</td>
+</tr>
+<tr>
+<td>16:50 - 17:20</td>
+<td>Lightning Talk - Data Science and Analytics</td>
+<td>Shawn Tsai / Liwen Liao / Johnson Wu</td>
+</tr>
+<tr>
+<td>17:20 - 17:50</td>
+<td>Lightning Talk - Client and Automation</td>
+<td>Daniel Kao / JJ Lin / Winter Hung</td>
+</tr>
+<tr>
+<td>17:50 - 18:00</td>
+<td>Closing</td>
+<td>Marco Chen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="場地與報到"><a href="#場地與報到" class="headerlink" title="場地與報到"></a>場地與報到</h2><p>這次的 LINE 官方帳號有比去年的順很多，我記得去年我開了藍牙弄了半天都收不到通知。今年的我才剛下車在去會場的半路上就收到座位通知。</p>
+<p><img src="https://i.imgur.com/YnK79VM.jpg" alt="Imgur"></p>
+<p>再走個幾步路就看到大大的 LINE TAIWAN TECHPULSE 2019 牌子 在歡迎大家了！</p>
+<p><img src="https://i.imgur.com/xxuzf34.jpg" alt="Imgur"></p>
+<p>接著就拿著這個座位畫面，到前台去報到，前台工作人員會協助綁上手環，手環顏色作為場地位置的區分。這次的座位在前排水藍色搖滾區。</p>
+<p><img src="https://i.imgur.com/XRosWns.jpg" alt="Imgur"></p>
+<p>今年活動會場有別於以往，弄的超有氣氛的，感覺很嗨！！</p>
+<p><img src="https://i.imgur.com/cSQZLJE.jpg" alt="Imgur"></p>
+<h2 id="Opening-amp-Keynote"><a href="#Opening-amp-Keynote" class="headerlink" title="Opening &amp; Keynote"></a>Opening &amp; Keynote</h2><p>前面兩場是 LINE 台灣總經理 Roger 和 Marco 的分享，大概就是 LINE 的企業目標</p>
+<ul>
+<li>LIFE on LINE ，反正就是希望生活的每個角落都有 LINE。</li>
+<li>LINE Brain：LINE 是一個致力於 AI 公司，將來會提供給開發者可以去運用 ML 相關的服務，這點我還滿有興趣的。</li>
+</ul>
+<h2 id="LINE-Platform-API-Update"><a href="#LINE-Platform-API-Update" class="headerlink" title="LINE Platform API Update"></a>LINE Platform API Update</h2><p>這場提到了 LINE 更加注意 UX/DX ，不僅僅是注重使用者體驗，也很在意開發者在開發上的體驗，比如說文件有中文版了，LIFF 以往在開發的時候超克難，LIFF 2.0 改成能用瀏覽器登入，通訊協定從 <code>line://</code> 改成 <code>https://</code>，也就是說現在可以在電腦上面直接打開 debug （撒花</p>
+<p>還有帶來的幾個新的 API ，其中我最開心的是終於可以批次更新 rich menu 了，以往要幫使用者更新 rich menu ，是一件超級崩潰的事情，要一個一個使用者去重新 link 起來，現在終於不用了（再次撒花<br><img src="https://i.imgur.com/5YW445X.jpg" alt="Imgur"></p>
+<p>另外還推了下，Flex Message Simulator(Beta)：由別於以往 Flex Message Simulator(Alpha) ，新版的提供了圖像化介面，可以有效協非工程背景（看不懂 JSON）的去設計介面。順便廣告一下自己，如果在 Flex Message 開發上缺乏靈感，不妨來逛逛我的  <a href="https://line-flex-box.herokuapp.com/" target="_blank" rel="noopener">Flex Box</a></p>
+<p>另外，也介紹了 OA 2.0 所帶來的好處。</p>
+<h2 id="AutoML-in-Clova-Chatbot-Builder-Framework"><a href="#AutoML-in-Clova-Chatbot-Builder-Framework" class="headerlink" title="AutoML in Clova Chatbot Builder Framework"></a>AutoML in Clova Chatbot Builder Framework</h2><p>這場介紹了 Clova Chatbot Builde，就是提供了一很棒的介面，可以去製作 Clova Chatbot，然後 CLOVA AutoML 還導入 NLP 模型，講者野解釋了，模型如何被建立、分類，提高 performance</p>
+<h2 id="How-LINE-Does-Enterprise-Security"><a href="#How-LINE-Does-Enterprise-Security" class="headerlink" title="How LINE Does Enterprise Security"></a>How LINE Does Enterprise Security</h2><p>對資安的議題比較沒感覺，所以我這場我就沒有筆記了</p>
+<p><img src="https://i.imgur.com/pFi4Rwk.jpg" alt="Imgur"></p>
+<h2 id="Timeline-Post-Recommender-System"><a href="#Timeline-Post-Recommender-System" class="headerlink" title="Timeline Post Recommender System"></a>Timeline Post Recommender System</h2><p>Timeline 要建立一個高度個人化的動態牆。這場講了些建立模型遇到的問題，還有怎麼做。</p>
+<h2 id="Break"><a href="#Break" class="headerlink" title="Break"></a>Break</h2><p>接著是午餐時間，這次沒有提供便當，可能是天氣冷的關係，餐點都涼掉了….我覺得有點美中不足<br><img src="https://i.imgur.com/0rXIVbz.jpg" alt="Imgur"></p>
+<h2 id="Protostar-Program-Introduction-amp-Startup-Demo"><a href="#Protostar-Program-Introduction-amp-Startup-Demo" class="headerlink" title="Protostar Program Introduction &amp; Startup Demo"></a>Protostar Program Introduction &amp; Startup Demo</h2><p>因為之前在前公司 5breakfast ，負責推產品上 LINE Protostar ，所以這是我最關心的議程。這次有 10 家公司入選成為 Protostar。這次讓 10 家輪流上台介紹自己的 LINE chatBot。私心覺得這次醫療相關的真的很多，看來 LINE 很想進入醫療領域這塊</p>
+<ul>
+<li>牙醫小幫手：這是前公司隔壁桌的好鄰居，當初的 chatbot 問題還滿多的，不過現在進步神速，流程改的很順暢</li>
+<li>記帳雞：未來將會有點數機制，也和銀行在討論整合的可能。</li>
+<li>AlleyPin：也是牙醫相關的。</li>
+<li>途你：給學生的旅遊平台，可以租車，然後也有自己的車。</li>
+<li>肚肚：跟前公司 5breakfast 做的事情有點類似，但是更完善了，從購買餐卷到訂位，甚至於後面那段串接 POS ，相當完善。</li>
+<li>通勤學：學習服務，這個滿有趣的，我聽完之後馬上就上去『聽』了幾堂有趣的課。</li>
+<li>MONTAGG：影片推薦系統。</li>
+<li>TikiPoki：一售票系統，算是 LINE 上面少數的販售票卷服務。</li>
+<li>DR.LINE：又是一間診所。</li>
+<li>U-Life+：提供慢性病處方籤服務。簡報滿滿的新細明體，很崩潰…</li>
+</ul>
+<h2 id="LINE-Pay-New-Features-of-LINE-Pay"><a href="#LINE-Pay-New-Features-of-LINE-Pay" class="headerlink" title="LINE Pay - New Features of LINE Pay"></a>LINE Pay - New Features of LINE Pay</h2><p>LINE 要可以跨海交易了！以後去日本、韓國和泰國，也可以刷 LINE Pay 了。</p>
+<p>LINE Pay 改變了舊框架 <code>Batch Processin</code>，但是遇到一個問題，就是說在第一階段交易階段，接著第二階段清算階段，在這過程效能會越來越慢，如何改成全新的框架 <code>Realtime Processing</code>，藉以提升效能。</p>
+<p>另外，LINE Pay API v3 來了，這次在認證上做了改變，第三版使用新款電子簽證。以及為了滿足多產品綁在一起的需求，把產品欄位設計從 <code>single</code> 調整為 <code>multi</code>。</p>
+<p>另外，以後真的可以不用帶錢包了（笑），現在連會員卡片都要整進 LINE Pay 囉</p>
+<p><img src="https://i.imgur.com/sTHBQ3t.jpg" alt="imgur"></p>
+<h2 id="LINE-SPOT-and-How-We-Build-It"><a href="#LINE-SPOT-and-How-We-Build-It" class="headerlink" title="LINE SPOT and How We Build It"></a>LINE SPOT and How We Build It</h2><p>這場議程提供了 <code>micro services</code> 的整合範例，講解了 <code>micro services</code> 的好處，以及 <code>micro services</code> 怎麼去做，面對服務越來越肥大，流量越來越大的應用，這場是個很好的經驗分享，值得去效法</p>
+<p>接著是 <code>Lightning Talk</code> ，但是也很想去外面的攤位晃晃，所以我就沒有參加到，這次有 LINE 的各個 team 的攤位，可以和他們直接面對面問問題，也有 LAE 的攤位，可以和 LAE 聊聊 LINE API 遇到的問題，雖然我都在聊 AWS 的東西（誤）</p>
+<p>接著是，這次這一次的紀念品，側背包和衣服，我覺得側背包還不錯的，設計的很酷<br><img src="https://i.imgur.com/qs8vcF6.jpg" alt="imgur"></p>
+<p>我覺得這次整體時間控制很差，整個時間一直往後延（一個小時有吧…）。另外場地雖然很炫，但是在講者登台時的燈光特效，都直接直射眼睛….非常的刺眼不舒服，相較起來，我比較喜歡去年和前年的場地。另外提供餐點都是涼的，午餐吃起來滿崩潰的，加上動線問題，搶食物超級艱難…</p>
+<p>然後，這次議程內容相當紮實，可以說是收穫滿滿。只是聽議程需要十分專注，一整天下來，真的還滿吃力的！</p>
+<p>總之，謝謝 LINE 提供這麼棒的活動。明年見！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LINE/" rel="tag"># LINE</a>
+          
+            <a href="/tags/techpulse/" rel="tag"># techpulse</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/25/line-chatbot-webhook-data-schema/" rel="next" title="Webhook 資料格式">
+                <i class="fa fa-chevron-left"></i> Webhook 資料格式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avaster.jpeg" alt="Eric Wu">
+            
+              <p class="site-author-name" itemprop="name">Eric Wu</p>
+              <p class="site-description motion-element" itemprop="description">Eric 的個人空間，內有個人心得、學習筆記、廢文</p>
+          </div>
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/eric0324" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:smart032410@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/eric032410" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/eric0324" target="_blank" title="FB Page"><i class="fa fa-fw fa-facebook"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eric Wu</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://ericwu-asia.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://ericwu.asia/2019/12/04/line-taiwan-techpulse-2019/';
+        this.page.identifier = '2019/12/04/line-taiwan-techpulse-2019/';
+        this.page.title = 'LINE TAIWAN TECHPULSE 2019 參加心得';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ericwu-asia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              // offsetTop may changes because of manually resizing browser window or lazy loading images.
+              var offsetTop = $('#comments').offset().top - $(window).height();
+              var scrollTop = $(window).scrollTop();
+
+              // pre-load comments a bit? (margin or anything else)
+              if (offsetTop - scrollTop < 60) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

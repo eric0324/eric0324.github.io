@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -189,7 +189,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
 
   
   
@@ -199,7 +199,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -309,20 +309,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2015/04/26/rails-note.1/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
       <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
       <meta itemprop="image" content="/images/avaster.jpeg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Eric's BLOG">
     </span>
 
@@ -434,7 +434,7 @@
 <p>之後會跳出視窗，請按下<figure class="highlight plain"><figcaption><span>開始安裝Command Line Tools</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Install Homebrew</span><br><span class="line">我嘗試很多方法，直接用Homebrew這個套件管理工具最方便。只要輸入</span><br></pre></td></tr></table></figure></p>
 <p>$ ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go/install)&quot;" target="_blank" rel="noopener">https://raw.github.com/mxcl/homebrew/go/install)&quot;</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 中間省略n百行</span><br></pre></td></tr></table></figure>
-<p>==&gt; <installation successful!=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">反正看到```&lt;Installation successful!&gt;```就代表安裝成功。</span><br><span class="line"></span><br><span class="line">### Install Ruby and Rails</span><br><span class="line">這個部分，也是有很多裝法。而我是使用管理程式為RVM，其他如rbenv, chruby等也可以達到同樣的效果，也有些朋友似乎反對RVM。但就我個人而言，一般使用來說RVM足已，簡單易瞭安裝方便更是新手的好選擇。</span><br><span class="line"></span><br><span class="line">* 首先安裝 RVM (Ruby Version Manager)</span><br><span class="line">```$ curl -L https://get.rvm.io | bash -s stable --ruby</span><br></pre></td></tr></table></figure></installation></p>
+<p>==&gt; <installation successful!><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">反正看到```&lt;Installation successful!&gt;```就代表安裝成功。</span><br><span class="line"></span><br><span class="line">### Install Ruby and Rails</span><br><span class="line">這個部分，也是有很多裝法。而我是使用管理程式為RVM，其他如rbenv, chruby等也可以達到同樣的效果，也有些朋友似乎反對RVM。但就我個人而言，一般使用來說RVM足已，簡單易瞭安裝方便更是新手的好選擇。</span><br><span class="line"></span><br><span class="line">* 首先安裝 RVM (Ruby Version Manager)</span><br><span class="line">```$ curl -L https://get.rvm.io | bash -s stable --ruby</span><br></pre></td></tr></table></figure></installation></p>
 <p>這個指令幫你安裝RVM，並且在幫你安裝最新穩定版本的Ruby，上面跑完一堆東西安裝完了之後，重新啟動Terminal。</p>
 <p>檢查一下版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rvm -v</span><br><span class="line">    rvm 1.26.3 (lastest) by Wayne E. Seguin &lt;wayneeseguin@gmail.com&gt;, Michal Papis &lt;mpapis@gmail.com&gt; [https://rvm.io/]    </span><br><span class="line">$ ruby -v</span><br><span class="line">    ruby 2.1.5p273 (2014-11-13 revision 48405) [x86_64-darwin14.0]</span><br><span class="line">$ rvm -list可看目前rvm管理的東西，還有當前使用的ruby版本</span><br></pre></td></tr></table></figure></p>
 <p>如果rvm設定跑掉，可以下<figure class="highlight plain"><figcaption><span>get stable --auto-dotfiles```重置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">再來安裝 Rails</span><br><span class="line">```$ gem install rails --no-ri --no-rdoc</span><br></pre></td></tr></table></figure></p>
@@ -573,7 +573,7 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avaster.jpeg" alt="Eric Wu">
             

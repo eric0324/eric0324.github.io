@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -121,7 +121,7 @@
 <meta property="og:description" content="前面講了這麼多，終於要進入重點了。現在來寫一個會回應的 LINE 聊天機器人吧！ 無論你是透過 Laravel 安裝工具 的 laravel new 或是 composer create-project 的方式 都可以，反正就是新安裝一份 Laravel 專案吧！ 在你安裝完 Laravel 後，首先需要做的事情就是設定一個隨機字串到應用程式金鑰。如果這金鑰沒有被設定的話，你的使用者 sessio">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.imgur.com/jev0zoF.png">
-<meta property="og:updated_time" content="2019-09-25T09:26:54.257Z">
+<meta property="og:updated_time" content="2019-10-09T01:16:26.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LINE 聊天機器人: Hello world!">
 <meta name="twitter:description" content="前面講了這麼多，終於要進入重點了。現在來寫一個會回應的 LINE 聊天機器人吧！ 無論你是透過 Laravel 安裝工具 的 laravel new 或是 composer create-project 的方式 都可以，反正就是新安裝一份 Laravel 專案吧！ 在你安裝完 Laravel 後，首先需要做的事情就是設定一個隨機字串到應用程式金鑰。如果這金鑰沒有被設定的話，你的使用者 sessio">
@@ -191,7 +191,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
 
   
   
@@ -201,7 +201,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -311,20 +311,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2019/09/16/let-line-chatbot-say-hello-world/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
       <meta itemprop="description" content="Eric 的個人空間，內有個人心得、學習筆記、廢文">
       <meta itemprop="image" content="/images/avaster.jpeg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Eric's BLOG">
     </span>
 
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-25 17:26:54" itemprop="dateModified" datetime="2019-09-25T17:26:54+08:00">2019-09-25</time>
+                <time title="Modified: 2019-10-09 09:16:26" itemprop="dateModified" datetime="2019-10-09T09:16:26+08:00">2019-10-09</time>
               
             
           </span>
@@ -445,7 +445,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CHANNEL_ACCESS_TOKEN=&#123;&#123; YOUR_CHANNEL_ACCESS_TOKEN &#125;&#125;</span><br><span class="line">CHANNEL_SECRET=&#123;&#123; YOUR_CHANNEL_SECRET &#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>感覺好像都可以了，試著去和 chatbot 聊天的時候，會發現他還是都不理人！！！</p>
 <p>沒錯！因為 Laravel 這邊有個小小的坑，就是 Laravel 很貼心地做了 Csrf Token 驗證，所以 LINE 打過來的資料被視為非法的，所以被拒絕了！因此我們需要讓 LINE 打過來的這個 webhook 是暢通的。</p>
-<p>先打開 <code>app/Http/Middleware/VerifyCsrfToken.php</code> ，修改內容</p>
+<p>先打開 <code>app/Middleware/VerifyCsrfToken.php</code> ，修改內容</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Middleware</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Http</span>\<span class="title">Middleware</span>\<span class="title">VerifyCsrfToken</span> <span class="title">as</span> <span class="title">Middleware</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VerifyCsrfToken</span> <span class="keyword">extends</span> <span class="title">Middleware</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Indicates whether the XSRF-TOKEN cookie should be set on the response.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> bool</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> $addHttpCookie = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The URIs that should be excluded from CSRF verification.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> $except = [</span><br><span class="line">        <span class="string">'/callback'</span> <span class="comment">// 添加這行</span></span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這樣就會告訴 Laravel 說 <code>/callback</code> 這個路徑就不需要做驗證囉！這樣再去找聊天機器人聊天，應該就會 <code>Hello world</code> 了喔！</p>
 
@@ -557,7 +557,7 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avaster.jpeg" alt="Eric Wu">
             
