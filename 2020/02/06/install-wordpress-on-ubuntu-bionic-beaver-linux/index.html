@@ -113,14 +113,14 @@
 
 
   <meta name="description" content="前置作業在 WordPress 安裝之前，我們需要一些前置作業，我們會需要使用到 curl、unzip 和 taskel 。 所以我們先透過 linux 命令來安裝這三個工具： 1$ sudo apt install -y curl unzip tasksel LAMP這篇教學將使用 LAMP（Linux，Apache，MySQL，PHP）架構，所以我們接著開始部署環境。 使用 tasksel 命">
-<meta name="keywords" content="MySQL,php,WordPress">
+<meta name="keywords" content="Ubuntu,MySQL,php,WordPress,LAMP,Bionic,Beaver">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 Ubuntu 18.04 Bionic Beaver Linux 上安裝 WordPress">
-<meta property="og:url" content="https://ericwu.asia/2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/index.html">
+<meta property="og:url" content="https://ericwu.asia/2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/index.html">
 <meta property="og:site_name" content="Eric&#39;s BLOG">
 <meta property="og:description" content="前置作業在 WordPress 安裝之前，我們需要一些前置作業，我們會需要使用到 curl、unzip 和 taskel 。 所以我們先透過 linux 命令來安裝這三個工具： 1$ sudo apt install -y curl unzip tasksel LAMP這篇教學將使用 LAMP（Linux，Apache，MySQL，PHP）架構，所以我們接著開始部署環境。 使用 tasksel 命">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-02-26T02:34:48.129Z">
+<meta property="og:updated_time" content="2020-02-26T02:35:59.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Ubuntu 18.04 Bionic Beaver Linux 上安裝 WordPress">
 <meta name="twitter:description" content="前置作業在 WordPress 安裝之前，我們需要一些前置作業，我們會需要使用到 curl、unzip 和 taskel 。 所以我們先透過 linux 命令來安裝這三個工具： 1$ sudo apt install -y curl unzip tasksel LAMP這篇教學將使用 LAMP（Linux，Apache，MySQL，PHP）架構，所以我們接著開始部署環境。 使用 tasksel 命">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://ericwu.asia/2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/">
+  <link rel="canonical" href="https://ericwu.asia/2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/">
 
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/">
+    <link itemprop="mainEntityOfPage" href="https://ericwu.asia/2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Eric Wu">
@@ -356,7 +356,7 @@
                 
               
 
-              <time title="Created: 2020-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-02-01T00:00:00+08:00">2020-02-01</time>
+              <time title="Created: 2020-02-06 00:00:00" itemprop="dateCreated datePublished" datetime="2020-02-06T00:00:00+08:00">2020-02-06</time>
             
 
             
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-26 10:34:48" itemprop="dateModified" datetime="2020-02-26T10:34:48+08:00">2020-02-26</time>
+                <time title="Modified: 2020-02-26 10:35:59" itemprop="dateModified" datetime="2020-02-26T10:35:59+08:00">2020-02-26</time>
               
             
           </span>
@@ -387,9 +387,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/#comments" itemprop="discussionUrl">
+                <a href="/2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -464,11 +464,19 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
             <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
             <a href="/tags/php/" rel="tag"># php</a>
           
             <a href="/tags/WordPress/" rel="tag"># WordPress</a>
+          
+            <a href="/tags/LAMP/" rel="tag"># LAMP</a>
+          
+            <a href="/tags/Bionic/" rel="tag"># Bionic</a>
+          
+            <a href="/tags/Beaver/" rel="tag"># Beaver</a>
           
         </div>
       
@@ -481,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/15/laravel-uses-env-function-to-read-environment-variable-is-null/" rel="next" title="Laravel 使用 env 函式讀取環境變數為 null 的問題">
-                <i class="fa fa-chevron-left"></i> Laravel 使用 env 函式讀取環境變數為 null 的問題
+              <a href="/2020/02/01/how-to-clear-cache-in-Laravel/" rel="next" title="Laravel 如何清理快取">
+                <i class="fa fa-chevron-left"></i> Laravel 如何清理快取
               </a>
             
           </div>
@@ -490,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/01/how-to-clear-cache-in-Laravel/" rel="prev" title="Laravel 如何清理快取">
-                Laravel 如何清理快取 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -762,8 +766,8 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://ericwu.asia/2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/';
-        this.page.identifier = '2020/02/01/install-wordpress-on-ubuntu-bionic-beaver-linux/';
+        this.page.url = 'https://ericwu.asia/2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/';
+        this.page.identifier = '2020/02/06/install-wordpress-on-ubuntu-bionic-beaver-linux/';
         this.page.title = '在 Ubuntu 18.04 Bionic Beaver Linux 上安裝 WordPress';
         };
       function loadComments () {
