@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="Eric&#39;s BLOG">
 <meta property="og:description" content="前置作業在 WordPress 安裝之前，我們需要一些前置作業，我們會需要使用到 curl、unzip 和 taskel 。 所以我們先透過 linux 命令來安裝這三個工具： 1$ sudo apt install -y curl unzip tasksel LAMP這篇教學將使用 LAMP（Linux，Apache，MySQL，PHP）架構，所以我們接著開始部署環境。 使用 tasksel 命">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-02-26T02:35:59.256Z">
+<meta property="og:updated_time" content="2020-02-26T02:41:14.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Ubuntu 18.04 Bionic Beaver Linux 上安裝 WordPress">
 <meta name="twitter:description" content="前置作業在 WordPress 安裝之前，我們需要一些前置作業，我們會需要使用到 curl、unzip 和 taskel 。 所以我們先透過 linux 命令來安裝這三個工具： 1$ sudo apt install -y curl unzip tasksel LAMP這篇教學將使用 LAMP（Linux，Apache，MySQL，PHP）架構，所以我們接著開始部署環境。 使用 tasksel 命">
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-26 10:35:59" itemprop="dateModified" datetime="2020-02-26T10:35:59+08:00">2020-02-26</time>
+                <time title="Modified: 2020-02-26 10:41:14" itemprop="dateModified" datetime="2020-02-26T10:41:14+08:00">2020-02-26</time>
               
             
           </span>
@@ -442,7 +442,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl --output /tmp/wordpress.zip https://wordpress.org/latest.zip</span><br></pre></td></tr></table></figure>
 <p>接下來，將 WordPress 文件放到 Web 服務器的根目錄 <code>/var/www/html</code> 中，並將文件所有權更改為 <code>www-data</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo rm -fr /var/www/html</span><br><span class="line"><span class="meta">$</span> sudo unzip /tmp/wordpress.zip -d /var/www/</span><br><span class="line"><span class="meta">$</span> sudo mv /var/www/wordpress/ /var/www/html</span><br><span class="line"><span class="meta">$</span> sudo chown -R www-data.www-data /var/www/html</span><br></pre></td></tr></table></figure>
-<h2 id="安裝-WordPress-1"><a href="#安裝-WordPress-1" class="headerlink" title="安裝 WordPress"></a>安裝 WordPress</h2><p>接著準備安裝 WordPress。</p>
+<p>接著準備安裝 WordPress。</p>
 <p>打開瀏覽器，訪問你的主機，應該就可以看到 WordPress 安裝嚮導，接著就造著畫面上的做，我就不多做贅述了。</p>
 
       
