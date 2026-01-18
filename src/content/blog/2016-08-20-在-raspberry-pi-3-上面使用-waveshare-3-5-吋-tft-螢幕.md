@@ -3,6 +3,11 @@ title: "在 Raspberry pi 3 上面使用 waveshare 3.5 吋 TFT 螢幕"
 description: "在 Raspberry pi 3 可以直接透過 HDMI 輸出畫面到螢幕上，目標是做出小型遊戲機，因此我們要使用 retropie 這個 O.S.。必較麻煩的是，要額外將 3.5 吋 TFT 螢幕接到 Raspberry pi 的 GPIO 腳位。"
 pubDate: 2016-08-20
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "技術筆記"
+tags:
+  - Raspberry Pi
+  - Hardware
+  - Linux
 ---
 
 

@@ -3,6 +3,11 @@ title: "Claude Code 使用心得"
 description: "還記得第一次聽到 Claude Code 時，我心想：「又一個 AI 工具？」直到真正用過後，才發現這不只是工具，更像是找到了一個真正理解你程式碼的開發夥伴。"
 pubDate: 2025-06-23
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "AI"
+tags:
+  - AI
+  - Claude
+  - 開發工具
 ---
 
 

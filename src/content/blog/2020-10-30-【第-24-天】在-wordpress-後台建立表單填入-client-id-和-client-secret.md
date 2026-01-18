@@ -3,6 +3,11 @@ title: "【第 24 天】在 WordPress 後台建立表單填入 Client ID 和 Cli
 description: "在 【第 22 天】開一個 LINE OA 這篇文章中，我提到，我們必須先拿著 Client ID 和 Client Secret 去取得 code ，再拿這個 code 去換 token 。"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

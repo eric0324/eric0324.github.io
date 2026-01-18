@@ -3,6 +3,11 @@ title: "【第 03 天】第一個 WordPress 外掛"
 description: "接著，我們要開始來建立第一個 WordPress 外掛囉！"
 pubDate: 2020-09-02
 heroImage: "https://i.imgur.com/%E6%88%AA%E5%9C%96-2020-08-23-%E4%B8%8B%E5%8D%886.53.14.png"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

@@ -3,6 +3,12 @@ title: "Laravel 中匯出 csv 檔案"
 description: "在開發後台的時候，需要匯出會員資料，網路上很多匯出 xml 的方式，相對於 csv 的比較少，所以紀錄一下"
 pubDate: 2021-05-21
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Laravel"
+tags:
+  - Laravel
+  - PHP
+  - CSV
+  - Backend
 ---
 
 

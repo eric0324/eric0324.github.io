@@ -3,6 +3,11 @@ title: "在 Mac OS 上面安裝 Laradock 筆記"
 description: "之前在虛擬機上面開發 Laravel ，但是虛擬機得去要完整模擬一台主機，所以整個映像檔非常大，也因為這樣很多人都開始轉用 Docker。"
 pubDate: 2020-06-28
 heroImage: "https://i.imgur.com/docker-app-drag.png"
+category: "DevOps"
+tags:
+  - Docker
+  - DevOps
+  - Container
 ---
 
 

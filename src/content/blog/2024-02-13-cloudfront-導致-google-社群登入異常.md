@@ -3,6 +3,11 @@ title: "CloudFront 導致 Google 社群登入異常"
 description: "我前端和後端分開，然後嘗試使用 Google 登入/註冊 ，後端認證後有順利跳轉至前端，此時會出現 521 的 error status code ，然後就卡住了。"
 pubDate: 2024-02-13
 heroImage: "https://ericwu.asia/wp-content/uploads/2024/02/截圖-2024-02-13-16.25.20.png"
+category: "工具介紹"
+tags:
+  - Go
+  - IDE
+  - Development
 ---
 
 

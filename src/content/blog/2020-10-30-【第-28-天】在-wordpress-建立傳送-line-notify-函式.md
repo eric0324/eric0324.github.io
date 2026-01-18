@@ -3,6 +3,11 @@ title: "【第 28 天】在 WordPress 建立傳送 LINE Notify 函式"
 description: "今天我們要來開始試著寫 LINE notify 這段。我們建立一個 private function 叫做 line_send_notify ，這個函式傳入了一參數叫做 $text："
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

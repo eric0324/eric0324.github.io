@@ -3,6 +3,11 @@ title: "【第 30 天】總結：WordPress 遇上 Chatbot，像極了愛情"
 description: "就這樣終於成功地將這三十天的文章都寫完了！明天正好就是連假，可以好好休息了(應該吧)。"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

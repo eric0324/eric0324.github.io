@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { SITE_TITLE } from '../../consts';
 
 const allPosts = await getCollection('blog');
@@ -103,6 +104,10 @@ const categories = Array.from(categoryMap.entries())
 		<Header />
 		<main>
 			<h1>分類</h1>
+			<Breadcrumb items={[
+				{ label: '首頁', href: '/' },
+				{ label: '分類' }
+			]} />
 			{categories.length > 0 ? (
 				<div class="categories-grid">
 					{categories.map((category) => (

@@ -3,6 +3,10 @@ title: "如何在有 CloudFront 的 API 上面正確設定 Rate limiting"
 description: "目前在前後端分離開發架構下，常會遇到的問題。也就是當我們的前後端架構中存在，像是 CDN / 代理 proxy / 負載平衡器等中介服務，因為都是特定幾個 IP 來代表訪問後端，所以在前端去呼叫後端 WAF 的時候，就有很高機率會將這些 IP 誤認為攻擊來源，而被封鎖。"
 pubDate: 2024-02-13
 heroImage: "https://ericwu.asia/wp-content/uploads/2024/02/截圖-2024-02-13-16.32.48.png"
+category: "技術筆記"
+tags:
+  - 技術筆記
+  - 開發
 ---
 
 

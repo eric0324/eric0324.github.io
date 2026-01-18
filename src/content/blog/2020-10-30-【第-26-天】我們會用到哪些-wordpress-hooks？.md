@@ -3,6 +3,11 @@ title: "【第 26 天】我們會用到哪些 WordPress Hooks？"
 description: "今天我們來研究看看，WordPress 核心提供了哪些 hooks 可以拿來用？以及有些時候，我們想對其他外掛做點事情，該怎麼做？"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

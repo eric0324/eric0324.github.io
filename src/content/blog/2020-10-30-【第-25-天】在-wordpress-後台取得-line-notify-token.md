@@ -3,6 +3,11 @@ title: "【第 25 天】在 WordPress 後台取得 LINE Notify token"
 description: "這幾天實在太忙了，所以文章有點沒時間寫。但是鐵人賽都快結束了，不可以輕易放棄啊！！！"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

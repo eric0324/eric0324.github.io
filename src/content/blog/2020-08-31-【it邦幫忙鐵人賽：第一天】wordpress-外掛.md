@@ -3,6 +3,11 @@ title: "【第 01 天】WordPress 遇上 Chatbot，像極了愛情"
 description: "大家好，我是艾瑞克"
 pubDate: 2020-08-31
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

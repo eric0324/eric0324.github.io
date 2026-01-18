@@ -3,6 +3,11 @@ title: "Chatbots meetup 聊天機器人小聚 #20 @ LINE Taiwan Office"
 description: "台灣的疫情終於漸漸的穩定下來，各個社群的線下活動都開始陸續恢復運作了。Chatbot Taiwan 也迎來期待已久的第 20 場小聚！這次小聚選在熊大寶殿舉辦，很感謝場地方 LINE 提供場地和贊助美食、飲料，讓大家分享交流之餘，還能吃飽喝足，希望每個人都能滿載而歸！在心得開始前，先放上這次的活動資訊"
 pubDate: 2020-06-24
 heroImage: "https://i.imgur.com/qbUsN2z.png"
+category: "工具介紹"
+tags:
+  - LINE
+  - Chatbot
+  - API
 ---
 
 

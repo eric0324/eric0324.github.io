@@ -3,6 +3,12 @@ title: "在 AWS EC2 上安裝 vsftpd"
 description: "Install on AWS EC2"
 pubDate: 2021-08-10
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "DevOps"
+tags:
+  - AWS
+  - EC2
+  - FTP
+  - Server
 ---
 
 

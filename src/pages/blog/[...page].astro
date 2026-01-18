@@ -12,6 +12,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const { page } = Astro.props;
@@ -85,6 +86,23 @@ const { page } = Astro.props;
 				font-size: 0.85rem;
 				color: #999;
 				margin-bottom: 0.75rem;
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+			}
+
+			.post-card-meta .category-link {
+				color: #666;
+				text-decoration: none;
+				transition: color 0.2s;
+			}
+
+			.post-card-meta .category-link:hover {
+				color: #3498db;
+			}
+
+			.post-card-meta .separator {
+				color: #ccc;
 			}
 
 			.post-card-description {
@@ -95,6 +113,46 @@ const { page } = Astro.props;
 				-webkit-line-clamp: 3;
 				-webkit-box-orient: vertical;
 				overflow: hidden;
+			}
+
+			.post-card-category {
+				margin-top: 0.75rem;
+				margin-bottom: 0.25rem;
+			}
+
+			.post-card-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-top: 0.75rem;
+			}
+
+			.category-badge, .tag-badge {
+				display: inline-block;
+				padding: 0.25rem 0.65rem;
+				border-radius: 15px;
+				font-size: 0.75rem;
+				text-decoration: none;
+				transition: all 0.2s;
+			}
+
+			.category-badge {
+				background: #3498db;
+				color: white;
+			}
+
+			.category-badge:hover {
+				background: #2980b9;
+			}
+
+			.tag-badge {
+				background: #f0f0f0;
+				color: #666;
+			}
+
+			.tag-badge:hover {
+				background: #e0e0e0;
+				color: #333;
 			}
 
 			/* Pagination */
@@ -170,6 +228,10 @@ const { page } = Astro.props;
 		<main>
 			<div class="posts-container">
 				<h1 class="page-title">所有文章</h1>
+				<Breadcrumb items={[
+					{ label: '首頁', href: '/' },
+					{ label: '文章' }
+				]} />
 				<div class="posts-grid">
 					{
 						page.data.map((post) => (
@@ -179,9 +241,26 @@ const { page } = Astro.props;
 									<div class="post-card-content">
 										<h2 class="post-card-title">{post.data.title}</h2>
 										<div class="post-card-meta">
+											{post.data.category && (
+												<>
+													<a href={`/categories/${post.data.category}/`} class="category-link">
+														{post.data.category}
+													</a>
+													<span class="separator"> | </span>
+												</>
+											)}
 											<FormattedDate date={post.data.pubDate} />
 										</div>
 										<p class="post-card-description">{post.data.description}</p>
+										{post.data.tags && post.data.tags.length > 0 && (
+											<div class="post-card-tags">
+												{post.data.tags.slice(0, 3).map((tag) => (
+													<a href={`/tags/${tag}/`} class="tag-badge">
+														#{tag}
+													</a>
+												))}
+											</div>
+										)}
 									</div>
 								</a>
 							</article>

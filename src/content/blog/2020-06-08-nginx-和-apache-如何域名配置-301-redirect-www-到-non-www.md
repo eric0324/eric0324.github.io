@@ -3,6 +3,12 @@ title: "Nginx 和 Apache 如何域名配置 301 redirect www 到 non-www"
 description: "以搜尋引擎來看網址，有 www 和沒有 www 的網址是不同的兩個的網址。因此，當它們同時都指向同一個網站時，儘管是可以的，但是這會讓搜尋引擎不知應該選擇哪一個 URL 作為主要的網址，所以會影響 SEO ，因為常常忘記要怎麼設定，所以這邊紀錄一下。"
 pubDate: 2020-06-08
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "DevOps"
+tags:
+  - Nginx
+  - Apache
+  - Server
+  - DevOps
 ---
 
 

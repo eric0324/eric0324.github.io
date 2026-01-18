@@ -3,6 +3,11 @@ title: "MAC 上的 developer 快速打造漂亮好用的 CLI 環境"
 description: "身為程式開發者，很多時間會需要和 CLI 打交道，如果能把環境弄得漂亮又好用，不只是效率可以大大提升，工作起來也比較舒服～這篇文章主要就是紀錄如何用簡單快速的的設定一個漂亮好用的 CLI 環境"
 pubDate: 2020-07-06
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - CLI
+  - Terminal
+  - Developer Tools
 ---
 
 

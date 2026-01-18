@@ -3,6 +3,11 @@ title: "GitHub 如何使用 token authentication"
 description: "大家有在使用 GitHub 的，應該都有接收到消息，就是之後都需要用 token authentication 登入，也就是傳統的直接在 CLI 上面輸入帳號密碼去做 GitHub 操作都行不通了，接著這篇文章會來分享怎麼去設定 token authentication"
 pubDate: 2021-08-15
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - Git
+  - GitHub
+  - Version Control
 ---
 
 

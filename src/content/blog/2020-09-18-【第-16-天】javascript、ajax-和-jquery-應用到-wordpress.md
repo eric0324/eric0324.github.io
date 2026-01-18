@@ -3,6 +3,11 @@ title: "【第 16 天】JavaScript、Ajax 和 jQuery 應用到 WordPress"
 description: "不知不覺也玩了 WordPress 的各種 hook 和 function 半個月了，也差不多剩下幾個章節就要告一個段落了，接著就會開始實際開發一個外掛，並且記錄下來。"
 pubDate: 2020-09-18
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

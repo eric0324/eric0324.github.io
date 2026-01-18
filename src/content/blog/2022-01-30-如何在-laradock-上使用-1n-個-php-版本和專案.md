@@ -3,6 +3,11 @@ title: "如何在 LaraDock 上使用 1+n 個 PHP 版本和專案"
 description: "最近很多專案都使用了 PHP 8 以上的版本，但還是有些例外，需要處理些版本比較舊的 PHP 專案，因此需要讓我的本地開發環境需要有 PHP 7.1.x、7.2.x 和 7.4.x 這些版本"
 pubDate: 2022-01-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "DevOps"
+tags:
+  - Docker
+  - DevOps
+  - Container
 ---
 
 

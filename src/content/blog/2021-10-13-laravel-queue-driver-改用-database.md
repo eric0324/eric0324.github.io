@@ -3,6 +3,12 @@ title: "Laravel Queue Driver 改用 Database"
 description: "Laravel 的隊列 (Queue) 提供了可以跨各種不同隊列驅動的統一 API，例如 File、Database 、Amazon SQS 或是 Redis 。"
 pubDate: 2021-10-13
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Laravel"
+tags:
+  - Laravel
+  - PHP
+  - Queue
+  - Backend
 ---
 
 

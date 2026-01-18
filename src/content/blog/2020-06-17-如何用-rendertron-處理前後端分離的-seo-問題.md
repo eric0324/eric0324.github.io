@@ -3,6 +3,12 @@ title: "如何用 rendertron 處理前後端分離的 SEO 問題"
 description: "最近在公司的產品終於從外包公司接回來，採用前後端分離架構。"
 pubDate: 2020-06-17
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Web 開發"
+tags:
+  - Rendertron
+  - SEO
+  - SSR
+  - Frontend
 ---
 
 

@@ -3,6 +3,11 @@ title: "終於搬家到 WordPress 了"
 description: "上個週末，順利的把網站搬到 WordPress 上面了"
 pubDate: 2020-06-03
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

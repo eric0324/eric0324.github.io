@@ -3,6 +3,12 @@ title: "TikTok pixel 安裝"
 description: "因為各種原因，個人對 TikTok 抖音有很多主觀的偏見，但是公司就要在 TikTok 上面投放廣告，所以不得不摸摸鼻子，研究一下 TikTok pixel 的安裝方式，這邊也就順便紀錄一下"
 pubDate: 2021-04-01
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Web 開發"
+tags:
+  - TikTok
+  - Pixel
+  - Analytics
+  - Marketing
 ---
 
 

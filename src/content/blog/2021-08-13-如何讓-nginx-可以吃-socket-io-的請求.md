@@ -3,6 +3,11 @@ title: "如何讓 NGINX 可以吃 Socket.io 的請求"
 description: "一直以來，我的網站服務都用 NGINX 作為反向代理 (Reverse proxy) 伺服器。最近剛好有個專案要使用到 Socket.io ，問題來了，因為 Socket.io 要走 3000 port ，然後我前端有 CloudFlare。這會有什麼問題呢？"
 pubDate: 2021-08-13
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "DevOps"
+tags:
+  - Nginx
+  - Socket.io
+  - Server
 ---
 
 

@@ -3,6 +3,11 @@ title: "【第 19 天】上架第一個外掛到 WordPress.org"
 description: "今天我們不寫任何的 code ，今天我們就很單純的聊聊如何上架一個外掛到 WordPress.org 。"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

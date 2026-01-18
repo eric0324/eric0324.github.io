@@ -3,6 +3,11 @@ title: "在 github 滾回到某個特定的 commit"
 description: "和朋友在協作的時候，朋友不小心 push 錯東西，導致需要滾回到先前正確的版本，感覺以後會常常用到，所以記錄下來。"
 pubDate: 2016-04-28
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - Git
+  - GitHub
+  - Version Control
 ---
 
 

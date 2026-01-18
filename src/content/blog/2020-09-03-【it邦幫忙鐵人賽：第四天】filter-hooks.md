@@ -3,6 +3,11 @@ title: "【第 04 天】Filter Hooks"
 description: "今天來介紹一下 Filter Hooks ，這是 WordPress 的另一種 hook，可以讓我們通過某個 Filter 鉤子上的呼叫函式來修改某些函式產生的數據。"
 pubDate: 2020-09-03
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

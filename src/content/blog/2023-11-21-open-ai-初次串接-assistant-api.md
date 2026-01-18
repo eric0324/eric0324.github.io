@@ -3,6 +3,12 @@ title: "初次串接 Open AI 提供的 Assistant API"
 description: "Assistants API 允許我們在自己的應用程式裡面去建立一個 AI 助理。一個助理可以擁有自己的提示 ，而且還可以利用 model 、tool 和 匯入自己的資料來去回應用戶查詢。"
 pubDate: 2023-11-21
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "AI"
+tags:
+  - AI
+  - OpenAI
+  - API
+  - Assistant
 ---
 
 

@@ -3,6 +3,12 @@ title: "在 formData 表單送出 PUT、PATCH 或 DELETE 方法"
 description: "HTML 表單再送請求的時候，是沒有支援 PUT、PATCH 或 DELETE 這三種 method 的。所以在定義由 HTML 表單所呼叫的 PUT、PATCH 或 DELETE 路由時，會需要在表單中增加一個隱藏的欄位： _method"
 pubDate: 2020-11-13
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Web 開發"
+tags:
+  - FormData
+  - HTTP
+  - API
+  - Frontend
 ---
 
 

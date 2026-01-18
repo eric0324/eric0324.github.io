@@ -3,6 +3,12 @@ title: "Laravel 使用 env 函式讀取環境變數為 null 的問題"
 description: "在 Laravel 專案中，如果執行了 php artisan config:cache 命令把配置檔案快取起來後，在使用 env 函式讀取環境變數的值，會變成 null，但是執行 php artisan config:clear，清除配置快取後，又可以讀取了，就覺得很奇怪"
 pubDate: 2020-01-15
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Laravel"
+tags:
+  - Laravel
+  - PHP
+  - Configuration
+  - Backend
 ---
 
 

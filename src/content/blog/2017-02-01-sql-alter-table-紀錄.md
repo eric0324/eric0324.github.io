@@ -3,6 +3,11 @@ title: "SQL: ALTER TABLE 紀錄"
 description: "假設現在我們已經建立好一個 customers 資料表：   | ——| —— | —— | —— |   | C_Id | Name | Address | Phone |   | ——| —— | —— | —— |"
 pubDate: 2017-02-01
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "資料庫"
+tags:
+  - SQL
+  - MySQL
+  - Database
 ---
 
 

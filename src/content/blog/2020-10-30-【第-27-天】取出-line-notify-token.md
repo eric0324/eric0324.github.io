@@ -3,6 +3,11 @@ title: "【第 27 天】取出 LINE Notify token"
 description: "現在 要給 LINE 的 token 也存好了，想要發送 notify 的地方大概也都有想法了，再來我們要試著取出 token 來做使用。"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

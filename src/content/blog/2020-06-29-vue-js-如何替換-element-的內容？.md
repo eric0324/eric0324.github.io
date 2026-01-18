@@ -3,6 +3,11 @@ title: "Vue.js 如何替換 element 的內容？"
 description: "今天想要透過 Vue.js 將 HTML  中的一部分 HTML 內容替換掉，所以找了一下網路上的資料"
 pubDate: 2020-06-29
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "JavaScript"
+tags:
+  - Vue.js
+  - JavaScript
+  - Frontend
 ---
 
 

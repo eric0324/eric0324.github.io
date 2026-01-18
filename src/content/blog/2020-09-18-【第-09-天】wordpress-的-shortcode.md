@@ -3,6 +3,11 @@ title: "【第 09 天】WordPress 的 Shortcode"
 description: "為了安全，在 WordPress 的世界中，是禁止在內容中運行 PHP 程式碼的，不過有時候我們還是希望說可以動態新增一些內容，所以在 WordPress 2.5 版中引入了 shortcode。"
 pubDate: 2020-09-18
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

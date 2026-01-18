@@ -3,6 +3,11 @@ title: "第一次在 Mac 安裝 Metabase 就上手"
 description: "今天嘗試安裝 metabase 在自己的 Mac 上面（作業系統是 macOS Monterey），有兩種主要的方式可以去做安裝。可以透過官方打包好的 jar 檔案去跑在自己的電腦上，也可以透過 Cloud Platforms 的方式去安裝使用。"
 pubDate: 2022-03-07
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - Metabase
+  - Analytics
+  - Data Visualization
 ---
 
 

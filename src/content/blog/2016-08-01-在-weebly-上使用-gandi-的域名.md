@@ -3,6 +3,11 @@ title: "在 Weebly 上使用 Gandi 的域名"
 description: "由於朋友最近正在研究 Weebly ，提到了『自定義域名』功能，所以我也來研究了一下，雖然我覺得我應該不會再用到，不過還是紀錄下來。"
 pubDate: 2016-08-01
 heroImage: "https://i.imgur.com/4T5KpCS.png"
+category: "Web 開發"
+tags:
+  - Domain
+  - Web Hosting
+  - DNS
 ---
 
 

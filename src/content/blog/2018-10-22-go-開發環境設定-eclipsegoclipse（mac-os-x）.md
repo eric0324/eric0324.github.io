@@ -3,6 +3,11 @@ title: "Go 開發環境設定 Eclipse+GoClipse（Mac OS X）"
 description: "因為工作上需要，所以最近開始摸 Go。加上研究所考試也差不多告一個段落，因此最近也可能會比較頻繁的更新 Go 相關的文章。"
 pubDate: 2018-10-22
 heroImage: "https://i.imgur.com/aR2bG4K.png"
+category: "工具介紹"
+tags:
+  - Go
+  - IDE
+  - Development
 ---
 
 

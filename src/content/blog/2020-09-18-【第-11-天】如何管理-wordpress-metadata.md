@@ -3,6 +3,11 @@ title: "【第 11 天】如何管理 WordPress metadata"
 description: "metadata 就是關於資料的資料。簡單來說就是我們創建了類型為商品的自定義文章類型，其中價格就是 metadata 的一種，這個字串就會被存儲在 postmeta 文章 metadata 中。"
 pubDate: 2020-09-18
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

@@ -3,6 +3,12 @@ title: "如何解決 PHP cURL error code 60"
 description: "最近在開發的時候用到 AWS 的 PHP SDK ，然後就會踢到這個錯誤："
 pubDate: 2020-01-01
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "PHP"
+tags:
+  - PHP
+  - cURL
+  - SSL
+  - Backend
 ---
 
 

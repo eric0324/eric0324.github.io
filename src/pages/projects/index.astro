@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { SITE_TITLE } from '../../consts';
 
 const projects = (await getCollection('projects')).sort(
@@ -75,6 +76,10 @@ const projects = (await getCollection('projects')).sort(
 		<Header />
 		<main>
 			<h1>Projects</h1>
+			<Breadcrumb items={[
+				{ label: '首頁', href: '/' },
+				{ label: '專案' }
+			]} />
 			<p>這裡收錄了我參與的專案與作品。</p>
 
 			<ul class="projects-grid">

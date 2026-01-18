@@ -3,6 +3,11 @@ title: "如何在 LEMP 環境下安裝 Metabase？"
 description: "Metabase 是一款 **免費開源** 的 BI (Business Intelligence) 工具，它可以幫助使用者將資料庫中的資料用視覺化的方式呈現。使用者只需要通過建立一個問題來分析數據，轉換成有意義的格式來洞悉資料。"
 pubDate: 2022-04-07
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - Metabase
+  - Analytics
+  - Data Visualization
 ---
 
 

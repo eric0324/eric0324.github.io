@@ -3,6 +3,12 @@ title: "PHP 噴錯『 SSL certificate error: unable to get local issuer certific
 description: "在寫 Laravel 的時候，有時候會需要請求外部的 request ，如果請求的是 https ，就有可能會噴出 SSL certificate error: unable to get local issuer certificate"
 pubDate: 2020-11-21
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "PHP"
+tags:
+  - PHP
+  - cURL
+  - SSL
+  - Backend
 ---
 
 

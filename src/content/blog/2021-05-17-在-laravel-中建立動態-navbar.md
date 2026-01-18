@@ -3,6 +3,12 @@ title: "在 Laravel 中建立動態 navbar"
 description: "我們網站常常會在上方會有一個 navbar ，有時候會需要去抓取資料庫動態的資料來顯示。"
 pubDate: 2021-05-17
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Laravel"
+tags:
+  - Laravel
+  - PHP
+  - Frontend
+  - Backend
 ---
 
 

@@ -3,6 +3,11 @@ title: "在 TinyMCE 的 Link 增加 nofollow 設定"
 description: "自己在寫 Laravel 的時候，有時候後台會選用 Laravel Nova ，來完成。使用 Laravel nova 的時候，總會有些情況下需要 rich text editor ，也就是所見即所得編輯器，我個人慣用的是 TinyMCE 。"
 pubDate: 2021-08-03
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "工具介紹"
+tags:
+  - TinyMCE
+  - Editor
+  - Frontend
 ---
 
 

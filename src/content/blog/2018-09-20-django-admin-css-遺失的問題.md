@@ -3,6 +3,12 @@ title: "Django admin CSS 遺失的問題"
 description: "Django 嘗試使用 Nginx + uwsgi 去部署後，出現 admin 的 CSS, Javascript……等，都噴 404"
 pubDate: 2018-09-20
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Django"
+tags:
+  - Django
+  - Python
+  - Admin
+  - Backend
 ---
 
 

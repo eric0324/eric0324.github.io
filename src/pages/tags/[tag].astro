@@ -10,28 +10,28 @@ import { SITE_TITLE } from '../../consts';
 export async function getStaticPaths() {
 	const allPosts = await getCollection('blog');
 
-	// 收集所有分類
-	const categories = new Set<string>();
+	// 收集所有標籤
+	const tags = new Set<string>();
 	allPosts.forEach((post) => {
-		if (post.data.category) {
-			categories.add(post.data.category);
+		if (post.data.tags && Array.isArray(post.data.tags)) {
+			post.data.tags.forEach((tag) => tags.add(tag));
 		}
 	});
 
-	// 為每個分類生成路徑
-	return Array.from(categories).map((category) => {
-		const categoryPosts = allPosts
-			.filter((post) => post.data.category === category)
+	// 為每個標籤生成路徑
+	return Array.from(tags).map((tag) => {
+		const tagPosts = allPosts
+			.filter((post) => post.data.tags?.includes(tag))
 			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 		return {
-			params: { category },
-			props: { posts: categoryPosts },
+			params: { tag },
+			props: { posts: tagPosts },
 		};
 	});
 }
 
-const { category } = Astro.params;
+const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
@@ -39,8 +39,8 @@ const { posts } = Astro.props;
 <html lang="zh-TW">
 	<head>
 		<BaseHead
-			title={`分類：${category} | ${SITE_TITLE}`}
-			description={`瀏覽「${category}」分類下的所有文章`}
+			title={`標籤：${tag} | ${SITE_TITLE}`}
+			description={`瀏覽「${tag}」標籤下的所有文章`}
 		/>
 		<style>
 			main {
@@ -61,7 +61,7 @@ const { posts } = Astro.props;
 				margin-bottom: 0.5rem;
 			}
 
-			.category-info {
+			.tag-info {
 				color: #999;
 				font-size: 1.1rem;
 			}
@@ -128,6 +128,23 @@ const { posts } = Astro.props;
 				font-size: 0.85rem;
 				color: #999;
 				margin-bottom: 0.75rem;
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+			}
+
+			.post-card-meta .category-link {
+				color: #666;
+				text-decoration: none;
+				transition: color 0.2s;
+			}
+
+			.post-card-meta .category-link:hover {
+				color: #3498db;
+			}
+
+			.post-card-meta .separator {
+				color: #ccc;
 			}
 
 			.post-card-description {
@@ -140,27 +157,21 @@ const { posts } = Astro.props;
 				overflow: hidden;
 			}
 
-			.post-card-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.5rem;
-				margin-top: 0.75rem;
-			}
-
-			.tag-badge {
+			.category-badge {
 				display: inline-block;
 				padding: 0.25rem 0.65rem;
 				border-radius: 15px;
 				font-size: 0.75rem;
 				text-decoration: none;
 				transition: all 0.2s;
-				background: #f0f0f0;
-				color: #666;
+				background: #3498db;
+				color: white;
+				margin-top: 0.5rem;
+				margin-bottom: 0.75rem;
 			}
 
-			.tag-badge:hover {
-				background: #e0e0e0;
-				color: #333;
+			.category-badge:hover {
+				background: #2980b9;
 			}
 
 			@media (max-width: 720px) {
@@ -177,15 +188,15 @@ const { posts } = Astro.props;
 	<body>
 		<Header />
 		<main>
-			<a href="/categories" class="back-link">← 返回所有分類</a>
+			<a href="/tags" class="back-link">← 返回所有標籤</a>
 			<div class="page-header">
-				<h1>{category}</h1>
+				<h1>#{tag}</h1>
 				<Breadcrumb items={[
 					{ label: '首頁', href: '/' },
-					{ label: '分類', href: '/categories' },
-					{ label: category }
+					{ label: '標籤', href: '/tags' },
+					{ label: tag }
 				]} />
-				<p class="category-info">{posts.length} 篇文章</p>
+				<p class="tag-info">{posts.length} 篇文章</p>
 			</div>
 			<div class="posts-grid">
 				{posts.map((post) => (
@@ -195,18 +206,17 @@ const { posts } = Astro.props;
 							<div class="post-card-content">
 								<h3 class="post-card-title">{post.data.title}</h3>
 								<div class="post-card-meta">
+									{post.data.category && (
+										<>
+											<a href={`/categories/${post.data.category}/`} class="category-link">
+												{post.data.category}
+											</a>
+											<span class="separator"> | </span>
+										</>
+									)}
 									<FormattedDate date={post.data.pubDate} />
 								</div>
 								<p class="post-card-description">{post.data.description}</p>
-								{post.data.tags && post.data.tags.length > 0 && (
-									<div class="post-card-tags">
-										{post.data.tags.slice(0, 3).map((tag) => (
-											<a href={`/tags/${tag}/`} class="tag-badge">
-												#{tag}
-											</a>
-										))}
-									</div>
-								)}
 							</div>
 						</a>
 					</article>

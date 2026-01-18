@@ -3,6 +3,11 @@ title: "【第 07 天】WordPress 如何 Debug?"
 description: "前幾天，我們開始試著在 WordPress 埋了 hook ，用了自己的 hook ，也用了 WordPress 提供的幾個好用的 hook 。在這過程，應該有些人跟筆者有一樣的困擾，就是噴了狀態碼 500 ，也只能雙手一攤盲測（誤）"
 pubDate: 2020-09-18
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

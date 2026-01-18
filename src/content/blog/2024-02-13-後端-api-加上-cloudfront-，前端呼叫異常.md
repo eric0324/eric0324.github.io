@@ -3,6 +3,10 @@ title: "後端 API 加上 CloudFront ，前端呼叫異常"
 description: "公司的網站一直一來都是採用前後端架構，前後端都使用 CloudFlare 作為 CDN ，近期 CloudFlare 一直常常出問題，所以決定搬 CDN 去 AWS CloudFront。搬完家後，發現呼叫同一隻 API (儲存購物車)，有時可以成功，有時候又失敗。"
 pubDate: 2024-02-13
 heroImage: "https://ericwu.asia/wp-content/uploads/2024/02/截圖-2024-02-13-15.47.09.png"
+category: "技術筆記"
+tags:
+  - 技術筆記
+  - 開發
 ---
 
 

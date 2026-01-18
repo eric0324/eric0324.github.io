@@ -3,6 +3,11 @@ title: "LINE TAIWAN TECHPULSE 2019 參加心得"
 description: "今年也是第三次參加 LINE TAIWAN TECHPULSE 了，這次很感謝 NiJia 和 Evan 的邀請，讓小弟我可以坐在前排搖滾區，更近距離的看到各項精彩的議程。今年的內容可以看到 LINE 在任何地方都有提到 ML ，看的出 LINE 的野心和佈局，看得我也想學習 ML 了（誤"
 pubDate: 2019-12-05
 heroImage: "https://i.imgur.com/YnK79VM.jpg"
+category: "心得分享"
+tags:
+  - LINE
+  - Conference
+  - 技術分享
 ---
 
 

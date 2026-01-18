@@ -3,6 +3,11 @@ title: "【第 02 天】什麼是 WordPress 外掛？為什麼開發自己的 Wo
 description: "在最開始，我們先來了解什麼是外掛？以及為什麼開發自己的 WordPress 外掛？"
 pubDate: 2020-09-01
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

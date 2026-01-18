@@ -3,6 +3,12 @@ title: "Django 從 SQLite 切換到 MySQL 時總是提示 No module named 'MySQL
 description: "初次使用 Django ，預設的資料庫是 SQLite ，想切換使用 MySQL，配置了資料庫之後，runserver 總是會出錯"
 pubDate: 2018-03-19
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Django"
+tags:
+  - Django
+  - Python
+  - MySQL
+  - Database
 ---
 
 

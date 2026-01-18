@@ -3,6 +3,11 @@ title: "MySQL 修改 root 用戶密碼"
 description: "- 關閉 MySQL 服務。"
 pubDate: 2017-11-09
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "資料庫"
+tags:
+  - SQL
+  - MySQL
+  - Database
 ---
 
 

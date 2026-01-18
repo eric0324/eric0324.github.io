@@ -3,6 +3,11 @@ title: "UNIX socket file don't exists"
 description: "有一次有一台自己在用的 MySQL 主機跑到一半，突然整個死掉不動了，進去看 MySQL 的 Logs，他提示這樣的訊息。"
 pubDate: 2022-02-21
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "DevOps"
+tags:
+  - Socket
+  - Server
+  - Configuration
 ---
 
 

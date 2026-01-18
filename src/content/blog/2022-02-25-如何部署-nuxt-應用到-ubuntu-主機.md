@@ -3,6 +3,12 @@ title: "如何部署 Nuxt 應用到 Ubuntu 主機"
 description: "這篇文章，會教學如何部署 Nuxt 應用到 Ubuntu 主機上面。"
 pubDate: 2022-02-25
 heroImage: "https://i.imgur.com/1*ZvXZokzww1RN1GvOe1Q8MQ.png"
+category: "JavaScript"
+tags:
+  - Nuxt.js
+  - Vue.js
+  - Frontend
+  - SSR
 ---
 
 

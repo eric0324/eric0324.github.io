@@ -3,6 +3,11 @@ title: "【第 15 天】WordPress 的 HTTP API"
 description: "HTTP 是一種用於分佈式、協作式和超媒體訊息系統的應用層協定，有興趣的可以參考維基百科對於 HTTP 的介紹，這裡就不贅述了"
 pubDate: 2020-09-18
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 

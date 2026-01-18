@@ -1,14 +1,14 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,15 +19,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
 			}
 			.prose {
 				width: 720px;
@@ -52,6 +43,39 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.meta-info {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+				justify-content: center;
+				align-items: center;
+				margin-top: 1rem;
+			}
+			.category-tag, .post-tag {
+				display: inline-block;
+				padding: 0.35rem 0.85rem;
+				border-radius: 20px;
+				font-size: 0.85rem;
+				text-decoration: none;
+				transition: all 0.2s;
+			}
+			.category-tag {
+				background: #3498db;
+				color: white;
+			}
+			.category-tag:hover {
+				background: #2980b9;
+				transform: translateY(-2px);
+			}
+			.post-tag {
+				background: #f0f0f0;
+				color: #666;
+			}
+			.post-tag:hover {
+				background: #e0e0e0;
+				color: #333;
+				transform: translateY(-2px);
+			}
 		</style>
 	</head>
 
@@ -59,9 +83,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title">
 						<div class="date">
@@ -75,9 +96,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							}
 						</div>
 						<h1>{title}</h1>
+						<Breadcrumb items={[
+							{ label: '首頁', href: '/' },
+							{ label: '文章', href: '/blog' },
+							{ label: title }
+						]} />
+						<div class="meta-info">
+							{category && (
+								<a href={`/categories/${category}/`} class="category-tag">
+									{category}
+								</a>
+							)}
+						</div>
 						<hr />
 					</div>
 					<slot />
+					{tags && tags.length > 0 && (
+						<div class="tags-section">
+							<h3>標籤</h3>
+							<div class="tags-list">
+								{tags.map((tag) => (
+									<a href={`/tags/${tag}/`} class="post-tag">
+										#{tag}
+									</a>
+								))}
+							</div>
+						</div>
+					)}
 				</div>
 			</article>
 		</main>

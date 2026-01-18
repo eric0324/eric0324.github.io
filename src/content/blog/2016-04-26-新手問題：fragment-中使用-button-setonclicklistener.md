@@ -3,6 +3,11 @@ title: "新手問題：Fragment 中使用 button setonclicklistener"
 description: "自己本身沒有系統的去學習 android，就是想到什麼做什麼的，今天在自學的過程中發現了一些問題。"
 pubDate: 2016-04-26
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "技術筆記"
+tags:
+  - Android
+  - Java
+  - Mobile
 ---
 
 

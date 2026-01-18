@@ -3,6 +3,12 @@ title: "Flask 下使用 APscheduler"
 description: "因為工作關係，目前執行的專案是採用 flask，因為要做工作的排程，所以用了 APscheduler 這個模組。"
 pubDate: 2018-01-01
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Python"
+tags:
+  - Flask
+  - Python
+  - APScheduler
+  - Backend
 ---
 
 

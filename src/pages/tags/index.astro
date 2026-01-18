@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { SITE_TITLE } from '../../consts';
+
+const allPosts = await getCollection('blog');
+
+// 收集所有標籤並計算文章數量
+const tagMap = new Map<string, number>();
+
+allPosts.forEach((post) => {
+	const tags = post.data.tags;
+	if (tags && Array.isArray(tags)) {
+		tags.forEach((tag) => {
+			tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
+		});
+	}
+});
+
+// 轉換為陣列並排序（按文章數量降序）
+const tags = Array.from(tagMap.entries())
+	.map(([name, count]) => ({ name, count }))
+	.sort((a, b) => b.count - a.count);
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead title={`標籤 | ${SITE_TITLE}`} description="瀏覽所有文章標籤" />
+		<style>
+			main {
+				max-width: 1200px;
+				margin: 3rem auto;
+				padding: 0 1rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: #2c3e50;
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+
+			.tags-cloud {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				justify-content: center;
+				padding: 2rem;
+			}
+
+			.tag-item {
+				display: inline-block;
+			}
+
+			.tag-link {
+				display: inline-block;
+				padding: 0.5rem 1.25rem;
+				background: #f0f0f0;
+				color: #2c3e50;
+				text-decoration: none;
+				border-radius: 25px;
+				font-size: 1rem;
+				transition: all 0.2s;
+				border: 2px solid transparent;
+			}
+
+			.tag-link:hover {
+				background: #3498db;
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+			}
+
+			.tag-count {
+				font-size: 0.85rem;
+				opacity: 0.8;
+				margin-left: 0.25rem;
+			}
+
+			.no-tags {
+				text-align: center;
+				color: #999;
+				font-size: 1.1rem;
+				padding: 3rem;
+			}
+
+			/* 根據文章數量調整標籤大小 */
+			.tag-link.size-xl {
+				font-size: 1.5rem;
+				padding: 0.75rem 1.5rem;
+			}
+
+			.tag-link.size-lg {
+				font-size: 1.25rem;
+				padding: 0.625rem 1.375rem;
+			}
+
+			.tag-link.size-md {
+				font-size: 1.1rem;
+				padding: 0.5625rem 1.25rem;
+			}
+
+			@media (max-width: 720px) {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.tags-cloud {
+					padding: 1rem;
+					gap: 0.75rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>標籤</h1>
+			<Breadcrumb items={[
+				{ label: '首頁', href: '/' },
+				{ label: '標籤' }
+			]} />
+			{tags.length > 0 ? (
+				<div class="tags-cloud">
+					{tags.map((tag) => {
+						// 根據文章數量決定標籤大小
+						let sizeClass = '';
+						if (tag.count >= 10) sizeClass = 'size-xl';
+						else if (tag.count >= 5) sizeClass = 'size-lg';
+						else if (tag.count >= 3) sizeClass = 'size-md';
+
+						return (
+							<div class="tag-item">
+								<a href={`/tags/${tag.name}/`} class={`tag-link ${sizeClass}`}>
+									{tag.name}
+									<span class="tag-count">({tag.count})</span>
+								</a>
+							</div>
+						);
+					})}
+				</div>
+			) : (
+				<p class="no-tags">目前還沒有任何標籤</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

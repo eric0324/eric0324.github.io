@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 // 計算工作年資（從 2017/03 開始）
@@ -17,6 +18,7 @@ const partners = [
 	{ name: 'TEMP. Hair Salon', url: 'https://temp-hair.com/', logo: 'https://temp-hair.com/wp-content/uploads/2021/06/IMG_2026.png' },
 	{ name: 'TintMap', url: 'https://tintmaps.com/', logo: 'https://tintmaps.com/images/logo.png' },
 	{ name: 'applemint', url: 'https://www.applemint.tech/zh-hant/', logo: 'https://www.applemint.tech/wp-content/uploads/2019/06/cropped-applemint-logo%E6%8B%B7%E8%B2%9D.png' },
+	{ name: 'Moonbility', url: 'https://moonbility.com/', logo: '/partners/moonbility-logo.svg' },
 ];
 
 // 專業服務
@@ -137,6 +139,10 @@ const publications = [
 			/* Introduction */
 			.intro-section {
 				max-width: 650px;
+			}
+
+			.intro-section .breadcrumb ol {
+				justify-content: flex-start;
 			}
 
 			.section-title {
@@ -482,6 +488,10 @@ const publications = [
 
 					<!-- Right: Introduction -->
 					<div class="intro-section">
+						<Breadcrumb items={[
+							{ label: '首頁', href: '/' },
+							{ label: '關於我' }
+						]} />
 						<h2 class="section-title">Hello World</h2>
 						<div class="section-content">
 							<p>

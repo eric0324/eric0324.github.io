@@ -3,6 +3,11 @@ title: "Django 將所有的 app 放到統一的目錄下進行管理"
 description: "Django 的 project 寫久了，app 會越來越多，然後就零散在整個專案下，很雜亂，所以研究了一下，能不能將 app 集中放在同個資料夾下面做管理"
 pubDate: 2018-03-08
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "Django"
+tags:
+  - Django
+  - Python
+  - Backend
 ---
 
 

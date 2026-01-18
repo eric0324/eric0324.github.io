@@ -3,6 +3,11 @@ title: "【第 29 天】在這些 WordPress Hooks 放在 LINE Notify"
 description: "在昨天，我們建立了一個 private function 來發送 LINE Notify 訊息通知。"
 pubDate: 2020-10-30
 heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+category: "WordPress"
+tags:
+  - WordPress
+  - PHP
+  - Backend
 ---
 
 
