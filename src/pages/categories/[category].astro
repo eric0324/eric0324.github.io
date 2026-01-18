@@ -1,0 +1,180 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+	const allPosts = await getCollection('blog');
+
+	// 收集所有分類
+	const categories = new Set<string>();
+	allPosts.forEach((post) => {
+		if (post.data.category) {
+			categories.add(post.data.category);
+		}
+	});
+
+	// 為每個分類生成路徑
+	return Array.from(categories).map((category) => {
+		const categoryPosts = allPosts
+			.filter((post) => post.data.category === category)
+			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+		return {
+			params: { category },
+			props: { posts: categoryPosts },
+		};
+	});
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead
+			title={`分類：${category} | ${SITE_TITLE}`}
+			description={`瀏覽「${category}」分類下的所有文章`}
+		/>
+		<style>
+			main {
+				max-width: 1200px;
+				margin: 3rem auto;
+				padding: 0 1rem;
+			}
+
+			.page-header {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: #2c3e50;
+				margin-bottom: 0.5rem;
+			}
+
+			.category-info {
+				color: #999;
+				font-size: 1.1rem;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				color: #3498db;
+				text-decoration: none;
+				font-size: 1rem;
+			}
+
+			.back-link:hover {
+				text-decoration: underline;
+			}
+
+			.posts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 2rem;
+			}
+
+			.post-card {
+				background: white;
+				border-radius: 12px;
+				overflow: hidden;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+
+			.post-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+			}
+
+			.post-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.post-card-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+			}
+
+			.post-card-content {
+				padding: 1.5rem;
+			}
+
+			.post-card-title {
+				font-size: 1.25rem;
+				font-weight: 600;
+				color: #2c3e50;
+				margin-bottom: 0.75rem;
+				line-height: 1.4;
+			}
+
+			.post-card-title:hover {
+				color: #3498db;
+			}
+
+			.post-card-meta {
+				font-size: 0.85rem;
+				color: #999;
+				margin-bottom: 0.75rem;
+			}
+
+			.post-card-description {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			@media (max-width: 720px) {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.posts-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<a href="/categories" class="back-link">← 返回所有分類</a>
+			<div class="page-header">
+				<h1>{category}</h1>
+				<p class="category-info">{posts.length} 篇文章</p>
+			</div>
+			<div class="posts-grid">
+				{posts.map((post) => (
+					<article class="post-card">
+						<a href={`/blog/${post.id}/`}>
+							<img src={post.data.heroImage} alt={post.data.title} class="post-card-image" />
+							<div class="post-card-content">
+								<h3 class="post-card-title">{post.data.title}</h3>
+								<div class="post-card-meta">
+									<FormattedDate date={post.data.pubDate} />
+								</div>
+								<p class="post-card-description">{post.data.description}</p>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

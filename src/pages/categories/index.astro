@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const allPosts = await getCollection('blog');
+
+// 收集所有分類並計算文章數量
+const categoryMap = new Map<string, number>();
+
+allPosts.forEach((post) => {
+	const category = post.data.category;
+	if (category) {
+		categoryMap.set(category, (categoryMap.get(category) || 0) + 1);
+	}
+});
+
+// 轉換為陣列並排序（按文章數量降序）
+const categories = Array.from(categoryMap.entries())
+	.map(([name, count]) => ({ name, count }))
+	.sort((a, b) => b.count - a.count);
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead title={`分類 | ${SITE_TITLE}`} description="瀏覽所有文章分類" />
+		<style>
+			main {
+				max-width: 1200px;
+				margin: 3rem auto;
+				padding: 0 1rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: #2c3e50;
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+
+			.categories-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+				gap: 1.5rem;
+			}
+
+			.category-card {
+				background: white;
+				border-radius: 12px;
+				padding: 2rem;
+				text-align: center;
+				transition: transform 0.2s, box-shadow 0.2s;
+				border: 2px solid #f0f0f0;
+			}
+
+			.category-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+				border-color: #3498db;
+			}
+
+			.category-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.category-name {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: #2c3e50;
+				margin-bottom: 0.5rem;
+			}
+
+			.category-count {
+				font-size: 1rem;
+				color: #999;
+			}
+
+			.no-categories {
+				text-align: center;
+				color: #999;
+				font-size: 1.1rem;
+				padding: 3rem;
+			}
+
+			@media (max-width: 720px) {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.categories-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>分類</h1>
+			{categories.length > 0 ? (
+				<div class="categories-grid">
+					{categories.map((category) => (
+						<div class="category-card">
+							<a href={`/categories/${category.name}/`}>
+								<div class="category-name">{category.name}</div>
+								<div class="category-count">{category.count} 篇文章</div>
+							</a>
+						</div>
+					))}
+				</div>
+			) : (
+				<p class="no-categories">目前還沒有任何分類</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
