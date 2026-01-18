@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, category, tags } = Astro.props
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
+		<style is:global>
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
@@ -64,71 +64,59 @@ const { title, description, pubDate, updatedDate, category, tags } = Astro.props
 			}
 			.toc-list a {
 				display: block;
-				color: #666;
 				text-decoration: none;
-				font-size: 0.9rem;
-				line-height: 1.4;
-				padding: 0.25rem 0;
-				border-left: 2px solid transparent;
-				padding-left: 0.75rem;
-				transition: all 0.2s;
+				line-height: 1.6;
+				padding: 0.35rem 0;
+				transition: color 0.2s;
 			}
-			.toc-list a:hover {
-				color: #3498db;
-				border-left-color: #3498db;
+
+			/* H2 - 主標題 (第一層) */
+			.toc-h2 {
+				font-weight: 700 !important;
+				font-size: 0.95rem !important;
+				color: #2c3e50 !important;
+				margin-top: 1rem !important;
+				margin-bottom: 0.5rem !important;
+				padding-left: 0 !important;
 			}
-			.toc-list a.active {
-				color: #3498db;
-				border-left-color: #3498db;
-				font-weight: 600;
+			.toc-h2:first-of-type {
+				margin-top: 0 !important;
 			}
-			/* 階層樣式 - H2 (第一層主標題) */
-			.toc-list .toc-h2 {
-				font-weight: 700;
-				font-size: 0.95rem;
-				color: #2c3e50;
-				margin-top: 1.25rem;
-				margin-bottom: 0.5rem;
-				padding-left: 0.75rem;
-				border-left-width: 3px;
+			.toc-h2:hover {
+				color: #3498db !important;
 			}
-			.toc-list .toc-h2:first-child {
-				margin-top: 0;
+			.toc-h2.active {
+				color: #3498db !important;
 			}
-			/* 階層樣式 - H3 (第二層子標題) */
-			.toc-list .toc-h3 {
-				padding-left: 2.5rem;
-				font-size: 0.85rem;
-				color: #666;
-				font-weight: 400;
-				margin-top: 0.4rem;
-				position: relative;
+
+			/* H3 - 子標題 (第二層) */
+			.toc-h3 {
+				font-weight: 400 !important;
+				font-size: 0.85rem !important;
+				color: #666 !important;
+				padding-left: 1.5rem !important;
+				margin-left: 0 !important;
 			}
-			.toc-list .toc-h3::before {
-				content: "";
-				position: absolute;
-				left: 1rem;
-				top: 0.5rem;
-				width: 8px;
-				height: 8px;
-				border-left: 2px solid #ccc;
-				border-bottom: 2px solid #ccc;
+			.toc-h3:hover {
+				color: #3498db !important;
 			}
-			/* 階層樣式 - H4 (第三層細項) */
-			.toc-list .toc-h4 {
-				padding-left: 4rem;
-				font-size: 0.8rem;
-				color: #999;
-				font-weight: 400;
-				margin-top: 0.35rem;
-				position: relative;
+			.toc-h3.active {
+				color: #3498db !important;
 			}
-			.toc-list .toc-h4::before {
-				content: "•";
-				position: absolute;
-				left: 2.75rem;
-				color: #ddd;
-				font-size: 0.6rem;
+
+			/* H4 - 細項 (第三層) */
+			.toc-h4 {
+				font-weight: 400 !important;
+				font-size: 0.8rem !important;
+				color: #999 !important;
+				padding-left: 3rem !important;
+				margin-left: 0 !important;
+			}
+			.toc-h4:hover {
+				color: #3498db !important;
+			}
+			.toc-h4.active {
+				color: #3498db !important;
 			}
 
 			@media (max-width: 1200px) {
