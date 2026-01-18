@@ -1,0 +1,214 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths({ paginate }) {
+	const posts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+	return paginate(posts, { pageSize: 12 });
+}
+
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead title={`文章 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			.posts-container {
+				max-width: 1200px;
+				margin: 3rem auto;
+			}
+
+			.page-title {
+				font-size: 2.5rem;
+				margin-bottom: 3rem;
+				font-weight: 700;
+				color: #2c3e50;
+				text-align: center;
+			}
+
+			.posts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 2rem;
+			}
+
+			.post-card {
+				background: white;
+				border-radius: 12px;
+				overflow: hidden;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+
+			.post-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+			}
+
+			.post-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.post-card-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+			}
+
+			.post-card-content {
+				padding: 1.5rem;
+			}
+
+			.post-card-title {
+				font-size: 1.25rem;
+				font-weight: 600;
+				color: #2c3e50;
+				margin-bottom: 0.75rem;
+				line-height: 1.4;
+			}
+
+			.post-card-title:hover {
+				color: #3498db;
+			}
+
+			.post-card-meta {
+				font-size: 0.85rem;
+				color: #999;
+				margin-bottom: 0.75rem;
+			}
+
+			.post-card-description {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			/* Pagination */
+			.pagination {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1rem;
+				margin-top: 4rem;
+				padding-top: 2rem;
+				border-top: 1px solid #e0e0e0;
+			}
+
+			.pagination a,
+			.pagination span {
+				padding: 0.5rem 1rem;
+				border-radius: 6px;
+				text-decoration: none;
+				color: #666;
+				transition: all 0.2s;
+			}
+
+			.pagination a:hover {
+				background: #f0f0f0;
+				color: #3498db;
+			}
+
+			.pagination .current {
+				background: #3498db;
+				color: white;
+				font-weight: 600;
+			}
+
+			.pagination .disabled {
+				color: #ccc;
+				cursor: not-allowed;
+			}
+
+			.page-info {
+				color: #999;
+				font-size: 0.9rem;
+			}
+
+			@media (max-width: 720px) {
+				.posts-container {
+					margin: 2rem auto;
+				}
+
+				.page-title {
+					font-size: 2rem;
+					margin-bottom: 2rem;
+				}
+
+				.posts-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.pagination {
+					gap: 0.5rem;
+					flex-wrap: wrap;
+				}
+
+				.pagination a,
+				.pagination span {
+					padding: 0.4rem 0.8rem;
+					font-size: 0.9rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="posts-container">
+				<h1 class="page-title">所有文章</h1>
+				<div class="posts-grid">
+					{
+						page.data.map((post) => (
+							<article class="post-card">
+								<a href={`/blog/${post.id}/`}>
+									<img src={post.data.heroImage} alt={post.data.title} class="post-card-image" />
+									<div class="post-card-content">
+										<h2 class="post-card-title">{post.data.title}</h2>
+										<div class="post-card-meta">
+											<FormattedDate date={post.data.pubDate} />
+										</div>
+										<p class="post-card-description">{post.data.description}</p>
+									</div>
+								</a>
+							</article>
+						))
+					}
+				</div>
+
+				<!-- Pagination -->
+				<nav class="pagination">
+					{page.url.prev ? (
+						<a href={page.url.prev}>← 上一頁</a>
+					) : (
+						<span class="disabled">← 上一頁</span>
+					)}
+
+					<span class="page-info">
+						第 {page.currentPage} / {page.lastPage} 頁
+					</span>
+
+					{page.url.next ? (
+						<a href={page.url.next}>下一頁 →</a>
+					) : (
+						<span class="disabled">下一頁 →</span>
+					)}
+				</nav>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,63 +1,621 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// 計算工作年資（從 2017/03 開始）
+const startYear = 2017;
+const currentYear = new Date().getFullYear();
+const yearsOfExperience = currentYear - startYear;
+
+// 合作夥伴
+const partners = [
+	{ name: 'SAT. KNOWLEDGE', url: 'https://sat.cool', logo: 'https://sat.cool/favicon.ico' },
+	{ name: 'A.D.A.N. 全時呵護', url: 'https://adan.com.tw/', logo: 'https://adan.com.tw/wp-content/uploads/2020/07/cropped-Image-from-iOS.jpg' },
+	{ name: 'EROS HAIR STYLING', url: 'https://eroshair.com/', logo: 'https://eroshair.com/wp-content/uploads/2018/09/logo.jpg' },
+	{ name: 'TEMP. Hair Salon', url: 'https://temp-hair.com/', logo: 'https://temp-hair.com/wp-content/uploads/2021/06/IMG_2026.png' },
+	{ name: 'TintMap', url: 'https://tintmaps.com/', logo: 'https://tintmaps.com/images/logo.png' },
+	{ name: 'applemint', url: 'https://www.applemint.tech/zh-hant/', logo: 'https://www.applemint.tech/wp-content/uploads/2019/06/cropped-applemint-logo%E6%8B%B7%E8%B2%9D.png' },
+];
+
+// 專業服務
+const services = [
+	'網站開發者',
+	'講師',
+	'技術書作者',
+	'技術顧問',
+	'貓奴',
+];
+
+// 出版作品
+const publications = [
+	{
+		title: 'WordPress 超圖解+No-code 7堂課：不只打造優質專業網站，還要帶你經營獲利與擁抱社群',
+		year: '2024',
+		description: '一本教導讀者透過七堂課建立 WordPress 網站、管理內容並參與社群的無程式碼指南。',
+		url: 'https://www.books.com.tw/products/0011007069'
+	},
+];
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead title={`關於我 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			.about-container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4rem 2rem;
+			}
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+			/* Top Layout: Profile + Introduction */
+			.top-section {
+				display: grid;
+				grid-template-columns: 320px 1fr;
+				gap: 5rem;
+				margin-bottom: 5rem;
+			}
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+			/* Profile Card */
+			.profile-card {
+				position: sticky;
+				top: 100px;
+			}
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+			.profile-avatar {
+				width: 120px;
+				height: 120px;
+				border-radius: 12px;
+				margin-bottom: 1.5rem;
+				object-fit: cover;
+				border: 3px solid #e5e5e5;
+			}
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+			.profile-card h1 {
+				font-size: 2rem;
+				margin-bottom: 0.75rem;
+				color: #1a1a1a;
+				font-weight: 700;
+				line-height: 1.2;
+			}
+
+			.profile-tags {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.7;
+				margin-bottom: 2rem;
+			}
+
+			.profile-info {
+				border-top: 1px solid #e5e5e5;
+				padding-top: 1.5rem;
+			}
+
+			.profile-info-item {
+				margin-bottom: 0.6rem;
+				font-size: 0.9rem;
+				color: #666;
+				line-height: 1.6;
+			}
+
+			.profile-info-item:last-of-type {
+				margin-bottom: 1.2rem;
+			}
+
+			.profile-info-item a {
+				color: #666;
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			.profile-info-item a:hover {
+				color: #3498db;
+			}
+
+			.social-icons {
+				display: flex;
+				gap: 1rem;
+			}
+
+			.social-icons a {
+				color: #999;
+				transition: all 0.2s ease;
+			}
+
+			.social-icons a:hover {
+				color: #3498db;
+				transform: translateY(-2px);
+			}
+
+			.social-icons svg {
+				width: 22px;
+				height: 22px;
+			}
+
+			/* Introduction */
+			.intro-section {
+				max-width: 650px;
+			}
+
+			.section-title {
+				font-size: 1.75rem;
+				margin-bottom: 2rem;
+				color: #1a1a1a;
+				font-weight: 700;
+				letter-spacing: -0.02em;
+			}
+
+			.section-content {
+				font-size: 1.05rem;
+				line-height: 1.9;
+				color: #555;
+			}
+
+			.section-content p {
+				margin-bottom: 1.5rem;
+			}
+
+			.section-content p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* Work Section */
+			.work-section {
+				margin-bottom: 5rem;
+			}
+
+			.work-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+			}
+
+			.work-item {
+				background: #f5f5f5;
+				padding: 0.6rem 1.2rem;
+				border-radius: 6px;
+				color: #555;
+				font-size: 0.95rem;
+				border: 1px solid #e5e5e5;
+				transition: all 0.2s ease;
+			}
+
+			.work-item:hover {
+				background: #fff;
+				border-color: #3498db;
+				color: #3498db;
+			}
+
+			/* Partners Section */
+			.partners-section {
+				margin-bottom: 5rem;
+			}
+
+			.partners-section .section-title {
+				font-size: 0.85rem;
+				color: #999;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				margin-bottom: 2rem;
+			}
+
+			.partners-marquee {
+				overflow: hidden;
+				padding: 2rem 0;
+			}
+
+			.partners-track {
+				display: flex;
+				gap: 5rem;
+				animation: scroll 25s linear infinite;
+			}
+
+			.partners-marquee:hover .partners-track {
+				animation-play-state: paused;
+			}
+
+			.partner-logo {
+				display: flex;
+				align-items: center;
+				flex-shrink: 0;
+			}
+
+			.partner-logo img {
+				width: 56px;
+				height: 56px;
+				object-fit: contain;
+				filter: grayscale(100%);
+				opacity: 0.5;
+				transition: all 0.3s ease;
+			}
+
+			.partner-logo:hover img {
+				filter: grayscale(0%);
+				opacity: 1;
+				transform: scale(1.1);
+			}
+
+			@keyframes scroll {
+				0% {
+					transform: translateX(0);
+				}
+				100% {
+					transform: translateX(-50%);
+				}
+			}
+
+			/* Bottom Grid: Experience + Publications */
+			.bottom-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 5rem;
+				margin-top: 3rem;
+			}
+
+			/* Experience Timeline with dots */
+			.experience-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				position: relative;
+			}
+
+			.experience-list::before {
+				content: '';
+				position: absolute;
+				left: 5px;
+				top: 10px;
+				bottom: 0;
+				width: 2px;
+				background: #e5e5e5;
+			}
+
+			.experience-item {
+				margin-bottom: 3rem;
+				padding-left: 2.5rem;
+				position: relative;
+			}
+
+			.experience-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.experience-item::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 6px;
+				width: 12px;
+				height: 12px;
+				background: #fff;
+				border: 2px solid #3498db;
+				border-radius: 50%;
+				z-index: 1;
+			}
+
+			.experience-title {
+				font-size: 1.15rem;
+				font-weight: 600;
+				color: #1a1a1a;
+				margin-bottom: 0.5rem;
+				line-height: 1.4;
+			}
+
+			.experience-period {
+				font-size: 0.9rem;
+				color: #999;
+				margin-bottom: 0.75rem;
+				font-weight: 500;
+			}
+
+			.experience-description {
+				font-size: 1rem;
+				color: #666;
+				line-height: 1.7;
+			}
+
+			/* Publications */
+			.publications-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.publication-item {
+				background: #fafafa;
+				border: 1px solid #e5e5e5;
+				border-radius: 12px;
+				padding: 2rem;
+				margin-bottom: 1.5rem;
+				transition: all 0.3s ease;
+			}
+
+			.publication-item:hover {
+				background: #fff;
+				border-color: #3498db;
+				box-shadow: 0 4px 12px rgba(52, 152, 219, 0.1);
+				transform: translateY(-2px);
+			}
+
+			.publication-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.publication-year {
+				display: inline-block;
+				background: #3498db;
+				color: #fff;
+				font-size: 0.75rem;
+				font-weight: 600;
+				padding: 0.25rem 0.75rem;
+				border-radius: 4px;
+				margin-bottom: 1rem;
+				letter-spacing: 0.05em;
+			}
+
+			.publication-title {
+				font-size: 1.1rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+				line-height: 1.6;
+			}
+
+			.publication-title a {
+				color: #1a1a1a;
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			.publication-title a:hover {
+				color: #3498db;
+			}
+
+			.publication-description {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.7;
+			}
+
+			.empty-state {
+				color: #999;
+				font-style: italic;
+			}
+
+			@media (max-width: 968px) {
+				.top-section {
+					grid-template-columns: 1fr;
+					gap: 3rem;
+				}
+
+				.profile-card {
+					position: static;
+				}
+
+				.bottom-grid {
+					grid-template-columns: 1fr;
+					gap: 3rem;
+				}
+
+				.work-section {
+					margin-bottom: 3rem;
+				}
+
+				.partners-section {
+					margin-bottom: 3rem;
+				}
+			}
+
+			@media (max-width: 720px) {
+				.about-container {
+					padding: 2.5rem 1.5rem;
+				}
+
+				.profile-avatar {
+					width: 100px;
+					height: 100px;
+				}
+
+				.profile-card h1 {
+					font-size: 1.75rem;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+
+				.top-section {
+					gap: 2.5rem;
+					margin-bottom: 3rem;
+				}
+
+				.bottom-grid {
+					gap: 2.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="about-container">
+				<!-- Top Section: Profile + Introduction -->
+				<div class="top-section">
+					<!-- Left: Profile Card -->
+					<div class="profile-card">
+						<img src="https://secure.gravatar.com/avatar/a1b4930a46f098761bbb9c70ff58383545925b740b05dcacfd27f31f920ac8f6?s=200&r=g" alt="Eric Wu" class="profile-avatar">
+						<h1>Eric Wu</h1>
+						<div class="profile-tags">
+							開發者 / 講師 / 作者<br>
+							喜愛 AI 技術應用與 Web 開發
+						</div>
+						<div class="profile-info">
+							<div class="profile-info-item">台北，台灣</div>
+							<div class="profile-info-item">SAT. KNOWLEDGE</div>
+							<div class="profile-info-item">
+								<a href="mailto:smart032410@gmail.com">smart032410@gmail.com</a>
+							</div>
+							<div class="social-icons">
+								<a href="https://github.com/eric0324" target="_blank" aria-label="GitHub">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+									</svg>
+								</a>
+								<a href="https://www.facebook.com/eric0324" target="_blank" aria-label="Facebook">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+									</svg>
+								</a>
+								<a href="https://www.instagram.com/ericwu0324/" target="_blank" aria-label="Instagram">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Right: Introduction -->
+					<div class="intro-section">
+						<h2 class="section-title">Hello World</h2>
+						<div class="section-content">
+							<p>
+								嗨！我是 Eric，從 2010 年就開始寫程式到現在的開發者。2017 年正式投入 Web 開發領域，一路走來已經 {yearsOfExperience} 年了。
+							</p>
+							<p>
+								這些年來，我從做聊天機器人、寫 WordPress 網站，到現在玩 AI 技術整合，什麼都試過一輪。最讓我有成就感的，不是寫出多厲害的程式碼，而是看到自己做的東西真的能幫助到別人。像是疫情期間開發的口罩地圖機器人，雖然只是個小工具，但每天幫助上萬人找口罩，那種感覺真的很棒。
+							</p>
+							<p>
+								我很喜歡寫文章記錄學習過程，不只是為了教別人，更多時候是在整理自己的思緒。目前這個部落格累積了 100+ 篇技術筆記，主題從 Web 開發、WordPress、Laravel 到最近熱門的 AI 技術都有。2024 年還出了一本 WordPress 的書，算是把這幾年的經驗做個總結。
+							</p>
+							<p>
+								最近特別著迷於用 AI 做各種有趣的小玩具，每天都在想「欸這個好像可以用 AI 做做看」。如果你也喜歡折騰技術、有什麼想法想聊，隨時歡迎找我！
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Work Section -->
+				<section class="work-section">
+					<h2 class="section-title">工作</h2>
+					<ul class="work-list">
+						{services.map((service) => (
+							<li class="work-item">{service}</li>
+						))}
+					</ul>
+				</section>
+
+				<!-- Partners Section -->
+				<section class="partners-section">
+					<h3 class="section-title">合作夥伴</h3>
+					<div class="partners-marquee">
+						<div class="partners-track">
+							{[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
+								<a href={partner.url} target="_blank" rel="noopener noreferrer" class="partner-logo" key={index}>
+									<img src={partner.logo} alt={partner.name} />
+								</a>
+							))}
+						</div>
+					</div>
+				</section>
+
+				<!-- Bottom Grid: Experience + Community + Publications -->
+				<div class="bottom-grid">
+					<!-- Left: Experience -->
+					<section>
+						<h2 class="section-title">經歷</h2>
+						<ul class="experience-list">
+							<li class="experience-item">
+								<div class="experience-title">SAT. KNOWLEDGE - Technical Leader</div>
+								<div class="experience-period">2020/03 ~ 現在</div>
+								<div class="experience-description">
+									專注於 Web 應用開發、系統架構設計，以及 AI 技術整合。參與多個大型專案的開發與維護。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">GoodLinker - Developer</div>
+								<div class="experience-period">2018/02 ~ 2020/03</div>
+								<div class="experience-description">
+									負責 Web 應用開發，包含前後端整合、API 設計與資料庫最佳化。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">5breakfast - Chatbot Developer</div>
+								<div class="experience-period">2017/10 ~ 2018/12</div>
+								<div class="experience-description">
+									開發 LINE Chatbot 智慧點餐系統，負責整個產品的技術架構設計與開發。參與 LINE Protostar 計畫。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">中華民國海軍陸戰隊 - 二兵</div>
+								<div class="experience-period">2017/06 ~ 2017/10</div>
+								<div class="experience-description">
+									服義務役，擔任二兵。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">竹貓星球數位股份有限公司 - Back End Developer (實習)</div>
+								<div class="experience-period">2017/02 ~ 2017/10</div>
+								<div class="experience-description">
+									後端開發實習，學習 Web 應用開發與系統架構設計。
+								</div>
+							</li>
+						</ul>
+					</section>
+
+					<!-- Right: Community & Publications -->
+					<section>
+						<h2 class="section-title">社群參與</h2>
+						<ul class="experience-list">
+							<li class="experience-item">
+								<div class="experience-title">WordCamp Taiwan 2023 - 總召組</div>
+								<div class="experience-description">
+									擔任 WordCamp Taiwan 2023 總召組成員，負責活動籌備與執行。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">WordCamp Asia - AX Team & Local Team Organizer</div>
+								<div class="experience-description">
+									擔任 WordCamp Asia 的 AX Team 與 Local Team Organizer，協助籌劃亞洲最大 WordPress 社群活動。
+								</div>
+							</li>
+							<li class="experience-item">
+								<div class="experience-title">Laravel Conf - 志工</div>
+								<div class="experience-description">
+									擔任 Laravel 年會志工，協助活動現場執行與參與者服務。
+								</div>
+							</li>
+						</ul>
+
+						<h2 class="section-title" style="margin-top: 3rem;">出版</h2>
+						{publications.length > 0 ? (
+							<ul class="publications-list">
+								{publications.map((pub) => (
+									<li class="publication-item">
+										<div class="publication-year">{pub.year}</div>
+										<div class="publication-title">
+											{pub.url ? (
+												<a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+											) : (
+												pub.title
+											)}
+										</div>
+										<div class="publication-description">{pub.description}</div>
+									</li>
+								))}
+							</ul>
+						) : (
+							<p class="empty-state">敬請期待...</p>
+						)}
+					</section>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

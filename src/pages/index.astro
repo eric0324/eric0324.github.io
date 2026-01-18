@@ -1,48 +1,236 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const allPosts = await getCollection('blog');
+const allProjects = await getCollection('projects');
+
+// Recent posts - 最新的 6 篇文章
+const recentPosts = allPosts.sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 6);
+
+// 計算工作年資（從 2017/03 開始）
+const startYear = 2017;
+const currentYear = new Date().getFullYear();
+const yearsOfExperience = currentYear - startYear;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-TW">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			/* About Section */
+			.about-section {
+				max-width: 1200px;
+				margin: 3rem auto 4rem;
+			}
+
+			.about-header {
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				margin-bottom: 1.5rem;
+				flex-wrap: wrap;
+			}
+
+			.about-section h1 {
+				font-size: 3rem;
+				margin: 0;
+				font-weight: 700;
+				line-height: 1.2;
+				color: #2c3e50;
+			}
+
+			.stats-badges {
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+			}
+
+			.stat-badge {
+				background: #f0f0f0;
+				padding: 0.5rem 1rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				color: #666;
+				white-space: nowrap;
+			}
+
+			.bio {
+				font-size: 1.05rem;
+				color: #666;
+				line-height: 1.8;
+				margin-top: 1.5rem;
+			}
+
+			/* Recent Posts Section */
+			.recent-posts-section {
+				max-width: 1200px;
+				margin: 5rem auto;
+			}
+
+			.posts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 2rem;
+				margin-top: 2.5rem;
+			}
+
+			.post-card {
+				background: white;
+				border-radius: 12px;
+				overflow: hidden;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+
+			.post-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+			}
+
+			.post-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.post-card-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+			}
+
+			.post-card-content {
+				padding: 1.5rem;
+			}
+
+			.post-card-title {
+				font-size: 1.25rem;
+				font-weight: 600;
+				color: #2c3e50;
+				margin-bottom: 0.75rem;
+				line-height: 1.4;
+			}
+
+			.post-card-title:hover {
+				color: #3498db;
+			}
+
+			.post-card-meta {
+				font-size: 0.85rem;
+				color: #999;
+				margin-bottom: 0.75rem;
+			}
+
+			.post-card-description {
+				font-size: 0.95rem;
+				color: #666;
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.section-title {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+				font-weight: 700;
+				color: #2c3e50;
+				text-align: center;
+			}
+
+			.view-more {
+				text-align: center;
+				margin-top: 3rem;
+			}
+
+			.view-more-btn {
+				display: inline-block;
+				padding: 0.75rem 2rem;
+				background: #3498db;
+				color: white;
+				text-decoration: none;
+				border-radius: 8px;
+				font-size: 1rem;
+				font-weight: 500;
+				transition: all 0.2s;
+			}
+
+			.view-more-btn:hover {
+				background: #2980b9;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+			}
+
+			@media (max-width: 720px) {
+				.about-section h1 {
+					font-size: 2.2rem;
+				}
+
+				.stats-badges {
+					width: 100%;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+
+				.posts-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- About Section -->
+			<section class="about-section">
+				<div class="about-header">
+					<h1>Hi, I'm Eric! 👋</h1>
+					<div class="stats-badges">
+						<span class="stat-badge">{yearsOfExperience}+ 年經驗</span>
+						<span class="stat-badge">{allPosts.length} 篇文章</span>
+					</div>
+				</div>
+				<p class="bio">
+					我是一位熱愛程式設計的開發者，專注於 Web 開發與 AI 技術應用。
+					喜歡透過文字分享學習心得與開發經驗，也熱衷於打造實用的產品來解決生活中的問題。
+				</p>
+			</section>
+
+			<!-- Recent Posts Section -->
+			<section class="recent-posts-section">
+				<h2 class="section-title">最新文章</h2>
+				<div class="posts-grid">
+					{
+						recentPosts.map((post) => (
+							<article class="post-card">
+								<a href={`/blog/${post.id}/`}>
+									<img src={post.data.heroImage} alt={post.data.title} class="post-card-image" />
+									<div class="post-card-content">
+										<h3 class="post-card-title">{post.data.title}</h3>
+										<div class="post-card-meta">
+											<FormattedDate date={post.data.pubDate} />
+										</div>
+										<p class="post-card-description">{post.data.description}</p>
+									</div>
+								</a>
+							</article>
+						))
+					}
+				</div>
+				<div class="view-more">
+					<a href="/blog" class="view-more-btn">查看所有文章</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>

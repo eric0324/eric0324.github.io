@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const projects = (await getCollection('projects')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<BaseHead title={`Projects - ${SITE_TITLE}`} description="我的專案作品集" />
+		<style>
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+				gap: 2rem;
+				list-style: none;
+				padding: 0;
+				margin: 2rem 0;
+			}
+
+			.project-card {
+				background: white;
+				border-radius: 8px;
+				padding: 2rem;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+
+			.project-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			}
+
+			.project-card a {
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.project-title {
+				color: #2c3e50;
+				margin: 0 0 1rem 0;
+				font-size: 1.3rem;
+			}
+
+			.project-title:hover {
+				color: #3498db;
+			}
+
+			.project-description {
+				color: #555;
+				line-height: 1.6;
+				margin: 0;
+			}
+
+			h1 {
+				color: #2c3e50;
+				margin-bottom: 1rem;
+			}
+
+			@media (max-width: 720px) {
+				.projects-grid {
+					grid-template-columns: 1fr;
+					gap: 1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Projects</h1>
+			<p>這裡收錄了我參與的專案與作品。</p>
+
+			<ul class="projects-grid">
+				{
+					projects.map((project) => (
+						<li class="project-card">
+							<a href={`/projects/${project.id}/`}>
+								<h2 class="project-title">{project.data.title}</h2>
+								<p class="project-description">{project.data.description}</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
