@@ -22,7 +22,7 @@ const { page } = Astro.props;
 <html lang="zh-TW">
 	<head>
 		<BaseHead title={`文章 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
+		<style is:global>
 			.posts-container {
 				max-width: 1200px;
 				margin: 3rem auto;
@@ -196,6 +196,41 @@ const { page } = Astro.props;
 				font-size: 0.9rem;
 			}
 
+			/* Infinite scroll indicators */
+			.loading-indicator,
+			.end-message {
+				text-align: center;
+				padding: 3rem 1rem;
+				margin-top: 2rem;
+			}
+
+			.spinner {
+				width: 40px;
+				height: 40px;
+				margin: 0 auto 1rem;
+				border: 4px solid #f0f0f0;
+				border-top-color: #3498db;
+				border-radius: 50%;
+				animation: spin 1s linear infinite;
+			}
+
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			.loading-indicator p {
+				color: #999;
+				font-size: 1rem;
+			}
+
+			.end-message p {
+				color: #999;
+				font-size: 1.1rem;
+				font-weight: 500;
+			}
+
 			@media (max-width: 720px) {
 				.posts-container {
 					margin: 2rem auto;
@@ -268,8 +303,19 @@ const { page } = Astro.props;
 					}
 				</div>
 
-				<!-- Pagination -->
-				<nav class="pagination">
+				<!-- Loading indicator for infinite scroll -->
+				<div id="loading" class="loading-indicator" style="display: none;">
+					<div class="spinner"></div>
+					<p>載入更多文章...</p>
+				</div>
+
+				<!-- End message -->
+				<div id="end-message" class="end-message" style="display: none;">
+					<p>已經沒有更多文章了 📚</p>
+				</div>
+
+				<!-- Pagination (fallback for non-JS) -->
+				<nav class="pagination" id="pagination">
 					{page.url.prev ? (
 						<a href={page.url.prev}>← 上一頁</a>
 					) : (
@@ -289,5 +335,157 @@ const { page } = Astro.props;
 			</div>
 		</main>
 		<Footer />
+
+		<script define:vars={{ currentPage: page.currentPage, totalPages: page.lastPage }}>
+			let page = currentPage;
+			let isLoading = false;
+			const postsGrid = document.querySelector('.posts-grid');
+			const loading = document.getElementById('loading');
+			const endMessage = document.getElementById('end-message');
+			const pagination = document.getElementById('pagination');
+
+			// Hide pagination on load if JS is enabled
+			pagination.style.display = 'none';
+
+			// Format date function to match FormattedDate component
+			function formatDate(dateString) {
+				const date = new Date(dateString);
+				return date.toLocaleDateString('en-us', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric',
+				});
+			}
+
+			// Create post card HTML - exact structure match
+			function createPostCard(post) {
+				const card = document.createElement('article');
+				card.className = 'post-card';
+
+				const link = document.createElement('a');
+				link.href = `/blog/${post.id}/`;
+
+				// Image
+				const img = document.createElement('img');
+				img.src = post.heroImage;
+				img.alt = post.title;
+				img.className = 'post-card-image';
+				img.loading = 'lazy';
+
+				// Content div
+				const content = document.createElement('div');
+				content.className = 'post-card-content';
+
+				// Title
+				const title = document.createElement('h2');
+				title.className = 'post-card-title';
+				title.textContent = post.title;
+
+				// Meta div
+				const meta = document.createElement('div');
+				meta.className = 'post-card-meta';
+
+				// Category link if exists
+				if (post.category) {
+					const categoryLink = document.createElement('a');
+					categoryLink.href = `/categories/${post.category}/`;
+					categoryLink.className = 'category-link';
+					categoryLink.textContent = post.category;
+					meta.appendChild(categoryLink);
+
+					const separator = document.createElement('span');
+					separator.className = 'separator';
+					separator.textContent = ' | ';
+					meta.appendChild(separator);
+				}
+
+				// Date
+				const time = document.createElement('time');
+				time.dateTime = post.pubDate;
+				time.textContent = formatDate(post.pubDate);
+				meta.appendChild(time);
+
+				// Description
+				const description = document.createElement('p');
+				description.className = 'post-card-description';
+				description.textContent = post.description;
+
+				// Append to content
+				content.appendChild(title);
+				content.appendChild(meta);
+				content.appendChild(description);
+
+				// Tags if exists
+				if (post.tags && post.tags.length > 0) {
+					const tagsDiv = document.createElement('div');
+					tagsDiv.className = 'post-card-tags';
+
+					post.tags.slice(0, 3).forEach(tag => {
+						const tagLink = document.createElement('a');
+						tagLink.href = `/tags/${tag}/`;
+						tagLink.className = 'tag-badge';
+						tagLink.textContent = `#${tag}`;
+						tagsDiv.appendChild(tagLink);
+					});
+
+					content.appendChild(tagsDiv);
+				}
+
+				// Assemble
+				link.appendChild(img);
+				link.appendChild(content);
+				card.appendChild(link);
+
+				return card;
+			}
+
+			// Load more posts
+			async function loadMore() {
+				if (isLoading || page >= totalPages) return;
+
+				isLoading = true;
+				loading.style.display = 'block';
+
+				try {
+					// Let spinner rotate at least once (1 second minimum)
+					const [response] = await Promise.all([
+						fetch(`/api/posts.json?page=${page + 1}`),
+						new Promise(resolve => setTimeout(resolve, 1000))
+					]);
+
+					const data = await response.json();
+
+					data.posts.forEach(post => {
+						const postCard = createPostCard(post);
+						postsGrid.appendChild(postCard);
+					});
+
+					page++;
+
+					if (!data.hasMore) {
+						endMessage.style.display = 'block';
+						window.removeEventListener('scroll', handleScroll);
+					}
+				} catch (error) {
+					console.error('Failed to load posts:', error);
+				} finally {
+					isLoading = false;
+					loading.style.display = 'none';
+				}
+			}
+
+			// Handle scroll event
+			function handleScroll() {
+				const scrollPosition = window.innerHeight + window.scrollY;
+				const threshold = document.documentElement.scrollHeight - 800;
+
+				if (scrollPosition >= threshold) {
+					loadMore();
+				}
+			}
+
+			// Add scroll listener
+			window.addEventListener('scroll', handleScroll);
+		</script>
 	</body>
 </html>
