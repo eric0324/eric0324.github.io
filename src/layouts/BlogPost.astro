@@ -16,22 +16,29 @@ const { title, description, pubDate, updatedDate, category, tags } = Astro.props
 		<BaseHead title={title} description={description} />
 		<style is:global>
 			main {
-				width: calc(100% - 2em);
+				width: 100%;
 				max-width: 100%;
 				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
 			}
 			.article-container {
 				max-width: 1060px;
+				width: 100%;
 				margin: 0 auto;
 				display: grid;
-				grid-template-columns: 720px 60px 280px;
+				grid-template-columns: minmax(0, 720px) 60px minmax(0, 280px);
 				gap: 0;
-				padding: 2rem 2rem;
+				padding: 2rem 1rem;
 				justify-content: center;
+				box-sizing: border-box;
 			}
 			.prose {
 				grid-column: 1;
 				color: rgb(var(--gray-dark));
+				min-width: 0;
+				overflow-wrap: break-word;
+				word-wrap: break-word;
 			}
 			.toc-wrapper {
 				grid-column: 3;
@@ -117,6 +124,33 @@ const { title, description, pubDate, updatedDate, category, tags } = Astro.props
 			}
 			.toc-h4.active {
 				color: #3498db !important;
+			}
+
+			/* 程式碼區塊響應式處理 */
+			.prose pre {
+				overflow-x: auto;
+				max-width: 100%;
+				white-space: pre;
+			}
+			.prose code {
+				word-break: break-word;
+			}
+			.prose pre code {
+				word-break: normal;
+			}
+
+			/* 表格響應式處理 */
+			.prose table {
+				display: block;
+				width: 100%;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+
+			/* 確保圖片不會溢出 */
+			.prose img {
+				max-width: 100%;
+				height: auto;
 			}
 
 			@media (max-width: 1200px) {

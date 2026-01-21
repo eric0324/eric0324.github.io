@@ -41,6 +41,7 @@ body {
 	color: #333;
 	font-size: 18px;
 	line-height: 1.8;
+	overflow-x: hidden;
 }
 main {
 	width: 1200px;
@@ -100,12 +101,16 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 2em 0;
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 table th,
 table td {
 	border: 1px solid #ddd;
 	padding: 0.75rem;
 	text-align: left;
+	white-space: nowrap;
 }
 table th {
 	background-color: #f5f5f5;
@@ -118,6 +123,13 @@ table tr:nth-child(even) {
 table tr:hover {
 	background-color: #f0f0f0;
 }
+@media (max-width: 720px) {
+	table th,
+	table td {
+		padding: 0.5rem;
+		font-size: 0.9em;
+	}
+}
 img {
 	max-width: 100%;
 	height: auto;
@@ -127,13 +139,18 @@ code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
+	word-break: break-word;
 }
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
+	overflow-x: auto;
+	max-width: 100%;
 }
 pre > code {
 	all: unset;
+	word-break: normal;
+	white-space: pre;
 }
 blockquote {
 	border-left: 4px solid var(--accent);

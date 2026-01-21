@@ -29,7 +29,7 @@ $ cd wp-content/plugins $ mkdir eric-plugin $ cd eric-plugin $ vim eric-plugin.p
 
 首先，為了剛剛提到的要讓 WordPress 去查找外掛 header comments 的 PHP 文件，我們需要為外掛添加一個昨天我們提到的 DocBlock，這是一個特殊格式的 PHP 註解，來定義外掛的基本資料。
 
-```PHP
+```php
 <?php
 /*
 Plugin Name: YOUR PLUGIN NAME

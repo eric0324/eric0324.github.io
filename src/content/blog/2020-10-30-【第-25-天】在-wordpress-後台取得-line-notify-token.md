@@ -19,7 +19,7 @@ tags:
 
 WordPress 接受 post method 的方法非常簡單，我們只需要在外掛的目錄下建立 `get_post.php` 就可以處理 post method 了，大概是這樣。
 
-```PHP
+```php
 <?php 
     require_once('wp-load.php'); // add wordpress functionality
     $post = $_POST;

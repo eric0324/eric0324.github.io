@@ -38,7 +38,7 @@ wp\_remote\_get()的參數如下：
 
 下面，讓我們打 GitHub 賬戶的 URL，看看可以得到什麼樣的信息。
 
-```PHP
+```php
 $response = wp_remote_get( 'https://api.github.com/users/eric0324' );
 ```
 
@@ -48,7 +48,7 @@ $response = wp_remote_get( 'https://api.github.com/users/eric0324' );
 
 通常我們只需要使用回傳的 body，所以 WordPress 也提供我們一個很好用的函式 [wp\_remote\_retrieve\_body()](https://developer.wordpress.org/reference/functions/wp_remote_retrieve_body/)，我們可以使用 wp\_remote\_retrieve\_body() 來獲取這個信息。這個函數只需要一個參數，就是把剛剛的 `response` 丟進去就可以囉！
 
-```PHP
+```php
 $response = wp_remote_get( 'https://api.github.com/users/eric0324' );
 $body = wp_remote_retrieve_body( $response );
 ```
@@ -65,7 +65,7 @@ string(1246) "{"login":"eric0324","id":3984670,"node_id":"MDQ6VXNlcjM5ODQ2NzA=",
 
 會回傳一個 int
 
-```PHP
+```php
 int(200)
 ```
 
@@ -77,7 +77,7 @@ $response：來自請求的回應信息 $header：想要取得 header 哪個 key
 
 舉個例子，例如我想拿到 header 中的 `最後修改時間`：
 
-```PHP
+```php
 $response = wp_remote_get( 'https://api.github.com/users/eric0324' );
 $last_modified = wp_remote_retrieve_header( $response, 'last-modified' );
 ```
@@ -92,7 +92,7 @@ string(29) "Tue, 01 Sep 2020 07:44:05 GMT"
 
 有些 API 為了安全，會提供身份驗證的機制，這種情況非常的常見，所以我們也來看一下，怎麼把我們的授權資訊傳遞給 wp\_remote\_get() 函數，還記得剛剛說的第二個參數嗎？就是放進去即可，其他 HTTP 方法是也一樣的。
 
-```PHP
+```php
 $token = 'i_am_token'
 $args = array(
    'headers' => array(
@@ -110,7 +110,7 @@ wp_remote_get( $url, $args );
 
 通常第三方 API POST 資料都需要憑證，所以我們只能先想像一下有隻 API 了。假設我們想像的這隻 API 讓我們可以提交一個表單，這表單包含 name, email, subject, comment 這幾個欄位。我們首先需要設置 POST 請求的 body ，建立一個名為 `body` 的陣列：
 
-```PHP
+```php
 $body = array(
    'name' => 'Eric',
    'email' => 'smart032410@gmail.com',
@@ -121,7 +121,7 @@ $body = array(
 
 然後，把我們設置的 $body 陣列和其他可選的參數設置為 wp\_remote\_post() 的第二個參數。
 
-```PHP
+```php
 $args = array(
    'body' => $body,
    'timeout' => '5',
@@ -135,7 +135,7 @@ $args = array(
 
 然後發送 POST 請求：
 
-```PHP
+```php
 $response = wp_remote_post( 'http://ericwu.asia/hello', $args );
 ```
 
@@ -145,7 +145,7 @@ $response = wp_remote_post( 'http://ericwu.asia/hello', $args );
 
 大家可能會好奇，那如果今天用到其他 method 呢？別怕，WordPress 肯定也考慮到了這一點，所以提供了[wp\_remote\_request()](https://developer.wordpress.org/reference/functions/wp_remote_request/) 函式來幫助我們，這個函式的參數和 wp\_remote\_get() 一樣，差別在可以讓我們指定 HTTP 的方法。比如，我們需要發送一個 DELETE 方法的請求。
 
-```PHP
+```php
 $args = array(
    'method' => 'DELETE'
 );
@@ -170,7 +170,7 @@ WordPress 快取 API 為我們提供了一種方便的方式來存儲和使用�
 
 下面來試試看把我們剛剛從 Github API 中獲取的使用者資訊快取一個小時。
 
-```PHP
+```php
 $response = wp_remote_get( 'https://api.github.com/users/eric0324' );
 
 set_transient( 'eric_github_userinfo', $response, 60*60 );
@@ -180,7 +180,7 @@ set_transient( 'eric_github_userinfo', $response, 60*60 );
 
 在取得快取之前，我們會需要先檢查快取是否已經過期？如果過期，我們需要從 API 拿到新的資訊，然後重新設置快取。所以通常都是 [set\_transient()](https://developer.wordpress.org/reference/functions/set_transient/) 和 [get\_transient()](https://developer.wordpress.org/reference/functions/get_transient/) 一起使用。繼續延續剛剛的例子：
 
-```PHP
+```php
 $github_userinfo = get_transient( 'eric_github_userinfo' );
 
 if( !$github_userinfo ) {
@@ -193,6 +193,6 @@ if( !$github_userinfo ) {
 
 刪除快取是最簡單的，只需要把快取的名稱傳給 [delete\_transient()](https://developer.wordpress.org/reference/functions/delete_transient/) 函式就可以了。繼續延續剛剛的例子：
 
-```PHP
+```php
 delete_transient( 'eric_github_userinfo' );
 ```

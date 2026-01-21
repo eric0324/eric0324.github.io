@@ -32,7 +32,7 @@ WordPress 本身就內建了以下幾個 shortcode：
 
 我們可以使用 WordPress 提供的 shortcode API 來添加 shortcode，整個過程很簡單，使用 [add\_shortcode()](https://developer.wordpress.org/reference/functions/add_shortcode/) 函式來註冊就可以了。
 
-```PHP
+```php
 <?php
 add_shortcode(
    string $tag,
@@ -42,7 +42,7 @@ add_shortcode(
 
 這邊示範一下怎麼註冊 shrotcode
 
-```PHP
+```php
 <?php
 function eric_shortcode($atts = [], $content = null) {
    // do something to $content
@@ -63,7 +63,7 @@ eric 是我們註冊的 shortcode，我們現在可以使用這個 shortcode
 
 和在主題中註冊 shortcode 不一樣，外掛在 WordPress 的執行過程中，時間點非常早！！因此，我們需要延遲添加 shortcode 的操作到 WordPress 初始化完成之後。網路上是建議使用 init action 來實現。
 
-```PHP
+```php
 <?php
 function eric_shortcodes_init() {
    function eric_shortcode($atts = [], $content = null) {
@@ -81,7 +81,7 @@ add_action('init', 'eric_shortcodes_init');
 
 當我們不再需要一個 shortcode 時，也可以使用 [remove\_shortcode()](https://developer.wordpress.org/reference/functions/remove_shortcode/) 來刪除他。
 
-```PHP
+```php
 <?php
 remove_shortcode(
    string $tag
@@ -128,7 +128,7 @@ add_shortcode('eric', 'eric_shortcode');
 
 所以要怎麼達成這件事情呢？我們來寫一段簡單的程式碼：
 
-```PHP
+```php
 <?php
 function eric_shortcode($atts = [], $content = null){
     $atts = shortcode_atts(

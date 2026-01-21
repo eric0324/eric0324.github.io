@@ -17,7 +17,7 @@ tags:
 
 WordPress 同樣的，提供了一個好用的函式讓我們可以埋 filter hook ，叫做 [apply\_filters()](https://developer.wordpress.org/reference/functions/apply_filters/)。
 
-```PHP
+```php
 $c = apply_filters('do_something',$a, $b); // 埋下一個名叫 do_something 的 filter hook
 ```
 
@@ -32,7 +32,7 @@ add\_filter() 也一樣至少需要兩個參數，第一個是 hook 名稱（也
 
 下面示範一個在剛剛埋的 action hook （do\_something）上，插入我的自定義 love\_wp 回呼函式：
 
-```PHP
+```php
 <?php
 function love_wp($love) {
     return $love;

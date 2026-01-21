@@ -21,6 +21,12 @@ import { SITE_TITLE } from '../consts';
 					<polyline points="10 9 9 9 8 9"></polyline>
 				</svg>
 			</a>
+			<button id="search-toggle" class="nav-icon" title="搜尋">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="11" cy="11" r="8"></circle>
+					<path d="m21 21-4.35-4.35"></path>
+				</svg>
+			</button>
 			<a href="/projects" class="nav-icon" title="專案">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 					<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -56,7 +62,31 @@ import { SITE_TITLE } from '../consts';
 	</div>
 </aside>
 
-<style>
+<!-- 搜尋 Modal -->
+<div id="search-modal" class="search-modal">
+	<div class="search-modal-content">
+		<div class="search-header">
+			<input
+				type="text"
+				id="search-input"
+				class="search-input"
+				placeholder="搜尋文章標題或描述..."
+				autocomplete="off"
+			/>
+			<button id="search-close" class="search-close" title="關閉">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+		<div id="search-results" class="search-results">
+			<!-- 搜尋結果會動態插入這裡 -->
+		</div>
+	</div>
+</div>
+
+<style is:global>
 	.sidebar-nav {
 		position: fixed;
 		left: 2rem;
@@ -108,6 +138,13 @@ import { SITE_TITLE } from '../consts';
 	.nav-icon:hover {
 		background: #f5f5f5;
 		color: #3498db;
+	}
+
+	#search-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
 	}
 
 	.nav-icon.active {
@@ -214,6 +251,238 @@ import { SITE_TITLE } from '../consts';
 			height: 18px;
 		}
 	}
+
+	/* 搜尋 Modal */
+	.search-modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(4px);
+		z-index: 2000;
+		padding: 2rem;
+		animation: fadeIn 0.2s ease;
+	}
+
+	.search-modal.active {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		padding-top: 10vh;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.search-modal-content {
+		background: white;
+		border-radius: 16px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		max-width: 700px;
+		width: 100%;
+		max-height: 80vh;
+		display: flex;
+		flex-direction: column;
+		animation: slideDown 0.3s ease;
+		overflow: hidden;
+	}
+
+	@keyframes slideDown {
+		from {
+			transform: translateY(-20px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.search-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.5rem;
+		border-bottom: 1px solid #e5e5e5;
+		flex-shrink: 0;
+	}
+
+	.search-input {
+		flex: 1;
+		border: none;
+		outline: none;
+		font-size: 1.1rem;
+		padding: 0.5rem;
+		color: #2c3e50;
+	}
+
+	.search-input::placeholder {
+		color: #999;
+	}
+
+	.search-close {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		color: #999;
+		border-radius: 8px;
+		transition: all 0.2s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.search-close:hover {
+		background: #f5f5f5;
+		color: #333;
+	}
+
+	.search-close svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	.search-results {
+		overflow-y: auto;
+		overflow-x: hidden;
+		flex: 1;
+	}
+
+	.search-result-item {
+		padding: 1.5rem;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.search-result-item:last-child {
+		border-bottom: none;
+	}
+
+	.search-result-title {
+		font-size: 1.05rem;
+		font-weight: 600;
+		margin-bottom: 0.75rem;
+		line-height: 1.5;
+	}
+
+	.search-result-title a {
+		color: #2c3e50;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.search-result-title a:hover {
+		color: #3498db;
+	}
+
+	.search-result-title mark {
+		background: #fff3cd;
+		color: #f57c00;
+		padding: 2px 4px;
+		border-radius: 3px;
+		font-weight: 700;
+	}
+
+	.search-result-description {
+		font-size: 0.9rem;
+		color: #666;
+		line-height: 1.6;
+		margin-bottom: 0.75rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.search-result-description mark {
+		background: #fff3cd;
+		color: #f57c00;
+		padding: 2px 4px;
+		border-radius: 3px;
+	}
+
+	.search-result-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-size: 0.85rem;
+		flex-wrap: wrap;
+	}
+
+	.search-result-category {
+		background: #3498db;
+		color: white;
+		padding: 0.25rem 0.7rem;
+		border-radius: 12px;
+		font-weight: 500;
+	}
+
+	.search-result-date {
+		color: #999;
+	}
+
+	.search-no-results {
+		text-align: center;
+		padding: 3rem 2rem;
+		color: #999;
+		font-size: 0.95rem;
+	}
+
+	.search-results-count {
+		padding: 1rem 1.5rem;
+		color: #999;
+		font-size: 0.85rem;
+		font-weight: 500;
+		border-bottom: 1px solid #e0e0e0;
+		background: #f8f9fa;
+	}
+
+	@media (max-width: 720px) {
+		.search-modal {
+			padding: 0.5rem;
+		}
+
+		.search-modal.active {
+			padding-top: 2vh;
+		}
+
+		.search-modal-content {
+			max-height: 95vh;
+		}
+
+		.search-header {
+			padding: 1rem;
+		}
+
+		.search-input {
+			font-size: 1rem;
+		}
+
+		.search-results {
+			padding: 0.75rem;
+		}
+
+		.search-result-item {
+			padding: 1rem;
+		}
+
+		.search-result-title {
+			font-size: 0.95rem;
+		}
+
+		.search-result-description {
+			font-size: 0.85rem;
+		}
+	}
 </style>
 
 <script>
@@ -229,4 +498,121 @@ import { SITE_TITLE } from '../consts';
 			icon.classList.add('active');
 		}
 	});
+
+	// 搜尋功能
+	const searchToggle = document.getElementById('search-toggle');
+	const searchModal = document.getElementById('search-modal');
+	const searchClose = document.getElementById('search-close');
+	const searchInput = document.getElementById('search-input');
+	const searchResults = document.getElementById('search-results');
+
+	let allPosts = [];
+
+	// 取得所有文章
+	async function fetchPosts() {
+		try {
+			const response = await fetch('/search-data.json');
+			allPosts = await response.json();
+		} catch (error) {
+			console.error('Failed to fetch posts:', error);
+		}
+	}
+
+	// 開啟搜尋 Modal
+	searchToggle?.addEventListener('click', async () => {
+		searchModal.classList.add('active');
+		document.body.style.overflow = 'hidden';
+		searchInput.focus();
+
+		if (allPosts.length === 0) {
+			await fetchPosts();
+		}
+	});
+
+	// 關閉搜尋 Modal
+	function closeSearch() {
+		searchModal.classList.remove('active');
+		document.body.style.overflow = '';
+		searchInput.value = '';
+		searchResults.innerHTML = '';
+	}
+
+	searchClose?.addEventListener('click', closeSearch);
+
+	// 點擊背景關閉
+	searchModal?.addEventListener('click', (e) => {
+		if (e.target === searchModal) {
+			closeSearch();
+		}
+	});
+
+	// ESC 鍵關閉
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+			closeSearch();
+		}
+	});
+
+	// 搜尋功能
+	searchInput?.addEventListener('input', (e) => {
+		const query = e.target.value.toLowerCase().trim();
+
+		if (!query) {
+			searchResults.innerHTML = '';
+			return;
+		}
+
+		const results = allPosts.filter(post => {
+			const titleMatch = post.title.toLowerCase().includes(query);
+			const descMatch = post.description.toLowerCase().includes(query);
+			return titleMatch || descMatch;
+		});
+
+		displayResults(results, query);
+	});
+
+	// 顯示搜尋結果
+	function displayResults(results, query) {
+		if (results.length === 0) {
+			searchResults.innerHTML = `
+				<div class="search-no-results">
+					找不到相關文章，試試其他關鍵字吧
+				</div>
+			`;
+			return;
+		}
+
+		const countHtml = `<div class="search-results-count">找到 ${results.length} 篇文章</div>`;
+		const resultsHtml = results.map(post => `
+			<div class="search-result-item">
+				<div class="search-result-title">
+					<a href="/blog/${post.slug}/">${highlightText(post.title, query)}</a>
+				</div>
+				<div class="search-result-description">${highlightText(post.description, query)}</div>
+				<div class="search-result-meta">
+					${post.category ? `<span class="search-result-category">${post.category}</span>` : ''}
+					<span class="search-result-date">${formatDate(post.pubDate)}</span>
+				</div>
+			</div>
+		`).join('');
+
+		searchResults.innerHTML = countHtml + resultsHtml;
+	}
+
+	// 高亮關鍵字
+	function highlightText(text, query) {
+		const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+		return text.replace(regex, '<mark>$1</mark>');
+	}
+
+	// 轉義正則表達式特殊字符
+	function escapeRegex(string) {
+		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	}
+
+	// 格式化日期
+	function formatDate(dateString) {
+		const date = new Date(dateString);
+		return date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+	}
 </script>

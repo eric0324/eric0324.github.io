@@ -21,7 +21,7 @@ WordPress 的主要資料（文章、評論、用戶、分類）和他們 metada
 
 我們可以使用 [add\_post\_meta()](https://developer.wordpress.org/reference/functions/add_post_meta/) 函式添加 metadata ，該函式接受一個 post\_id、一個 meta\_key、一個 meta\_value 和一個 unique 布林值。
 
-```PHP
+```php
 add_post_meta(
     int $post_id,
     string $meta_key,
