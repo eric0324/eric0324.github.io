@@ -2,7 +2,7 @@
 title: "如何在 WordPress 外掛開發使用 composer autoload"
 description: "當我們在開發 WordPress 的外掛程式或主題的時候，會有很多檔案和 class。通常我們會需要透過 require、require_once 或 include 來引入它們。但是隨著文件的增長，我們在 function.php 或主外掛檔案中獲得了大量檔案引入，如下所示："
 pubDate: 2024-04-12
-heroImage: "https://ericwu.asia/wp-content/uploads/2024/04/截圖-2024-04-12-13.07.12.png"
+heroImage: "/images/blog/截圖-2024-04-12-13.07.12.png"
 category: "WordPress"
 tags:
   - WordPress
@@ -15,7 +15,7 @@ tags:
 
 <!--more-->
 
-[![](../../assets/blog-images/截圖-2024-04-12-13.07.12.png)](https://ericwu.asia/wp-content/uploads/2024/04/截圖-2024-04-12-13.07.12.png)
+[![](../../assets/blog-images/截圖-2024-04-12-13.07.12.png)](/images/blog/截圖-2024-04-12-13.07.12.png)
 
 每次新增功能來連接另一個檔案的時候，非常不方便，你要跑回來這裡引入 (有時候還可能忘記)。還有就是，幾個月回來打開我們的專案時，如果您沒有在程式碼中留下註解，會很不好維護。
 
