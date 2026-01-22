@@ -13,7 +13,7 @@ tags:
 
 台灣的疫情終於漸漸的穩定下來，各個社群的線下活動都開始陸續恢復運作了。Chatbot Taiwan 也迎來期待已久的第 20 場小聚！這次小聚選在熊大寶殿舉辦，很感謝場地方 LINE 提供場地和贊助美食、飲料，讓大家分享交流之餘，還能吃飽喝足，希望每個人都能滿載而歸！在心得開始前，先放上這次的活動資訊
 
-![](../../assets/blog-images/Image-from-iOS-7-300x225.jpg)
+![](/images/blog/Image-from-iOS-7-300x225.jpg)
 
 KKTIX：[https://chatbots.kktix.cc/events/meetup-020](https://chatbots.kktix.cc/events/meetup-020)
 
@@ -25,7 +25,7 @@ KKTIX：[https://chatbots.kktix.cc/events/meetup-020](https://chatbots.kktix.cc/
 
 第一個出場的是 Evan ，一樣為我們帶來這個月有**關於 LINE API 的更新**
 
-![](../../assets/blog-images/Image-from-iOS-6-300x225.jpg)
+![](/images/blog/Image-from-iOS-6-300x225.jpg)
 
 <script async class="speakerdeck-embed" data-id="8517c0f0cbba4a18854c672827f71d86" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
@@ -46,7 +46,7 @@ Evan 還提供了一隻 Demo 機器人，示範了這次的 Messaging API 的�
 
 第二場是由 煥杰 分享的『**專為高中生設計的管家型聊天機器人** 』。
 
-![](../../assets/blog-images/Image-from-iOS-5-300x225.jpg)
+![](/images/blog/Image-from-iOS-5-300x225.jpg)
 
 當初設計這隻機器人是作者為了協助班上同學常常忘了帶考師準備的書籍，以及提醒同學未來幾天考試而誕生的一隻機器人。去年九月開始做這隻機器人，十二月就完成了第一階段開發
 
@@ -58,7 +58,7 @@ Evan 還提供了一隻 Demo 機器人，示範了這次的 Messaging API 的�
 
 接著是 Richard 分享的 **LIFF & Firebase**
 
-![](../../assets/blog-images/Image-from-iOS-4-300x225.jpg)
+![](/images/blog/Image-from-iOS-4-300x225.jpg)
 
 Firebase 對我而言一直是個有點陌生的東西，之前待在快速買早餐的時候，常常聽到，但是沒有實際去應用。聽完這次的分享，有點燃起我想去玩玩看的動力
 
@@ -79,7 +79,7 @@ Firebase 也提供了安全認證相關的機制，可以讓管理人員處理`�
 
 最後一場是卡米哥分享的『**對話式表單架構設計**』
 
-![](../../assets/blog-images/Image-from-iOS-3-300x225.jpg)
+![](/images/blog/Image-from-iOS-3-300x225.jpg)
 
 這個議題一直是大家很有興趣的議題，我之前在開發快速買早餐 5breakfast 的 chatbot 也遇到這個問題。對話式表單常常遇到的就是，如何協助用戶完成目標？如何向用戶索取資訊？如何呈現一個好的對話介面？缺乏資訊要怎麼反問？多欄位填寫的處理？
 
@@ -89,7 +89,7 @@ Firebase 也提供了安全認證相關的機制，可以讓管理人員處理`�
 
 最後是閃電秀的部分
 
-![](../../assets/blog-images/Image-from-iOS-1-300x225.jpg)
+![](/images/blog/Image-from-iOS-1-300x225.jpg)
 
 首先出場的是佳新哥分享的 LIFF 圖片測試工具，這個工具可以減少設計師和工程師溝通障礙。
 
@@ -99,4 +99,4 @@ Firebase 也提供了安全認證相關的機制，可以讓管理人員處理`�
 
 這次的分享依舊很有趣，也很精彩，學習到很多東西，也認識很多人。最後附上工作人員合照，這次又多了些新夥伴，希望聊天機器人社群越來越壯大！
 
-![](../../assets/blog-images/Image-from-iOS-225x300.jpg)
+![](/images/blog/Image-from-iOS-225x300.jpg)

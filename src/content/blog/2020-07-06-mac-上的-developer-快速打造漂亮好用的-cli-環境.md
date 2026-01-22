@@ -38,7 +38,7 @@ brew cask instal iterm2 # 安裝 iTerm2
 1. Preferences > Profiles > Terminal > Report Terminal Type
 2. 設為 **xterm-256color**
 
-![](../../assets/blog-images/截圖-2020-07-06-上午9.53.22-300x200.png)
+![](/images/blog/截圖-2020-07-06-上午9.53.22-300x200.png)
 
 接著來修改 iTerm2 的 **color scheme**
 

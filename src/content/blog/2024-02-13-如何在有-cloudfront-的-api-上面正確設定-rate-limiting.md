@@ -24,7 +24,7 @@ tags:
 
 後端 WAF： 以 AWS WAF 為例，我們要建立一條 **Rate-based rule** ，系統會問我們要依據 Source IP address 或是 IP address in header 。如果選後者，AWS WAF 就會預設根據 X-Forwarded-For 這個 header 值進行 rate 統計。
 
-[![](../../assets/blog-images/截圖-2024-02-13-16.32.48-1024x295.png)](/images/blog/截圖-2024-02-13-16.32.48.png)
+[![](/images/blog/截圖-2024-02-13-16.32.48-1024x295.png)](/images/blog/截圖-2024-02-13-16.32.48.png)
 
 而這個方法，有個限制就是 X-Forwarded-For 因為是 http header，算是 Layer 7 資訊，如果我們的後端偵測設備是 layer3 - 4 的元件 ( 例如傳統防火牆 ) ，就有可能就看不懂這個 X-Forwarded-For 這個 header。
 

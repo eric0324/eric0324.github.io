@@ -37,15 +37,15 @@ $ cat /home/eric/.ssh/id_rsa.pub # 讀取檔案內容
 
 　　接著到 GitHub 的設定頁面，將剛剛複製的金鑰輸入進去
 
-![](../../assets/blog-images/截圖-2021-08-15-下午5.14.39-508x1024.png)
+![](/images/blog/截圖-2021-08-15-下午5.14.39-508x1024.png)
 
 點選 SSH and GPG keys
 
-![](../../assets/blog-images/截圖-2021-08-15-下午5.14.47.png)
+![](/images/blog/截圖-2021-08-15-下午5.14.47.png)
 
 點選 New SSH Key
 
-![](../../assets/blog-images/截圖-2021-08-15-下午5.14.53-1024x201.png)
+![](/images/blog/截圖-2021-08-15-下午5.14.53-1024x201.png)
 
 為這把金鑰命名，並且把剛剛複製的金鑰貼上，按下 Add SSH Key 送出確認
 
@@ -53,7 +53,7 @@ $ cat /home/eric/.ssh/id_rsa.pub # 讀取檔案內容
 
 首先我們在我們要使用的 GitHub remote repository 上，點選 code ，改用 SSH ，就會取得一段 remote url
 
-![](../../assets/blog-images/截圖-2021-08-15-下午5.25.00-1024x348.png)
+![](/images/blog/截圖-2021-08-15-下午5.25.00-1024x348.png)
 
 到我們本地的專案下，使用這個指令
 

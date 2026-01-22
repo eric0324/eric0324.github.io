@@ -55,9 +55,9 @@ add_shortcode('eric', 'eric_shortcode');
 
 eric 是我們註冊的 shortcode，我們現在可以使用這個 shortcode
 
-![https://ithelp.ithome.com.tw/upload/images/20200909/20121194eZDEv55m2X.png](../../assets/blog-images/20121194eZDEv55m2X.png)
+![https://ithelp.ithome.com.tw/upload/images/20200909/20121194eZDEv55m2X.png](/images/blog/20121194eZDEv55m2X.png)
 
-會調用 eric\_shortcode 函式回傳的東西來顯示內容。 ![https://ithelp.ithome.com.tw/upload/images/20200909/20121194W8mMuxjF7J.png](../../assets/blog-images/20121194W8mMuxjF7J.png)
+會調用 eric\_shortcode 函式回傳的東西來顯示內容。 ![https://ithelp.ithome.com.tw/upload/images/20200909/20121194W8mMuxjF7J.png](/images/blog/20121194W8mMuxjF7J.png)
 
 ### 在外掛中註冊 shortcode
 
@@ -145,9 +145,9 @@ add_shortcode('eric', 'eric_shortcode');
 
 沒有參數的時候：
 
-![https://ithelp.ithome.com.tw/upload/images/20200909/20121194BzrIunokcd.png](../../assets/blog-images/20121194BzrIunokcd.png)
+![https://ithelp.ithome.com.tw/upload/images/20200909/20121194BzrIunokcd.png](/images/blog/20121194BzrIunokcd.png)
 
-有參數的時候： ![https://ithelp.ithome.com.tw/upload/images/20200909/20121194iHUr7UcPFr.png](../../assets/blog-images/20121194iHUr7UcPFr.png)
+有參數的時候： ![https://ithelp.ithome.com.tw/upload/images/20200909/20121194iHUr7UcPFr.png](/images/blog/20121194iHUr7UcPFr.png)
 
 ## Shortcode 的一些限制
 

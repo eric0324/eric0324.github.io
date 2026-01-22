@@ -48,13 +48,13 @@ WordPress.org 提供了一個 WordPress 外掛的 API，供開發者監控外掛
 
 想要上傳外掛到 WordPress 官方，首先你要先在 [WordPress.org](https://developer.wordpress.org/) 註冊一個賬戶。點擊右上角的 `Register` 便可以開始註冊
 
-![https://ithelp.ithome.com.tw/upload/images/20200919/20121194qoU7nL7Urw.png](../../assets/blog-images/20121194qoU7nL7Urw.png)
+![https://ithelp.ithome.com.tw/upload/images/20200919/20121194qoU7nL7Urw.png](/images/blog/20121194qoU7nL7Urw.png)
 
 ### 提交你的外掛
 
 將外掛打包成為一個 zip 文件，[點擊這](https://wordpress.org/plugins/developers/add/)這裡打開頁面，登入後會看到：
 
-![https://ithelp.ithome.com.tw/upload/images/20200919/20121194wr0nw1qKEv.png](../../assets/blog-images/20121194wr0nw1qKEv.png)
+![https://ithelp.ithome.com.tw/upload/images/20200919/20121194wr0nw1qKEv.png](/images/blog/20121194wr0nw1qKEv.png)
 
 點擊 `Select File`，選擇剛剛打包的 zip 文件，再點下 `Upload` 按鈕，就可以將你的外掛添加到審核隊列了。
 

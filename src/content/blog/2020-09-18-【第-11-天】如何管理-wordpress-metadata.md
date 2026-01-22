@@ -112,7 +112,7 @@ function eric_custom_box_html($post) {
 
 這樣我們的文章編輯器下面就多了一個我們自己定義的表單可以給使用者選擇了！
 
-![https://ithelp.ithome.com.tw/upload/images/20200911/20121194Er0Aqu23Os.png](../../assets/blog-images/20121194Er0Aqu23Os.png)
+![https://ithelp.ithome.com.tw/upload/images/20200911/20121194Er0Aqu23Os.png](/images/blog/20121194Er0Aqu23Os.png)
 
 上面的範例只包一個下拉列表字段，可能沒什麼意義，所以我們在實際開發時，可以根據需要放上任意類型的表單。
 
