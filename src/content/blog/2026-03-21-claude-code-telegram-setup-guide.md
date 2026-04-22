@@ -2,7 +2,7 @@
 title: "Claude Code Telegram Bot 設定教學"
 description: "最近發現 Claude Code 可以透過 Telegram Plugin 直接用手機跟它互動，等於隨時隨地都能讓 Claude Code 幫你做事。這篇完整記錄從零開始的設定流程。"
 pubDate: 2026-03-21
-heroImage: "https://images.unsplash.com/photo-rNH2Pcgg888?w=1200&h=630&fit=crop"
+heroImage: "https://plus.unsplash.com/premium_photo-1677094310919-d0361465d3be?w=1200&h=630&fit=crop"
 category: "AI"
 tags:
   - AI
