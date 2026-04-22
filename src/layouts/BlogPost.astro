@@ -350,6 +350,31 @@ const { title, description, pubDate, updatedDate, category, tags } = Astro.props
 			generateTOC();
 			window.addEventListener('scroll', highlightActiveTOC);
 			highlightActiveTOC();
+
+			// Render Mermaid diagrams (if any)
+			async function renderMermaid() {
+				const codeBlocks = document.querySelectorAll('pre > code.language-mermaid');
+				if (codeBlocks.length === 0) return;
+
+				const { default: mermaid } = await import('mermaid');
+				mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
+
+				for (let i = 0; i < codeBlocks.length; i++) {
+					const code = codeBlocks[i];
+					const source = code.textContent || '';
+					const id = `mermaid-diagram-${i}`;
+					try {
+						const { svg } = await mermaid.render(id, source);
+						const container = document.createElement('div');
+						container.className = 'mermaid';
+						container.innerHTML = svg;
+						code.parentElement.replaceWith(container);
+					} catch (err) {
+						console.error('Mermaid render failed', err);
+					}
+				}
+			}
+			renderMermaid();
 		</script>
 	</body>
 </html>

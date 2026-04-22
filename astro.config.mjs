@@ -8,4 +8,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	site: 'https://ericwu.asia',
 	integrations: [mdx(), sitemap()],
+	markdown: {
+		syntaxHighlight: {
+			type: 'shiki',
+			excludeLangs: ['mermaid', 'math'],
+		},
+	},
 });
