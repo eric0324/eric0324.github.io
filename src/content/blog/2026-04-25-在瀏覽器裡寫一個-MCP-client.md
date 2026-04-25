@@ -2,7 +2,7 @@
 title: "在瀏覽器裡寫一個 MCP client"
 description: "這篇用 Next.js + TypeScript 從零做一個能連 server、列工具、呼叫工具的 browser MCP client，全部程式碼可複製貼上跑起來。"
 pubDate: 2026-04-25
-heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+heroImage: "https://images.unsplash.com/photo-1634084462412-b54873c0a56d?w=1200&h=630&fit=crop"
 category: "AI"
 tags:
   - MCP
