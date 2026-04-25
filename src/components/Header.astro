@@ -202,6 +202,16 @@ import { SITE_TITLE } from '../consts';
 		}
 	}
 
+	/* Sidebar 還在左側時 (721px–1456px)，給 main 預留空間避免內容跟 sidebar 重疊 */
+	main {
+		box-sizing: border-box;
+	}
+	@media (min-width: 721px) and (max-width: 1456px) {
+		main {
+			padding-left: 130px;
+		}
+	}
+
 	@media (max-width: 720px) {
 		.sidebar-nav {
 			left: 50%;
