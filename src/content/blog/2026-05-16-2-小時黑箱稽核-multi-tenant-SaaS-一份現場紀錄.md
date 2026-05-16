@@ -1,5 +1,5 @@
 ---
-title: "寫讓客戶能跟著 audit 你判斷的稽核報告：一個 multi-tenant SaaS 案例"
+title: "2 小時黑箱稽核 multi-tenant SaaS：一份現場紀錄"
 description: "一份 multi-tenant SaaS staging 環境的存取隔離稽核紀錄：2 小時時間上限、Supabase 架構、不碰正式環境。這篇拆解黑箱稽核的 5 個步驟、為什麼有些發現要在交報告前降級、跟我刻意不做的事。"
 pubDate: 2026-05-16
 heroImage: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&h=630&fit=crop"
